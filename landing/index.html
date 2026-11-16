@@ -1,0 +1,1465 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>MUSE — Colour intelligence for fashion</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='14' fill='%2334d399'/%3E%3C/svg%3E" />
+  <meta name="description" content="Know the colours that suit you, your client, and every outfit. Palettes, garment checks, and a mannequin preview — in seconds." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --black: #000000;
+      --surface: #f4f4f5;
+      --zinc-950: #09090b;
+      --zinc-900: #18181b;
+      --zinc-500: #71717a;
+      --zinc-400: #a1a1aa;
+      --emerald: #34d399;
+      --border: rgba(255, 255, 255, 0.1);
+      --radius-xl: 2.5rem;
+      --radius-lg: 1.5rem;
+      --radius-md: 1rem;
+      --ease: cubic-bezier(0.16, 1, 0.3, 1);
+      --garment: #34d399;
+    }
+
+    * { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      background: var(--black);
+      color: #fff;
+      font-family: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+      font-weight: 400;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+      overflow-x: hidden;
+    }
+
+    img, svg { display: block; }
+    a { color: inherit; text-decoration: none; }
+    button { font: inherit; cursor: pointer; }
+
+    ::selection { background: var(--emerald); color: #052e22; }
+
+    .grain {
+      position: fixed;
+      inset: 0;
+      z-index: 999;
+      pointer-events: none;
+      opacity: 0.15;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    }
+
+    .page {
+      width: 100%;
+      max-width: 1600px;
+      margin: 0 auto;
+      padding: 0 clamp(1rem, 2.4vw, 2.5rem);
+    }
+
+    .eyebrow {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      margin: 0 0 1.25rem;
+    }
+
+    .eyebrow.on-dark { color: rgba(255, 255, 255, 0.55); }
+    .eyebrow.on-light { color: var(--zinc-500); }
+
+    .glass {
+      background: rgba(255, 255, 255, 0.05);
+      -webkit-backdrop-filter: blur(12px);
+      backdrop-filter: blur(12px);
+      border: 1px solid var(--border);
+      border-radius: 1.25rem;
+    }
+
+    /* ---------- NAV ---------- */
+    .nav {
+      position: fixed;
+      z-index: 100;
+      top: 1.25rem;
+      left: 50%;
+      transform: translateX(-50%);
+      width: min(1180px, calc(100% - 2rem));
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      padding: 0.5rem 0.5rem 0.5rem 1.4rem;
+      border-radius: 999px;
+      background: rgba(10, 10, 12, 0.55);
+      -webkit-backdrop-filter: blur(20px);
+      backdrop-filter: blur(20px);
+      border: 1px solid var(--border);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.35);
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.65rem;
+      font-weight: 600;
+      letter-spacing: 0.16em;
+      font-size: 13px;
+    }
+
+    .brand-mark {
+      width: 26px;
+      height: 26px;
+      border-radius: 999px;
+      background: conic-gradient(from 210deg, var(--emerald), #a7f3d0, #27272a, var(--emerald));
+      box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.25);
+    }
+
+    .brand-dot { color: var(--emerald); }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 0.15rem;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    .nav-links a {
+      display: inline-block;
+      padding: 0.5rem 0.95rem;
+      border-radius: 999px;
+      font-size: 13px;
+      color: rgba(255, 255, 255, 0.8);
+      transition: background-color 0.3s var(--ease), color 0.3s var(--ease);
+    }
+
+    .nav-links a:hover { background: rgba(255, 255, 255, 0.1); color: #fff; }
+
+    .nav-cta {
+      display: inline-block;
+      background: #fff;
+      color: #18181b;
+      font-size: 13px;
+      font-weight: 500;
+      padding: 0.6rem 1.1rem;
+      border-radius: 999px;
+      transition: transform 0.3s var(--ease), background-color 0.3s var(--ease);
+    }
+
+    .nav-cta:hover { transform: scale(1.04); background: #e4e4e7; }
+
+    /* ---------- HERO ---------- */
+    .hero {
+      position: relative;
+      min-height: 92vh;
+      border-radius: var(--radius-xl);
+      overflow: hidden;
+      margin-top: 1rem;
+      padding: clamp(7rem, 12vh, 9rem) clamp(1.5rem, 5vw, 4.5rem) clamp(2rem, 5vh, 3.5rem);
+      display: flex;
+      align-items: center;
+      background:
+        radial-gradient(60% 80% at 78% 8%, rgba(52, 211, 153, 0.28), transparent 60%),
+        radial-gradient(50% 60% at 10% 90%, rgba(63, 63, 70, 0.55), transparent 65%),
+        radial-gradient(40% 50% at 60% 55%, rgba(39, 39, 42, 0.7), transparent 70%),
+        linear-gradient(160deg, #0a0a0c 0%, #050506 45%, #000 100%);
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(5, 5, 6, 0.94) 0%, rgba(5, 5, 6, 0.42) 48%, rgba(5, 5, 6, 0.12) 100%);
+      pointer-events: none;
+    }
+
+    .hero-word {
+      position: absolute;
+      z-index: 0;
+      top: 44%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 22vw;
+      font-weight: 700;
+      letter-spacing: -0.06em;
+      line-height: 1;
+      color: #fff;
+      opacity: 0.03;
+      filter: blur(2px);
+      white-space: nowrap;
+      pointer-events: none;
+      user-select: none;
+    }
+
+    .hero-inner {
+      position: relative;
+      z-index: 2;
+      width: 100%;
+      display: grid;
+      grid-template-columns: 1.15fr 0.55fr;
+      gap: clamp(2rem, 6vw, 5rem);
+      align-items: center;
+    }
+
+    .hero h1 {
+      margin: 0 0 1.5rem;
+      font-size: clamp(2.6rem, 5.4vw, 5.25rem);
+      font-weight: 600;
+      letter-spacing: -0.05em;
+      line-height: 1.04;
+      max-width: 15ch;
+    }
+
+    .hero h1 em {
+      font-style: normal;
+      color: var(--emerald);
+    }
+
+    .hero-sub {
+      margin: 0 0 2.25rem;
+      max-width: 46ch;
+      font-size: clamp(0.95rem, 1.2vw, 1.05rem);
+      font-weight: 300;
+      line-height: 1.65;
+      color: var(--zinc-400);
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 1.5rem;
+    }
+
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.9rem;
+      background: #fff;
+      color: #18181b;
+      font-weight: 500;
+      font-size: 14px;
+      padding: 0.5rem 0.5rem 0.5rem 1.5rem;
+      border-radius: 999px;
+      border: 0;
+      transition: transform 0.3s var(--ease);
+    }
+
+    .btn-primary:hover { transform: scale(1.05); }
+
+    .btn-icon {
+      display: grid;
+      place-items: center;
+      width: 40px;
+      height: 40px;
+      border-radius: 999px;
+      background: #18181b;
+      color: #fff;
+      transition: background-color 0.3s var(--ease), transform 0.3s var(--ease);
+    }
+
+    .btn-primary:hover .btn-icon { background: #3f3f46; transform: rotate(-45deg); }
+
+    .ghost-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 13px;
+      color: rgba(255, 255, 255, 0.65);
+      border-bottom: 1px solid transparent;
+      padding-bottom: 2px;
+      transition: color 0.3s var(--ease), border-color 0.3s var(--ease);
+    }
+
+    .ghost-link:hover { color: #fff; border-color: rgba(255, 255, 255, 0.4); }
+
+    .hero-stats {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      width: 100%;
+      max-width: 320px;
+      justify-self: end;
+    }
+
+    .stat {
+      padding: 1.25rem;
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 1rem;
+      transition: background-color 0.3s var(--ease), transform 0.3s var(--ease);
+    }
+
+    .stat:hover { background: rgba(255, 255, 255, 0.09); transform: translateY(-2px); }
+
+    .stat strong {
+      font-size: 2rem;
+      font-weight: 600;
+      letter-spacing: -0.04em;
+      line-height: 1;
+    }
+
+    .stat span {
+      font-size: 12px;
+      line-height: 1.35;
+      color: rgba(255, 255, 255, 0.6);
+      text-align: right;
+      max-width: 12ch;
+    }
+
+    .palette-card { padding: 1.25rem; }
+
+    .palette-card .label {
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, 0.45);
+      margin-bottom: 0.9rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .palette-card .label i {
+      font-style: normal;
+      color: var(--emerald);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+    }
+
+    .palette-chips { display: flex; gap: 0.45rem; }
+
+    .chip {
+      flex: 1;
+      height: 34px;
+      border-radius: 8px;
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.18);
+    }
+
+    /* ---------- REVEAL ---------- */
+    .reveal {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.8s var(--ease), transform 0.8s var(--ease);
+    }
+
+    .reveal.in { opacity: 1; transform: none; }
+    .d1 { transition-delay: 0.08s; }
+    .d2 { transition-delay: 0.16s; }
+    .d3 { transition-delay: 0.24s; }
+
+    /* ---------- LIGHT SECTION ---------- */
+    .light-section {
+      background: var(--surface);
+      color: var(--zinc-900);
+      border-radius: var(--radius-xl);
+      margin-top: 1rem;
+      padding: clamp(4rem, 8vw, 7rem) clamp(1.5rem, 4vw, 4rem);
+    }
+
+    /* ---------- FEATURES ---------- */
+    .features {
+      display: grid;
+      grid-template-columns: 0.95fr 1.05fr;
+      gap: clamp(2.5rem, 6vw, 5rem);
+      align-items: start;
+    }
+
+    .features-left {
+      position: sticky;
+      top: 7.5rem;
+    }
+
+    .features h2 {
+      margin: 0 0 1.1rem;
+      font-size: clamp(2.1rem, 3.6vw, 3.5rem);
+      font-weight: 600;
+      letter-spacing: -0.045em;
+      line-height: 1.05;
+      max-width: 16ch;
+    }
+
+    .features-intro {
+      margin: 0 0 2.5rem;
+      max-width: 42ch;
+      font-size: 15px;
+      line-height: 1.65;
+      font-weight: 300;
+      color: var(--zinc-500);
+    }
+
+    .feature-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem 1.75rem;
+    }
+
+    .feature {
+      display: flex;
+      flex-direction: column;
+      gap: 0.7rem;
+    }
+
+    .feature-icon {
+      width: 38px;
+      height: 38px;
+      border-radius: 12px;
+      display: grid;
+      place-items: center;
+      background: #fff;
+      border: 1px solid #e4e4e7;
+      color: var(--zinc-900);
+    }
+
+    .feature h3 {
+      margin: 0;
+      font-size: 13.5px;
+      font-weight: 600;
+      letter-spacing: -0.01em;
+    }
+
+    .feature p {
+      margin: 0;
+      font-size: 12.5px;
+      line-height: 1.55;
+      color: var(--zinc-500);
+      font-weight: 300;
+    }
+
+    .display-card {
+      position: relative;
+      min-height: 600px;
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      background:
+        radial-gradient(70% 60% at 50% 30%, #f7f4ee 0%, transparent 60%),
+        linear-gradient(155deg, #ece8e0 0%, #dcd6ca 55%, #cfc8ba 100%);
+      border: 1px solid #e3dfd6;
+    }
+
+    .display-card::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(80% 50% at 50% 100%, rgba(56, 51, 43, 0.28), transparent 70%);
+      pointer-events: none;
+    }
+
+    .mannequin-wrap {
+      position: absolute;
+      inset: 0;
+      display: grid;
+      place-items: center;
+      padding: 3.5rem 2rem 5rem;
+      transition: transform 0.7s var(--ease);
+    }
+
+    .display-card:hover .mannequin-wrap { transform: scale(1.05); }
+
+    .mannequin { width: min(72%, 330px); height: auto; filter: drop-shadow(0 30px 40px rgba(40, 35, 28, 0.22)); }
+
+    .analysis {
+      position: absolute;
+      z-index: 3;
+      top: 1.25rem;
+      left: 1.25rem;
+      width: 236px;
+      padding: 1rem;
+      background: rgba(24, 24, 27, 0.62);
+      -webkit-backdrop-filter: blur(20px);
+      backdrop-filter: blur(20px);
+      border: 1px solid rgba(255, 255, 255, 0.16);
+      border-radius: 1rem;
+      color: #fff;
+    }
+
+    .analysis-title {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, 0.55);
+      margin-bottom: 0.85rem;
+    }
+
+    .status-dot {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+      color: var(--emerald);
+      letter-spacing: 0.1em;
+    }
+
+    .status-dot::before {
+      content: "";
+      width: 6px;
+      height: 6px;
+      border-radius: 999px;
+      background: var(--emerald);
+      box-shadow: 0 0 10px rgba(52, 211, 153, 0.9);
+    }
+
+    .metric { margin-bottom: 0.7rem; }
+    .metric:last-child { margin-bottom: 0; }
+
+    .metric-row {
+      display: flex;
+      justify-content: space-between;
+      font-size: 10.5px;
+      margin-bottom: 0.35rem;
+      color: rgba(255, 255, 255, 0.72);
+    }
+
+    .metric-row b { font-weight: 600; color: #fff; }
+
+    .track {
+      height: 4px;
+      width: 100%;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.12);
+      overflow: hidden;
+    }
+
+    .track i {
+      display: block;
+      height: 100%;
+      border-radius: inherit;
+      background: linear-gradient(90deg, #6ee7b7, var(--emerald));
+    }
+
+    .live-tag {
+      position: absolute;
+      z-index: 3;
+      top: 1.25rem;
+      right: 1.25rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: #fff;
+      background: rgba(24, 24, 27, 0.55);
+      -webkit-backdrop-filter: blur(20px);
+      backdrop-filter: blur(20px);
+      border: 1px solid rgba(255, 255, 255, 0.16);
+      padding: 0.45rem 0.7rem;
+      border-radius: 999px;
+    }
+
+    .live-tag::before {
+      content: "";
+      width: 6px;
+      height: 6px;
+      border-radius: 999px;
+      background: var(--emerald);
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; box-shadow: 0 0 0 0 rgba(52, 211, 153, 0.5); }
+      50% { opacity: 0.6; box-shadow: 0 0 0 5px rgba(52, 211, 153, 0); }
+    }
+
+    .swatches {
+      position: absolute;
+      z-index: 3;
+      bottom: 1.25rem;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      align-items: center;
+      gap: 0.55rem;
+      padding: 0.6rem 0.75rem;
+      background: rgba(24, 24, 27, 0.45);
+      -webkit-backdrop-filter: blur(20px);
+      backdrop-filter: blur(20px);
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      border-radius: 999px;
+    }
+
+    .swatch {
+      width: 26px;
+      height: 26px;
+      border-radius: 999px;
+      border: 2px solid rgba(255, 255, 255, 0.4);
+      padding: 0;
+      transition: transform 0.25s var(--ease), border-color 0.25s var(--ease);
+    }
+
+    .swatch:hover { transform: scale(1.18); }
+    .swatch[aria-pressed="true"] { border-color: #fff; transform: scale(1.18); }
+
+    /* ---------- WORKFLOW ---------- */
+    .dark-block {
+      position: relative;
+      margin-top: 1rem;
+      border-radius: var(--radius-xl);
+      overflow: hidden;
+      background: var(--zinc-900);
+      padding: clamp(4rem, 8vw, 7rem) clamp(1.5rem, 4vw, 4rem);
+    }
+
+    .dark-block::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(255, 255, 255, 0.045) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.045) 1px, transparent 1px);
+      background-size: 72px 72px;
+      mask-image: radial-gradient(90% 80% at 50% 40%, #000 30%, transparent 85%);
+      -webkit-mask-image: radial-gradient(90% 80% at 50% 40%, #000 30%, transparent 85%);
+      pointer-events: none;
+    }
+
+    .dark-block::after {
+      content: "";
+      position: absolute;
+      width: 520px;
+      height: 520px;
+      right: -120px;
+      top: -160px;
+      background: radial-gradient(circle, rgba(52, 211, 153, 0.16), transparent 65%);
+      pointer-events: none;
+    }
+
+    .workflow {
+      position: relative;
+      z-index: 2;
+      display: grid;
+      grid-template-columns: 0.95fr 1.05fr;
+      gap: clamp(2.5rem, 6vw, 5rem);
+      align-items: center;
+    }
+
+    .workflow h2 {
+      margin: 0 0 1rem;
+      font-size: clamp(2.1rem, 3.6vw, 3.5rem);
+      font-weight: 600;
+      letter-spacing: -0.045em;
+      line-height: 1.06;
+      max-width: 16ch;
+    }
+
+    .workflow-intro {
+      margin: 0 0 2.5rem;
+      max-width: 40ch;
+      font-size: 14.5px;
+      font-weight: 300;
+      line-height: 1.65;
+      color: rgba(255, 255, 255, 0.55);
+    }
+
+    .steps { display: flex; flex-direction: column; gap: 0.85rem; }
+
+    .step {
+      display: flex;
+      gap: 1.1rem;
+      align-items: flex-start;
+      padding: 1.25rem;
+      border-radius: 1rem;
+      background: rgba(255, 255, 255, 0.035);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      transition: background-color 0.3s var(--ease), border-color 0.3s var(--ease);
+    }
+
+    .step:hover { background: rgba(255, 255, 255, 0.06); border-color: rgba(255, 255, 255, 0.16); }
+
+    .step-num {
+      flex: none;
+      width: 44px;
+      height: 44px;
+      border-radius: 12px;
+      display: grid;
+      place-items: center;
+      font-size: 12px;
+      font-weight: 600;
+      color: rgba(255, 255, 255, 0.8);
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .step h3 { margin: 0 0 0.3rem; font-size: 14.5px; font-weight: 500; letter-spacing: -0.01em; }
+    .step p { margin: 0; font-size: 13px; line-height: 1.5; font-weight: 300; color: rgba(255, 255, 255, 0.5); }
+
+    .mock-wrap { position: relative; padding: 1rem 0 2rem 1rem; }
+
+    .mock {
+      position: relative;
+      transform: rotate(3deg);
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 1.5rem;
+      padding: 0.75rem;
+      box-shadow: 0 50px 90px rgba(0, 0, 0, 0.5);
+      transition: transform 0.6s var(--ease);
+    }
+
+    .mock-wrap:hover .mock { transform: rotate(1.5deg) translateY(-4px); }
+
+    .mock-bar { display: flex; gap: 6px; padding: 0.2rem 0.2rem 0.75rem; }
+    .mock-bar i { width: 9px; height: 9px; border-radius: 999px; background: rgba(255, 255, 255, 0.16); }
+    .mock-bar i:first-child { background: rgba(255, 255, 255, 0.3); }
+
+    .mock-body {
+      display: grid;
+      grid-template-columns: 52px 1fr;
+      gap: 1rem;
+      background: #111113;
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      border-radius: 1rem;
+      padding: 1rem;
+    }
+
+    .mock-palette { display: flex; flex-direction: column; gap: 0.5rem; }
+    .mock-palette i { height: 40px; border-radius: 9px; border: 1px solid rgba(255, 255, 255, 0.08); }
+
+    .mock-main { display: flex; flex-direction: column; gap: 0.8rem; min-width: 0; }
+
+    .mock-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 9px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, 0.4);
+      font-weight: 700;
+    }
+
+    .mock-head b { color: rgba(255, 255, 255, 0.85); font-weight: 600; letter-spacing: 0.02em; text-transform: none; font-size: 11px; }
+
+    .mock-row {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 0.5rem;
+      align-items: center;
+      padding: 0.55rem 0.65rem;
+      border-radius: 0.6rem;
+      background: rgba(255, 255, 255, 0.035);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      font-size: 11px;
+      color: rgba(255, 255, 255, 0.72);
+    }
+
+    .mock-row span { display: inline-flex; align-items: center; gap: 0.5rem; }
+    .mock-row span::before { content: ""; width: 14px; height: 14px; border-radius: 4px; background: var(--c, #34d399); }
+    .mock-row b { font-size: 10.5px; font-weight: 600; color: var(--emerald); }
+
+    .bounce-tag {
+      position: absolute;
+      right: -0.75rem;
+      bottom: 0.5rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      padding: 0.55rem 0.85rem;
+      border-radius: 999px;
+      background: rgba(52, 211, 153, 0.14);
+      border: 1px solid rgba(52, 211, 153, 0.35);
+      color: var(--emerald);
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      -webkit-backdrop-filter: blur(12px);
+      backdrop-filter: blur(12px);
+      animation: bounce 2.6s var(--ease) infinite;
+    }
+
+    .bounce-tag::before {
+      content: "";
+      width: 6px;
+      height: 6px;
+      border-radius: 999px;
+      background: var(--emerald);
+    }
+
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-7px); }
+    }
+
+    /* ---------- PRICING ---------- */
+    .pricing-head {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 1.5rem;
+      margin-bottom: 3rem;
+    }
+
+    .pricing-head h2 {
+      margin: 0;
+      font-size: clamp(2.1rem, 3.6vw, 3.5rem);
+      font-weight: 600;
+      letter-spacing: -0.045em;
+      line-height: 1.05;
+      max-width: 18ch;
+    }
+
+    .pricing-head p {
+      margin: 0;
+      max-width: 34ch;
+      font-size: 14px;
+      font-weight: 300;
+      line-height: 1.6;
+      color: var(--zinc-500);
+    }
+
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.25rem;
+      align-items: stretch;
+    }
+
+    .price-card {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      background: #fff;
+      border: 1px solid #e9e9ec;
+      border-radius: 2rem;
+      overflow: hidden;
+      transition: transform 0.35s var(--ease), box-shadow 0.35s var(--ease);
+    }
+
+    .price-card:hover { transform: translateY(-5px); box-shadow: 0 24px 50px rgba(24, 24, 27, 0.1); }
+
+    .price-media {
+      position: relative;
+      height: 96px;
+      background: linear-gradient(135deg, #e4e4e7, #cfcfd4);
+      overflow: hidden;
+    }
+
+    .price-media::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(0, 0, 0, 0.45), transparent 70%);
+    }
+
+    .price-media .mini-chips {
+      position: absolute;
+      z-index: 2;
+      bottom: 0.75rem;
+      left: 1.5rem;
+      display: flex;
+      gap: 0.35rem;
+    }
+
+    .price-media .mini-chips i {
+      width: 18px;
+      height: 18px;
+      border-radius: 5px;
+      border: 1px solid rgba(255, 255, 255, 0.5);
+    }
+
+    .price-body { display: flex; flex-direction: column; flex: 1; padding: 1.5rem; }
+
+    .plan-name {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--zinc-500);
+      margin-bottom: 0.9rem;
+    }
+
+    .price {
+      display: flex;
+      align-items: baseline;
+      gap: 0.35rem;
+      margin-bottom: 0.35rem;
+      letter-spacing: -0.04em;
+    }
+
+    .price strong { font-size: 2.25rem; font-weight: 600; line-height: 1; }
+    .price span { font-size: 12px; color: var(--zinc-500); }
+
+    .plan-desc { margin: 0 0 1.4rem; font-size: 12.5px; line-height: 1.55; font-weight: 300; color: var(--zinc-500); }
+
+    .plan-features {
+      list-style: none;
+      margin: 0 0 1.75rem;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 0.65rem;
+      flex: 1;
+    }
+
+    .plan-features li {
+      display: flex;
+      gap: 0.6rem;
+      align-items: flex-start;
+      font-size: 12.5px;
+      line-height: 1.45;
+      font-weight: 300;
+      color: #3f3f46;
+    }
+
+    .plan-features svg { flex: none; margin-top: 2px; color: #10b981; }
+
+    .price-btn {
+      display: block;
+      width: 100%;
+      text-align: center;
+      padding: 0.85rem 1rem;
+      border-radius: 999px;
+      background: var(--zinc-900);
+      color: #fff;
+      border: 1px solid var(--zinc-900);
+      font-size: 13px;
+      font-weight: 500;
+      transition: background-color 0.3s var(--ease), transform 0.3s var(--ease);
+    }
+
+    .price-btn:hover { background: #3f3f46; transform: scale(1.02); }
+
+    .price-card.featured {
+      background: var(--zinc-900);
+      border-color: var(--zinc-900);
+      color: #fff;
+    }
+
+    .price-card.featured:hover { box-shadow: 0 30px 60px rgba(24, 24, 27, 0.28); }
+
+    .price-card.featured .price-media { background: linear-gradient(135deg, #34d399, #0f766e 55%, #064e3b); }
+    .price-card.featured .plan-name { color: rgba(255, 255, 255, 0.55); }
+    .price-card.featured .price span { color: rgba(255, 255, 255, 0.5); }
+    .price-card.featured .plan-desc { color: rgba(255, 255, 255, 0.55); }
+    .price-card.featured .plan-features li { color: rgba(255, 255, 255, 0.75); }
+    .price-card.featured .plan-features svg { color: var(--emerald); }
+    .price-card.featured .price-btn { background: var(--emerald); color: #052e22; border-color: var(--emerald); }
+    .price-card.featured .price-btn:hover { background: #6ee7b7; }
+
+    .popular {
+      position: absolute;
+      z-index: 3;
+      top: 0.9rem;
+      right: 0.9rem;
+      font-size: 8.5px;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: #052e22;
+      background: var(--emerald);
+      padding: 0.35rem 0.6rem;
+      border-radius: 999px;
+    }
+
+    /* ---------- FOOTER ---------- */
+    .footer {
+      padding: clamp(3rem, 6vw, 5rem) clamp(1.5rem, 4vw, 4rem) 2.5rem;
+      margin-top: 1rem;
+    }
+
+    .footer-top {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 2rem;
+      padding-bottom: 2.5rem;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .footer-tagline {
+      margin: 1rem 0 0;
+      max-width: 30ch;
+      font-size: 13px;
+      font-weight: 300;
+      line-height: 1.6;
+      color: rgba(255, 255, 255, 0.45);
+    }
+
+    .footer-links { display: flex; flex-wrap: wrap; gap: 2.5rem; }
+
+    .footer-col h4 {
+      margin: 0 0 0.9rem;
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, 0.35);
+    }
+
+    .footer-col a {
+      display: block;
+      font-size: 12.5px;
+      color: rgba(255, 255, 255, 0.6);
+      padding: 0.3rem 0;
+      transition: color 0.25s var(--ease);
+    }
+
+    .footer-col a:hover { color: #fff; }
+
+    .footer-bottom {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 1rem;
+      padding-top: 1.75rem;
+      font-size: 11px;
+      color: rgba(255, 255, 255, 0.35);
+    }
+
+    /* ---------- RESPONSIVE ---------- */
+    @media (max-width: 1024px) {
+      .hero { min-height: auto; }
+      .hero-inner { grid-template-columns: 1fr; gap: 2.5rem; }
+      .hero-stats {
+        max-width: none;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 0.65rem;
+        justify-self: stretch;
+      }
+      .hero-stats .palette-card { grid-column: 1 / -1; }
+      .stat { flex-direction: column; align-items: flex-start; gap: 0.35rem; }
+      .stat span { text-align: left; max-width: none; }
+
+      .features { grid-template-columns: 1fr; }
+      .features-left { position: static; }
+      .workflow { grid-template-columns: 1fr; }
+      .mock-wrap { padding-left: 0; }
+      .pricing-grid { grid-template-columns: 1fr; max-width: 520px; margin: 0 auto; }
+    }
+
+    @media (max-width: 880px) {
+      .nav-links { display: none; }
+    }
+
+    @media (max-width: 640px) {
+      .hero { padding: 6.5rem 1.35rem 1.75rem; border-radius: 1.75rem; }
+      .hero h1 { font-size: 2.55rem; }
+      .hero-stats { grid-template-columns: 1fr 1fr; }
+      .hero-stats .stat:nth-child(3) { grid-column: 1 / -1; }
+      .hero-stats .stat:nth-child(3) { flex-direction: row; align-items: baseline; }
+      .light-section, .dark-block { border-radius: 1.75rem; padding-left: 1.35rem; padding-right: 1.35rem; }
+      .feature-grid { grid-template-columns: 1fr; }
+      .display-card { min-height: 540px; }
+      .analysis { width: 200px; padding: 0.85rem; }
+      .mock-body { grid-template-columns: 44px 1fr; }
+      .pricing-head { flex-direction: column; align-items: flex-start; }
+      .footer-top { flex-direction: column; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; }
+      .reveal { opacity: 1; transform: none; }
+    }
+  </style>
+</head>
+<body>
+  <div class="grain" aria-hidden="true"></div>
+
+  <!-- NOTE: "MUSE" is a placeholder wordmark. Replace with client company name + logo. -->
+  <nav class="nav" aria-label="Primary">
+    <a class="brand" href="#top">
+      <span class="brand-mark" aria-hidden="true"></span>
+      MUSE<span class="brand-dot">.</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#features">Product</a></li>
+      <li><a href="#workflow">How it works</a></li>
+      <li><a href="#pricing">Pricing</a></li>
+    </ul>
+    <a class="nav-cta" href="#pricing">Get early access</a>
+  </nav>
+
+  <div class="page" id="top">
+    <header class="hero">
+      <div class="hero-word" aria-hidden="true">COLOUR</div>
+      <div class="hero-inner">
+        <div class="reveal">
+          <p class="eyebrow on-dark">Fashion intelligence — 01</p>
+          <h1>Know the colours that make you <em>certain.</em></h1>
+          <p class="hero-sub">
+            Palette intelligence for designers and their clients. Profile a skin tone,
+            check any garment, and see the look on a mannequin before a single stitch.
+          </p>
+          <div class="hero-actions">
+            <a class="btn-primary" href="#pricing">
+              Find your palette
+              <span class="btn-icon" aria-hidden="true">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+              </span>
+            </a>
+            <a class="ghost-link" href="#workflow">See how it works
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M9 7h8v8"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <div class="hero-stats reveal d2">
+          <div class="stat glass">
+            <strong>12</strong>
+            <span>seasonal palettes, mapped</span>
+          </div>
+          <div class="stat glass">
+            <strong>94%</strong>
+            <span>average match confidence</span>
+          </div>
+          <div class="stat glass">
+            <strong>0</strong>
+            <span>guesswork before you sew</span>
+          </div>
+          <div class="palette-card glass">
+            <div class="label"><span>Your palette · preview</span><i>● Live</i></div>
+            <div class="palette-chips" aria-hidden="true">
+              <span class="chip" style="background:#34d399"></span>
+              <span class="chip" style="background:#a7f3d0"></span>
+              <span class="chip" style="background:#0f766e"></span>
+              <span class="chip" style="background:#ede6d6"></span>
+              <span class="chip" style="background:#6b3f5e"></span>
+              <span class="chip" style="background:#3b5bdb"></span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- FEATURES -->
+    <section class="light-section" id="features">
+      <div class="features">
+        <div class="features-left reveal">
+          <p class="eyebrow on-light">The product</p>
+          <h2>Colour decisions, made in seconds.</h2>
+          <p class="features-intro">
+            Replace trial and error with an answer you can explain to a client.
+            Every result is built from colour science, not opinion.
+          </p>
+          <div class="feature-grid">
+            <div class="feature">
+              <div class="feature-icon">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3c3 3.6 6 6.4 6 10a6 6 0 0 1-12 0c0-3.6 3-6.4 6-10Z"/></svg>
+              </div>
+              <h3>Skin intelligence</h3>
+              <p>Depth, undertone, hair and eye contrast — mapped to a personal palette.</p>
+            </div>
+            <div class="feature">
+              <div class="feature-icon">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8V5a1 1 0 0 1 1-1h3M16 4h3a1 1 0 0 1 1 1v3M20 16v3a1 1 0 0 1-1 1h-3M8 20H5a1 1 0 0 1-1-1v-3"/><circle cx="12" cy="12" r="3"/></svg>
+              </div>
+              <h3>Garment scan</h3>
+              <p>Upload a piece and we extract its dominant colours automatically.</p>
+            </div>
+            <div class="feature">
+              <div class="feature-icon">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8"/><path d="M12 4v16M4 12h16"/></svg>
+              </div>
+              <h3>Harmony engine</h3>
+              <p>Complementary, analogous, triadic — scored with a clear reason for every match.</p>
+            </div>
+            <div class="feature">
+              <div class="feature-icon">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="6" r="2.5"/><path d="M6 20v-2a6 6 0 0 1 12 0v2"/></svg>
+              </div>
+              <h3>Mannequin preview</h3>
+              <p>See the combination on a body in your own skin tone, before production.</p>
+            </div>
+            <div class="feature">
+              <div class="feature-icon">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 4h12v16l-6-4-6 4V4Z"/></svg>
+              </div>
+              <h3>Saved boards</h3>
+              <p>Collect palettes and outfits into shareable boards for every client.</p>
+            </div>
+            <div class="feature">
+              <div class="feature-icon">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg>
+              </div>
+              <h3>Designer workspaces</h3>
+              <p>Manage many clients, bulk-check garments, and export branded results.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="display-card reveal d1">
+          <div class="live-tag">Live preview</div>
+
+          <div class="analysis">
+            <div class="analysis-title">
+              <span>System analysis</span>
+              <span class="status-dot">Synced</span>
+            </div>
+            <div class="metric">
+              <div class="metric-row"><span>Undertone</span><b>Warm</b></div>
+              <div class="track"><i style="width:92%"></i></div>
+            </div>
+            <div class="metric">
+              <div class="metric-row"><span>Contrast</span><b>High</b></div>
+              <div class="track"><i style="width:84%"></i></div>
+            </div>
+            <div class="metric">
+              <div class="metric-row"><span>Harmony</span><b>96%</b></div>
+              <div class="track"><i style="width:96%"></i></div>
+            </div>
+          </div>
+
+          <div class="mannequin-wrap">
+            <svg class="mannequin" viewBox="0 0 260 460" role="img" aria-label="Digital mannequin preview wearing the selected garment colour">
+              <defs>
+                <linearGradient id="sheen" x1="0" y1="0" x2="1" y2="1">
+                  <stop offset="0" stop-color="#ffffff" stop-opacity="0.35"/>
+                  <stop offset="0.45" stop-color="#ffffff" stop-opacity="0.05"/>
+                  <stop offset="1" stop-color="#000000" stop-opacity="0.18"/>
+                </linearGradient>
+                <linearGradient id="form" x1="0" y1="0" x2="1" y2="0">
+                  <stop offset="0" stop-color="#cfc8bb"/>
+                  <stop offset="0.5" stop-color="#e2dcd1"/>
+                  <stop offset="1" stop-color="#bdb5a6"/>
+                </linearGradient>
+              </defs>
+              <ellipse cx="130" cy="386" rx="62" ry="13" fill="#2f2b26" opacity="0.22"/>
+              <path d="M126 244h8v122h-8Z" fill="#3f3a34"/>
+              <ellipse cx="130" cy="372" rx="50" ry="11" fill="#3f3a34"/>
+              <path d="M130 38c-18 0-26 10-26 24 0 8 4 16 10 20-18 6-34 18-40 36-6 18-4 42 2 64 5 18 12 34 18 50h14v12h44v-12h14c6-16 13-32 18-50 6-22 8-46 2-64-6-18-22-30-40-36 6-4 10-12 10-20 0-14-8-24-26-24Z" fill="url(#form)" stroke="#b3aa9a" stroke-width="1.2"/>
+              <path d="M104 150c10 6 42 6 52 0M100 186c12 7 48 7 60 0M103 214c11 6 43 6 54 0" stroke="#a89e8d" stroke-width="1" fill="none" opacity="0.5"/>
+              <path d="M130 58c-12 0-20 8-22 18-12 6-26 18-30 34-4 18 0 40 6 62 5 17 11 34 16 50h60c5-16 11-33 16-50 6-22 10-44 6-62-4-16-18-28-30-34-2-10-10-18-22-18Z" fill="var(--garment)" stroke="rgba(0,0,0,0.12)" stroke-width="1.4"/>
+              <path d="M130 58c-12 0-20 8-22 18-12 6-26 18-30 34-4 18 0 40 6 62 5 17 11 34 16 50h60c5-16 11-33 16-50 6-22 10-44 6-62-4-16-18-28-30-34-2-10-10-18-22-18Z" fill="url(#sheen)" opacity="0.9"/>
+              <path d="M130 58c-8 0-14 4-18 10 5 6 11 9 18 9s13-3 18-9c-4-6-10-10-18-10Z" fill="#000" opacity="0.08"/>
+            </svg>
+          </div>
+
+          <div class="swatches" role="group" aria-label="Preview garment colour">
+            <button class="swatch" style="background:#34d399" data-color="#34d399" aria-label="Emerald" aria-pressed="true"></button>
+            <button class="swatch" style="background:#c97b63" data-color="#c97b63" aria-label="Terracotta" aria-pressed="false"></button>
+            <button class="swatch" style="background:#3b5bdb" data-color="#3b5bdb" aria-label="Cobalt" aria-pressed="false"></button>
+            <button class="swatch" style="background:#ede6d6" data-color="#ede6d6" aria-label="Ivory" aria-pressed="false"></button>
+            <button class="swatch" style="background:#6b3f5e" data-color="#6b3f5e" aria-label="Plum" aria-pressed="false"></button>
+            <button class="swatch" style="background:#6b7a45" data-color="#6b7a45" aria-label="Olive" aria-pressed="false"></button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- WORKFLOW -->
+    <section class="dark-block" id="workflow">
+      <div class="workflow">
+        <div class="reveal">
+          <p class="eyebrow on-dark">The workflow</p>
+          <h2>From colour confusion to a signed-off look.</h2>
+          <p class="workflow-intro">
+            One profile, one palette, one check. Built for the pace of a studio,
+            not a colour-theory lecture.
+          </p>
+          <div class="steps">
+            <div class="step">
+              <div class="step-num">01</div>
+              <div>
+                <h3>Build the profile</h3>
+                <p>Pick skin depth and undertone. Add hair, eye, and contrast for full seasonal analysis.</p>
+              </div>
+            </div>
+            <div class="step">
+              <div class="step-num">02</div>
+              <div>
+                <h3>Check any garment</h3>
+                <p>Upload a piece or choose a colour. Get the match score, the reason, and two better swaps.</p>
+              </div>
+            </div>
+            <div class="step">
+              <div class="step-num">03</div>
+              <div>
+                <h3>Preview, save, share</h3>
+                <p>See it on the mannequin, drop it into a board, and send a link your client can approve.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="mock-wrap reveal d1">
+          <div class="mock">
+            <div class="mock-bar" aria-hidden="true"><i></i><i></i><i></i></div>
+            <div class="mock-body">
+              <div class="mock-palette" aria-hidden="true">
+                <i style="background:#34d399"></i>
+                <i style="background:#a7f3d0"></i>
+                <i style="background:#0f766e"></i>
+                <i style="background:#ede6d6"></i>
+                <i style="background:#6b3f5e"></i>
+              </div>
+              <div class="mock-main">
+                <div class="mock-head"><span>Client profile</span><b>Amara · Warm / High</b></div>
+                <div class="mock-row"><span style="--c:#34d399">Emerald silk</span><b>96%</b></div>
+                <div class="mock-row"><span style="--c:#c97b63">Terracotta</span><b>91%</b></div>
+                <div class="mock-row"><span style="--c:#ede6d6">Ivory</span><b>88%</b></div>
+                <div class="mock-row"><span style="--c:#6b7a45">Olive</span><b>84%</b></div>
+                <div class="mock-head"><span>Season</span><b>Deep Autumn</b></div>
+              </div>
+            </div>
+          </div>
+          <div class="bounce-tag">Palette locked</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PRICING -->
+    <section class="light-section" id="pricing">
+      <div class="pricing-head reveal">
+        <div>
+          <p class="eyebrow on-light">Pricing</p>
+          <h2>Start free. Go deeper when it pays.</h2>
+        </div>
+        <p>One complete result on the house. Depth, volume, and pro workflow when you need them.</p>
+      </div>
+
+      <div class="pricing-grid">
+        <article class="price-card reveal">
+          <div class="price-media" aria-hidden="true">
+            <div class="mini-chips">
+              <i style="background:#34d399"></i>
+              <i style="background:#ede6d6"></i>
+              <i style="background:#6b3f5e"></i>
+            </div>
+          </div>
+          <div class="price-body">
+            <div class="plan-name">Free</div>
+            <div class="price"><strong>$0</strong><span>forever</span></div>
+            <p class="plan-desc">One clear answer, no card required.</p>
+            <ul class="plan-features">
+              <li><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Swatch + undertone profile</li>
+              <li><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Core palette + colours to avoid</li>
+              <li><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>3 outfit checks per day</li>
+              <li><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>One saved board</li>
+            </ul>
+            <a class="price-btn" href="#top">Start free</a>
+          </div>
+        </article>
+
+        <article class="price-card featured reveal d1">
+          <div class="popular">Most popular</div>
+          <div class="price-media" aria-hidden="true">
+            <div class="mini-chips">
+              <i style="background:#6ee7b7"></i>
+              <i style="background:#ede6d6"></i>
+              <i style="background:#3b5bdb"></i>
+            </div>
+          </div>
+          <div class="price-body">
+            <div class="plan-name">Client Premium</div>
+            <div class="price"><strong>$9</strong><span>/ month</span></div>
+            <p class="plan-desc">Your full colour identity, unlocked.</p>
+            <ul class="plan-features">
+              <li><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Full 12-season analysis</li>
+              <li><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Foundation-shade mapping</li>
+              <li><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Unlimited checks + harmony matrix</li>
+              <li><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Unlimited boards + PDF export</li>
+            </ul>
+            <a class="price-btn" href="#top">Go premium</a>
+          </div>
+        </article>
+
+        <article class="price-card reveal d2">
+          <div class="price-media" aria-hidden="true">
+            <div class="mini-chips">
+              <i style="background:#3f3f46"></i>
+              <i style="background:#34d399"></i>
+              <i style="background:#c97b63"></i>
+            </div>
+          </div>
+          <div class="price-body">
+            <div class="plan-name">Designer Pro</div>
+            <div class="price"><strong>$29</strong><span>/ seat / month</span></div>
+            <p class="plan-desc">For studios running many clients at once.</p>
+            <ul class="plan-features">
+              <li><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Multiple client profiles</li>
+              <li><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Branded boards + client links</li>
+              <li><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Bulk garment extraction + CSV</li>
+              <li><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Included try-on credits</li>
+            </ul>
+            <a class="price-btn" href="#top">Start 14-day trial</a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+      <div class="footer-top">
+        <div>
+          <a class="brand" href="#top">
+            <span class="brand-mark" aria-hidden="true"></span>
+            MUSE<span class="brand-dot">.</span>
+          </a>
+          <p class="footer-tagline">Colour intelligence for the people who make clothes — and the people who wear them.</p>
+        </div>
+        <div class="footer-links">
+          <div class="footer-col">
+            <h4>Product</h4>
+            <a href="#features">Palette engine</a>
+            <a href="#features">Mannequin preview</a>
+            <a href="#pricing">Pricing</a>
+          </div>
+          <div class="footer-col">
+            <h4>Company</h4>
+            <a href="#top">About</a>
+            <a href="#workflow">How it works</a>
+            <a href="#top">Contact</a>
+          </div>
+          <div class="footer-col">
+            <h4>Legal</h4>
+            <a href="#top">Privacy</a>
+            <a href="#top">Terms</a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© <span id="year">2026</span> MUSE. Placeholder brand for review.</span>
+        <span>Made for designers.</span>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    (function () {
+      var reveals = document.querySelectorAll(".reveal");
+      if ("IntersectionObserver" in window) {
+        var observer = new IntersectionObserver(function (entries) {
+          entries.forEach(function (entry) {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("in");
+              observer.unobserve(entry.target);
+            }
+          });
+        }, { threshold: 0.12, rootMargin: "0px 0px -40px 0px" });
+        reveals.forEach(function (el) { observer.observe(el); });
+      } else {
+        reveals.forEach(function (el) { el.classList.add("in"); });
+      }
+
+      var swatches = document.querySelectorAll(".swatch");
+      swatches.forEach(function (btn) {
+        btn.addEventListener("click", function () {
+          document.documentElement.style.setProperty("--garment", btn.dataset.color);
+          swatches.forEach(function (b) { b.setAttribute("aria-pressed", "false"); });
+          btn.setAttribute("aria-pressed", "true");
+        });
+      });
+
+      document.getElementById("year").textContent = new Date().getFullYear();
+    })();
+  </script>
+</body>
+</html>

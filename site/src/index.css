@@ -1,0 +1,41 @@
+@import "tailwindcss";
+
+@layer base {
+  html {
+    scrollbar-color: #b9534f #e5cec9;
+    scrollbar-width: thin;
+  }
+
+  body {
+    font-family: 'Archivo', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    caret-color: #b9534f;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Montserrat', 'Archivo', sans-serif;
+  }
+
+  ::selection {
+    background: #b9534f;
+    color: #ffffff;
+  }
+
+  :focus-visible {
+    outline: 2px solid #b9534f;
+    outline-offset: 3px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+

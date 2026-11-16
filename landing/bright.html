@@ -1,0 +1,1656 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>MUSE — Wear the sky</title>
+  <meta name="description" content="Colour intelligence for fashion designers and their clients. Palettes, garment checks, and mannequin previews — in daylight." />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='14' fill='%2337a9e8'/%3E%3Ccircle cx='22' cy='10' r='5' fill='%23ffb84d'/%3E%3C/svg%3E" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;600;700;800&family=Instrument+Serif:ital@0;1&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --sky-50: #f3faff;
+      --sky-100: #e6f5ff;
+      --sky-200: #c9eaff;
+      --sky-300: #a3ddff;
+      --sky-400: #6cc6f7;
+      --sky-500: #37a9e8;
+      --sky-600: #1e86c7;
+      --sky-700: #166394;
+      --ink: #0c2233;
+      --ink-soft: #3c5c70;
+      --ink-mute: #6a8497;
+      --sun: #ffb84d;
+      --sun-soft: #ffe9c7;
+      --coral: #ff7e6b;
+      --white: #ffffff;
+      --line: rgba(12, 34, 51, 0.09);
+      --line-strong: rgba(12, 34, 51, 0.16);
+      --display: "Bricolage Grotesque", system-ui, sans-serif;
+      --serif: "Instrument Serif", Georgia, serif;
+      --body: "Plus Jakarta Sans", system-ui, sans-serif;
+      --ease: cubic-bezier(0.16, 1, 0.3, 1);
+      --garment: #37a9e8;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      background: var(--sky-50);
+      color: var(--ink);
+      font-family: var(--body);
+      font-weight: 400;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+      overflow-x: hidden;
+    }
+
+    img, svg { display: block; }
+    a { color: inherit; text-decoration: none; }
+    button { font: inherit; cursor: pointer; }
+    ::selection { background: var(--sky-300); color: var(--ink); }
+    :focus-visible { outline: 2px solid var(--sky-600); outline-offset: 3px; }
+
+    .shell {
+      width: 100%;
+      max-width: 1440px;
+      margin: 0 auto;
+      padding: 0 clamp(1rem, 2.4vw, 2.5rem);
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--sky-700);
+      margin: 0 0 1.25rem;
+    }
+
+    .eyebrow::before {
+      content: "";
+      width: 18px;
+      height: 1px;
+      background: var(--sky-500);
+    }
+
+    /* ---------- NAV (dedicated row, light) ---------- */
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 60;
+      background: rgba(243, 250, 255, 0.82);
+      -webkit-backdrop-filter: blur(18px);
+      backdrop-filter: blur(18px);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .nav-inner {
+      width: 100%;
+      max-width: 1440px;
+      margin: 0 auto;
+      padding: 0.85rem clamp(1rem, 2.4vw, 2.5rem);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1.5rem;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      font-family: var(--display);
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      font-size: 13px;
+      color: var(--ink);
+    }
+
+    .brand-mark {
+      position: relative;
+      width: 26px;
+      height: 26px;
+      border-radius: 999px;
+      background: linear-gradient(160deg, var(--sky-300), var(--sky-600));
+      box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.5);
+    }
+
+    .brand-mark::after {
+      content: "";
+      position: absolute;
+      right: -2px;
+      top: -2px;
+      width: 11px;
+      height: 11px;
+      border-radius: 999px;
+      background: var(--sun);
+      box-shadow: 0 0 0 2px var(--sky-50);
+    }
+
+    .brand-dot { color: var(--sky-500); }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 0.25rem;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    .nav-links a {
+      display: inline-block;
+      padding: 0.55rem 0.9rem;
+      border-radius: 999px;
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--ink-soft);
+      transition: background-color 0.25s var(--ease), color 0.25s var(--ease);
+    }
+
+    .nav-links a:hover { background: var(--sky-100); color: var(--ink); }
+    .nav-links a.active { color: var(--ink); }
+    .nav-links a.active::after {
+      content: "";
+      display: block;
+      height: 2px;
+      margin-top: 4px;
+      border-radius: 999px;
+      background: var(--sky-500);
+    }
+
+    .nav-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      background: var(--ink);
+      color: #fff;
+      font-size: 13px;
+      font-weight: 600;
+      padding: 0.65rem 1.15rem;
+      border-radius: 999px;
+      transition: transform 0.25s var(--ease), background-color 0.25s var(--ease);
+    }
+
+    .nav-cta:hover { transform: translateY(-1px); background: #123246; }
+
+    .nav-toggle {
+      display: none;
+      width: 40px;
+      height: 40px;
+      border-radius: 12px;
+      background: #fff;
+      border: 1px solid var(--line);
+      align-items: center;
+      justify-content: center;
+      color: var(--ink);
+    }
+
+    .mobile-menu {
+      display: none;
+      padding: 0 1rem 1rem;
+    }
+
+    .mobile-menu.open { display: block; }
+    .mobile-menu a {
+      display: block;
+      padding: 0.8rem 1rem;
+      border-radius: 12px;
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--ink-soft);
+    }
+    .mobile-menu a:hover { background: var(--sky-100); }
+    .mobile-menu .nav-cta { justify-content: center; margin-top: 0.5rem; }
+
+    /* ---------- HERO ---------- */
+    .hero { padding-top: 1rem; }
+
+    .hero-frame {
+      position: relative;
+      border-radius: 2rem;
+      overflow: hidden;
+      min-height: 560px;
+      max-height: 760px;
+      aspect-ratio: 16 / 9;
+      background:
+        radial-gradient(38% 46% at 84% 14%, rgba(255, 209, 102, 0.55), transparent 70%),
+        radial-gradient(50% 58% at 12% 8%, rgba(255, 255, 255, 0.95), transparent 70%),
+        radial-gradient(60% 50% at 70% 95%, rgba(163, 221, 255, 0.85), transparent 72%),
+        linear-gradient(180deg, #cdeaff 0%, #e8f6ff 46%, #f7fcff 100%);
+      box-shadow: 0 40px 90px -40px rgba(30, 134, 199, 0.45);
+      border: 1px solid rgba(255, 255, 255, 0.8);
+      isolation: isolate;
+    }
+
+    .hero-frame::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(22% 30% at 30% 30%, rgba(255, 255, 255, 0.9), transparent 70%),
+        radial-gradient(16% 20% at 46% 22%, rgba(255, 255, 255, 0.75), transparent 70%),
+        radial-gradient(26% 26% at 62% 34%, rgba(255, 255, 255, 0.6), transparent 72%);
+      filter: blur(6px);
+      pointer-events: none;
+    }
+
+    .hero-word {
+      position: absolute;
+      z-index: 1;
+      left: 50%;
+      bottom: -2.5%;
+      transform: translateX(-50%);
+      font-family: var(--display);
+      font-weight: 800;
+      font-size: clamp(6rem, 15vw, 13.5rem);
+      line-height: 0.8;
+      letter-spacing: -0.055em;
+      color: transparent;
+      -webkit-text-stroke: 1.5px rgba(12, 34, 51, 0.22);
+      white-space: nowrap;
+      pointer-events: none;
+      user-select: none;
+    }
+
+    .hero-inner {
+      position: relative;
+      z-index: 3;
+      height: 100%;
+      min-height: inherit;
+      display: grid;
+      grid-template-columns: 1.08fr 0.78fr;
+      align-items: center;
+      gap: clamp(1.5rem, 4vw, 3.5rem);
+      padding: clamp(1.75rem, 4.5vw, 3.75rem);
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: rgba(255, 255, 255, 0.65);
+      border: 1px solid rgba(255, 255, 255, 0.9);
+      -webkit-backdrop-filter: blur(12px);
+      backdrop-filter: blur(12px);
+      padding: 0.45rem 0.8rem;
+      border-radius: 999px;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--sky-700);
+      margin-bottom: 1.4rem;
+    }
+
+    .hero-badge::before {
+      content: "";
+      width: 6px;
+      height: 6px;
+      border-radius: 999px;
+      background: var(--sun);
+    }
+
+    .hero h1 {
+      margin: 0 0 1.25rem;
+      font-family: var(--display);
+      font-size: clamp(2.5rem, 4.8vw, 4.6rem);
+      font-weight: 700;
+      letter-spacing: -0.045em;
+      line-height: 1;
+      max-width: 14ch;
+      color: var(--ink);
+    }
+
+    .hero h1 em {
+      font-family: var(--serif);
+      font-style: italic;
+      font-weight: 400;
+      letter-spacing: -0.02em;
+      color: var(--sky-600);
+    }
+
+    .hero-sub {
+      margin: 0 0 1.9rem;
+      max-width: 44ch;
+      font-size: clamp(0.92rem, 1.15vw, 1.02rem);
+      line-height: 1.65;
+      color: var(--ink-soft);
+    }
+
+    .hero-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 1.25rem; }
+
+    .btn-ink {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.75rem;
+      background: var(--ink);
+      color: #fff;
+      font-size: 13.5px;
+      font-weight: 600;
+      padding: 0.5rem 0.5rem 0.5rem 1.35rem;
+      border-radius: 999px;
+      border: 1px solid var(--ink);
+      transition: transform 0.25s var(--ease), background-color 0.25s var(--ease);
+    }
+
+    .btn-ink:hover { transform: scale(1.04); background: #123246; }
+
+    .btn-ink .btn-icon {
+      display: grid;
+      place-items: center;
+      width: 36px;
+      height: 36px;
+      border-radius: 999px;
+      background: var(--sky-500);
+      color: var(--ink);
+      transition: transform 0.25s var(--ease), background-color 0.25s var(--ease);
+    }
+
+    .btn-ink:hover .btn-icon { transform: rotate(-45deg); background: var(--sun); }
+
+    .link-serif {
+      font-family: var(--serif);
+      font-style: italic;
+      font-size: 17px;
+      color: var(--ink-soft);
+      border-bottom: 1px solid var(--line-strong);
+      padding-bottom: 1px;
+      transition: color 0.25s var(--ease), border-color 0.25s var(--ease);
+    }
+    .link-serif:hover { color: var(--sky-700); border-color: var(--sky-500); }
+
+    .hero-portrait-wrap { justify-self: end; width: 100%; display: flex; justify-content: flex-end; }
+
+    .portrait-card {
+      position: relative;
+      width: min(100%, 340px);
+      aspect-ratio: 3 / 4;
+      border-radius: 1.5rem;
+      overflow: hidden;
+      transform: rotate(3deg);
+      border: 1px solid rgba(255, 255, 255, 0.9);
+      box-shadow: 0 30px 60px -20px rgba(16, 86, 130, 0.45);
+      background: var(--sky-200);
+      transition: transform 0.6s var(--ease);
+    }
+
+    .portrait-card:hover { transform: rotate(1.5deg) translateY(-4px); }
+
+    .portrait-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 18%;
+    }
+
+    .portrait-card::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(12, 34, 51, 0.5), transparent 45%);
+      pointer-events: none;
+    }
+
+    .portrait-tag {
+      position: absolute;
+      z-index: 2;
+      top: 0.9rem;
+      right: 0.9rem;
+      background: rgba(12, 34, 51, 0.82);
+      color: #fff;
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      padding: 0.45rem 0.65rem;
+      border-radius: 999px;
+      -webkit-backdrop-filter: blur(10px);
+      backdrop-filter: blur(10px);
+    }
+
+    .palette-chip {
+      position: absolute;
+      z-index: 2;
+      left: 0.9rem;
+      right: 0.9rem;
+      bottom: 0.9rem;
+      background: rgba(255, 255, 255, 0.82);
+      -webkit-backdrop-filter: blur(18px);
+      backdrop-filter: blur(18px);
+      border: 1px solid rgba(255, 255, 255, 0.95);
+      border-radius: 0.9rem;
+      padding: 0.7rem 0.8rem;
+      color: var(--ink);
+    }
+
+    .palette-chip .row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 8.5px;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--ink-mute);
+      margin-bottom: 0.55rem;
+    }
+
+    .palette-chip .row b { color: var(--sky-700); font-weight: 700; }
+
+    .palette-chip .chips { display: flex; gap: 0.35rem; }
+    .palette-chip .chips i {
+      flex: 1;
+      height: 22px;
+      border-radius: 6px;
+      border: 1px solid rgba(255, 255, 255, 0.8);
+    }
+
+    .hotspot {
+      position: absolute;
+      z-index: 3;
+      top: 44%;
+      left: 56%;
+      width: 14px;
+      height: 14px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.35);
+      border: 1.5px solid #fff;
+      box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.6);
+      animation: ping 2.6s infinite;
+    }
+
+    @keyframes ping {
+      0% { box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.55); }
+      70% { box-shadow: 0 0 0 14px rgba(255, 255, 255, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(255, 255, 255, 0); }
+    }
+
+    .hotspot-card {
+      position: absolute;
+      z-index: 3;
+      top: 50%;
+      left: 62%;
+      width: 190px;
+      padding: 0.7rem;
+      border-radius: 0.75rem;
+      background: rgba(255, 255, 255, 0.86);
+      -webkit-backdrop-filter: blur(18px);
+      backdrop-filter: blur(18px);
+      border: 1px solid rgba(255, 255, 255, 0.95);
+      box-shadow: 0 12px 30px rgba(16, 86, 130, 0.25);
+      opacity: 0;
+      transform: translateY(6px);
+      transition: opacity 0.3s var(--ease), transform 0.3s var(--ease);
+      pointer-events: none;
+    }
+
+    .portrait-card:hover .hotspot-card,
+    .portrait-card:focus-within .hotspot-card { opacity: 1; transform: translateY(0); }
+
+    .hotspot-card .k {
+      font-size: 8px;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--sky-700);
+      margin-bottom: 0.3rem;
+    }
+
+    .hotspot-card .v { font-size: 11.5px; font-weight: 600; margin-bottom: 0.45rem; }
+    .hotspot-card .m { font-size: 10px; color: var(--ink-mute); line-height: 1.45; }
+
+    /* ---------- FANNED CARDS ---------- */
+    .hero-cards-wrap { padding-bottom: 4.5rem; }
+
+    .hero-cards {
+      position: relative;
+      z-index: 5;
+      width: min(1180px, 94%);
+      margin: -68px auto 0;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
+      align-items: stretch;
+    }
+
+    .floating-cta {
+      position: absolute;
+      z-index: 7;
+      top: -20px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: var(--ink);
+      color: #fff;
+      font-size: 12.5px;
+      font-weight: 600;
+      padding: 0.7rem 1.25rem;
+      border-radius: 999px;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      box-shadow: 0 14px 30px rgba(12, 34, 51, 0.28);
+      white-space: nowrap;
+      transition: transform 0.25s var(--ease), background-color 0.25s var(--ease);
+    }
+
+    .floating-cta:hover { transform: translateX(-50%) translateY(-2px); background: #123246; }
+    .floating-cta .dot { width: 6px; height: 6px; border-radius: 999px; background: var(--sun); }
+
+    .fan-card {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 1.25rem;
+      min-height: 210px;
+      padding: 1.5rem;
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: 1.4rem;
+      box-shadow: 0 24px 60px -30px rgba(30, 134, 199, 0.45);
+      transition: transform 0.4s var(--ease), box-shadow 0.4s var(--ease);
+    }
+
+    .fan-card:nth-child(2) { transform: rotate(-1.6deg) translateY(8px); }
+    .fan-card:nth-child(3) { transform: rotate(0.8deg) translateY(-2px); }
+    .fan-card:nth-child(4) { transform: rotate(1.8deg) translateY(8px); }
+
+    .fan-card:hover {
+      transform: rotate(0deg) translateY(-4px);
+      box-shadow: 0 30px 70px -28px rgba(30, 134, 199, 0.55);
+    }
+
+    .fan-label {
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--sky-600);
+    }
+
+    .fan-card h3 {
+      margin: 0.65rem 0 0;
+      font-family: var(--display);
+      font-size: 1.18rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      line-height: 1.22;
+    }
+
+    .fan-card p {
+      margin: 0;
+      font-size: 12px;
+      line-height: 1.6;
+      color: var(--ink-mute);
+    }
+
+    .fan-swatches { display: flex; gap: 0.4rem; margin-top: 0.9rem; }
+    .fan-swatches i {
+      width: 26px;
+      height: 26px;
+      border-radius: 8px;
+      border: 1px solid rgba(12, 34, 51, 0.08);
+    }
+
+    .fan-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--ink);
+      border-bottom: 1px solid var(--line-strong);
+      padding-bottom: 1px;
+      width: fit-content;
+    }
+    .fan-link:hover { color: var(--sky-700); border-color: var(--sky-500); }
+
+    .fan-center { text-align: center; align-items: center; }
+    .fan-center h3 { max-width: 18ch; }
+    .fan-center .fan-label { color: var(--sun); }
+
+    .rating-row { display: flex; align-items: center; gap: 0.4rem; }
+    .rating-row svg { color: var(--sun); }
+    .rating-row b { font-family: var(--display); font-size: 1.35rem; letter-spacing: -0.03em; }
+
+    .avatars { display: flex; align-items: center; }
+    .avatars img {
+      width: 32px;
+      height: 32px;
+      border-radius: 999px;
+      object-fit: cover;
+      border: 2px solid #fff;
+      margin-left: -9px;
+      box-shadow: 0 2px 6px rgba(12, 34, 51, 0.12);
+    }
+    .avatars img:first-child { margin-left: 0; }
+
+    .reviews-line { display: flex; align-items: center; gap: 0.65rem; margin-top: 0.7rem; }
+    .reviews-line span { font-size: 11.5px; color: var(--ink-mute); }
+
+    /* ---------- REVEAL ---------- */
+    .reveal { opacity: 0; transform: translateY(20px); transition: opacity 0.8s var(--ease), transform 0.8s var(--ease); }
+    .reveal.in { opacity: 1; transform: none; }
+    .d1 { transition-delay: 0.08s; }
+    .d2 { transition-delay: 0.16s; }
+    .d3 { transition-delay: 0.24s; }
+
+    /* ---------- SECTIONS ---------- */
+    .section { padding: clamp(4rem, 8vw, 7rem) 0; }
+
+    .section-head { max-width: 620px; }
+    .section-head h2 {
+      margin: 0 0 1rem;
+      font-family: var(--display);
+      font-size: clamp(2rem, 3.6vw, 3.25rem);
+      font-weight: 700;
+      letter-spacing: -0.045em;
+      line-height: 1.02;
+    }
+    .section-head h2 em { font-family: var(--serif); font-style: italic; font-weight: 400; color: var(--sky-600); }
+    .section-head p {
+      margin: 0;
+      max-width: 46ch;
+      font-size: 14.5px;
+      line-height: 1.65;
+      color: var(--ink-soft);
+    }
+
+    /* ---------- FEATURES ---------- */
+    .features { display: grid; grid-template-columns: 1fr 0.95fr; gap: clamp(2.5rem, 6vw, 5rem); align-items: center; }
+
+    .feature-list { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem 1.75rem; margin-top: 2.5rem; }
+
+    .feature { display: flex; flex-direction: column; gap: 0.6rem; }
+    .feature-icon {
+      width: 36px;
+      height: 36px;
+      border-radius: 11px;
+      display: grid;
+      place-items: center;
+      background: var(--sky-100);
+      border: 1px solid var(--sky-200);
+      color: var(--sky-700);
+    }
+    .feature h3 { margin: 0; font-size: 13px; font-weight: 700; letter-spacing: -0.01em; }
+    .feature p { margin: 0; font-size: 12px; line-height: 1.55; color: var(--ink-mute); }
+
+    .image-card {
+      position: relative;
+      border-radius: 1.5rem;
+      overflow: hidden;
+      aspect-ratio: 4 / 5;
+      background: var(--sky-200);
+      border: 1px solid rgba(255, 255, 255, 0.8);
+      box-shadow: 0 30px 70px -35px rgba(30, 134, 199, 0.45);
+      transition: transform 0.6s var(--ease);
+    }
+
+    .image-card:hover { transform: scale(1.015); }
+    .image-card img { width: 100%; height: 100%; object-fit: cover; }
+    .image-card::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(12, 34, 51, 0.35), transparent 50%);
+      pointer-events: none;
+    }
+
+    .image-overlay {
+      position: absolute;
+      z-index: 2;
+      left: 1rem;
+      right: 1rem;
+      bottom: 1rem;
+      background: rgba(255, 255, 255, 0.86);
+      -webkit-backdrop-filter: blur(18px);
+      backdrop-filter: blur(18px);
+      border: 1px solid rgba(255, 255, 255, 0.95);
+      border-radius: 1rem;
+      padding: 1rem;
+      color: var(--ink);
+    }
+
+    .image-overlay .top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 8.5px;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--ink-mute);
+      margin-bottom: 0.75rem;
+    }
+    .image-overlay .top b { color: var(--sky-700); }
+
+    .metric { margin-bottom: 0.6rem; }
+    .metric:last-child { margin-bottom: 0; }
+    .metric-row { display: flex; justify-content: space-between; font-size: 10px; margin-bottom: 0.3rem; color: var(--ink-soft); }
+    .metric-row b { color: var(--ink); font-weight: 600; }
+    .track { height: 4px; border-radius: 999px; background: var(--sky-100); overflow: hidden; }
+    .track i { display: block; height: 100%; border-radius: inherit; background: linear-gradient(90deg, var(--sky-400), var(--sky-600)); }
+
+    .image-tag {
+      position: absolute;
+      z-index: 2;
+      top: 1rem;
+      left: 1rem;
+      background: rgba(12, 34, 51, 0.78);
+      color: #fff;
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      padding: 0.4rem 0.65rem;
+      border-radius: 999px;
+      -webkit-backdrop-filter: blur(10px);
+      backdrop-filter: blur(10px);
+    }
+
+    /* ---------- MANNEQUIN ---------- */
+    .mannequin-band { background: var(--white); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+    .mannequin-grid { display: grid; grid-template-columns: 0.9fr 1.1fr; gap: clamp(2.5rem, 6vw, 5rem); align-items: center; }
+
+    .mannequin-stage {
+      position: relative;
+      border-radius: 1.75rem;
+      overflow: hidden;
+      min-height: 540px;
+      background:
+        radial-gradient(60% 60% at 50% 20%, #ffffff, transparent 65%),
+        linear-gradient(160deg, var(--sky-100), var(--sky-200) 60%, var(--sky-300));
+      border: 1px solid rgba(255, 255, 255, 0.9);
+      display: grid;
+      place-items: center;
+      box-shadow: 0 30px 70px -35px rgba(30, 134, 199, 0.5);
+    }
+
+    .mannequin-stage::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(70% 40% at 50% 100%, rgba(12, 34, 51, 0.14), transparent 70%);
+      pointer-events: none;
+    }
+
+    .mannequin-svg {
+      width: min(62%, 300px);
+      height: auto;
+      filter: drop-shadow(0 26px 35px rgba(12, 34, 51, 0.22));
+      transition: transform 0.7s var(--ease);
+    }
+    .mannequin-stage:hover .mannequin-svg { transform: scale(1.03); }
+
+    .stage-panel {
+      position: absolute;
+      z-index: 3;
+      top: 1.1rem;
+      left: 1.1rem;
+      width: 215px;
+      padding: 0.9rem;
+      border-radius: 0.9rem;
+      background: rgba(255, 255, 255, 0.82);
+      -webkit-backdrop-filter: blur(18px);
+      backdrop-filter: blur(18px);
+      border: 1px solid rgba(255, 255, 255, 0.95);
+      box-shadow: 0 12px 30px rgba(16, 86, 130, 0.18);
+    }
+
+    .stage-panel .top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 8.5px;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--ink-mute);
+      margin-bottom: 0.7rem;
+    }
+    .stage-panel .top b { color: var(--sky-700); display: inline-flex; align-items: center; gap: 0.3rem; }
+    .stage-panel .top b::before { content: ""; width: 5px; height: 5px; border-radius: 999px; background: var(--sky-500); }
+
+    .stage-tag {
+      position: absolute;
+      z-index: 3;
+      top: 1.1rem;
+      right: 1.1rem;
+      background: var(--sun-soft);
+      color: #7a4a00;
+      font-size: 8.5px;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      padding: 0.4rem 0.62rem;
+      border-radius: 999px;
+      border: 1px solid rgba(255, 184, 77, 0.55);
+    }
+
+    .swatch-bar {
+      position: absolute;
+      z-index: 3;
+      bottom: 1.1rem;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.55rem 0.7rem;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.78);
+      -webkit-backdrop-filter: blur(18px);
+      backdrop-filter: blur(18px);
+      border: 1px solid rgba(255, 255, 255, 0.95);
+      box-shadow: 0 12px 30px rgba(16, 86, 130, 0.16);
+    }
+
+    .swatch {
+      width: 24px;
+      height: 24px;
+      border-radius: 999px;
+      border: 2px solid #fff;
+      padding: 0;
+      box-shadow: 0 1px 3px rgba(12, 34, 51, 0.18);
+      transition: transform 0.2s var(--ease), outline-color 0.2s var(--ease);
+      outline: 2px solid transparent;
+      outline-offset: 2px;
+    }
+    .swatch:hover { transform: scale(1.15); }
+    .swatch[aria-pressed="true"] { outline-color: var(--sky-600); transform: scale(1.15); }
+
+    .mannequin-copy .pill-row { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 1.75rem; }
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.45rem 0.75rem;
+      border-radius: 999px;
+      background: var(--sky-100);
+      border: 1px solid var(--sky-200);
+      color: var(--sky-700);
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+    .pill::before { content: ""; width: 5px; height: 5px; border-radius: 999px; background: var(--sky-500); }
+
+    /* ---------- DESIGNER BAND ---------- */
+    .designer-band {
+      border-radius: 2rem;
+      background: linear-gradient(150deg, var(--sky-100) 0%, var(--sky-200) 100%);
+      border: 1px solid rgba(255, 255, 255, 0.9);
+      overflow: hidden;
+      display: grid;
+      grid-template-columns: 0.9fr 1.1fr;
+    }
+
+    .designer-media { position: relative; min-height: 380px; }
+    .designer-media img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+    .designer-media::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(90deg, transparent 55%, rgba(230, 245, 255, 0.9));
+    }
+
+    .designer-copy { padding: clamp(2rem, 4.5vw, 3.5rem); display: flex; flex-direction: column; justify-content: center; }
+    .designer-copy h2 {
+      margin: 0 0 1rem;
+      font-family: var(--display);
+      font-size: clamp(1.8rem, 3vw, 2.75rem);
+      font-weight: 700;
+      letter-spacing: -0.04em;
+      line-height: 1.05;
+    }
+    .designer-copy h2 em { font-family: var(--serif); font-style: italic; font-weight: 400; color: var(--sky-700); }
+    .designer-copy p { margin: 0 0 1.5rem; max-width: 42ch; font-size: 14px; line-height: 1.65; color: var(--ink-soft); }
+
+    .check-list { list-style: none; margin: 0 0 1.75rem; padding: 0; display: flex; flex-direction: column; gap: 0.6rem; }
+    .check-list li { display: flex; gap: 0.55rem; align-items: flex-start; font-size: 13px; color: var(--ink-soft); }
+    .check-list svg { flex: none; margin-top: 2px; color: var(--sky-600); }
+
+    .btn-sky {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.8rem 1.3rem;
+      border-radius: 999px;
+      background: var(--sky-500);
+      color: var(--ink);
+      font-size: 13px;
+      font-weight: 700;
+      width: fit-content;
+      border: 1px solid var(--sky-400);
+      transition: transform 0.25s var(--ease), background-color 0.25s var(--ease);
+    }
+    .btn-sky:hover { transform: translateY(-2px); background: var(--sky-400); }
+
+    /* ---------- HOW IT WORKS ---------- */
+    .steps-row {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
+      margin-top: 3rem;
+    }
+
+    .step-card {
+      position: relative;
+      padding: 1.6rem;
+      border-radius: 1.25rem;
+      background: var(--white);
+      border: 1px solid var(--line);
+      box-shadow: 0 18px 40px -30px rgba(30, 134, 199, 0.4);
+    }
+
+    .step-num {
+      display: grid;
+      place-items: center;
+      width: 42px;
+      height: 42px;
+      border-radius: 12px;
+      background: var(--sky-100);
+      border: 1px solid var(--sky-200);
+      color: var(--sky-700);
+      font-family: var(--display);
+      font-size: 13px;
+      font-weight: 700;
+      margin-bottom: 1.1rem;
+    }
+
+    .step-card h3 { margin: 0 0 0.45rem; font-family: var(--display); font-size: 1.02rem; font-weight: 700; letter-spacing: -0.015em; }
+    .step-card p { margin: 0; font-size: 12.5px; line-height: 1.6; color: var(--ink-mute); }
+
+    .step-card::after {
+      content: "";
+      position: absolute;
+      top: 50%;
+      right: -0.65rem;
+      width: 0.65rem;
+      height: 1px;
+      background: var(--sky-300);
+    }
+    .step-card:last-child::after { display: none; }
+
+    /* ---------- PRICING ---------- */
+    .pricing-band { background: var(--sky-50); border-top: 1px solid var(--line); }
+
+    .pricing-head { display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 1.5rem; margin-bottom: 2.75rem; }
+    .pricing-head h2 {
+      margin: 0;
+      font-family: var(--display);
+      font-size: clamp(2rem, 3.6vw, 3.25rem);
+      font-weight: 700;
+      letter-spacing: -0.045em;
+      line-height: 1.02;
+      max-width: 18ch;
+    }
+    .pricing-head h2 em { font-family: var(--serif); font-style: italic; font-weight: 400; color: var(--sky-600); }
+    .pricing-head p { margin: 0; max-width: 34ch; font-size: 13.5px; line-height: 1.6; color: var(--ink-soft); }
+
+    .pricing-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; align-items: stretch; }
+
+    .price-card {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: 1.5rem;
+      overflow: hidden;
+      box-shadow: 0 20px 50px -35px rgba(30, 134, 199, 0.4);
+      transition: transform 0.35s var(--ease), box-shadow 0.35s var(--ease);
+    }
+    .price-card:hover { transform: translateY(-5px); box-shadow: 0 28px 60px -32px rgba(30, 134, 199, 0.5); }
+
+    .price-media { height: 88px; position: relative; background: linear-gradient(135deg, var(--sky-100), var(--sky-300)); overflow: hidden; }
+    .price-media::after { content: ""; position: absolute; inset: 0; background: linear-gradient(to top, rgba(12, 34, 51, 0.22), transparent 70%); }
+    .price-media .mini-chips { position: absolute; z-index: 2; bottom: 0.7rem; left: 1.4rem; display: flex; gap: 0.3rem; }
+    .price-media .mini-chips i { width: 17px; height: 17px; border-radius: 5px; border: 1px solid rgba(255, 255, 255, 0.7); }
+
+    .price-body { display: flex; flex-direction: column; flex: 1; padding: 1.4rem; }
+    .plan-name { font-size: 9.5px; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: var(--ink-mute); margin-bottom: 0.85rem; }
+    .price { display: flex; align-items: baseline; gap: 0.3rem; margin-bottom: 0.3rem; font-family: var(--display); }
+    .price strong { font-size: 2.15rem; font-weight: 700; letter-spacing: -0.04em; line-height: 1; }
+    .price span { font-family: var(--body); font-size: 11.5px; color: var(--ink-mute); font-weight: 400; }
+    .plan-desc { margin: 0 0 1.25rem; font-size: 12px; line-height: 1.55; color: var(--ink-mute); }
+
+    .plan-features { list-style: none; margin: 0 0 1.5rem; padding: 0; display: flex; flex-direction: column; gap: 0.6rem; flex: 1; }
+    .plan-features li { display: flex; gap: 0.55rem; align-items: flex-start; font-size: 12px; line-height: 1.45; color: var(--ink-soft); }
+    .plan-features svg { flex: none; margin-top: 2px; color: var(--sky-600); }
+
+    .price-btn {
+      display: block;
+      width: 100%;
+      text-align: center;
+      padding: 0.8rem 1rem;
+      border-radius: 999px;
+      background: var(--ink);
+      color: #fff;
+      border: 1px solid var(--ink);
+      font-size: 12.5px;
+      font-weight: 600;
+      transition: background-color 0.25s var(--ease), transform 0.25s var(--ease);
+    }
+    .price-btn:hover { background: #123246; transform: scale(1.015); }
+
+    .price-card.featured {
+      background: linear-gradient(160deg, var(--sky-300) 0%, var(--sky-400) 45%, var(--sky-500) 100%);
+      border-color: var(--sky-400);
+    }
+    .price-card.featured:hover { box-shadow: 0 30px 60px -28px rgba(30, 134, 199, 0.6); }
+    .price-card.featured .price-media { background: linear-gradient(135deg, var(--sun-soft), var(--sun)); }
+    .price-card.featured .plan-name { color: rgba(12, 34, 51, 0.6); }
+    .price-card.featured .price span { color: rgba(12, 34, 51, 0.6); }
+    .price-card.featured .plan-desc { color: rgba(12, 34, 51, 0.72); }
+    .price-card.featured .plan-features li { color: rgba(12, 34, 51, 0.82); }
+    .price-card.featured .plan-features svg { color: var(--ink); }
+    .price-card.featured .price-btn { background: #fff; color: var(--ink); border-color: #fff; }
+    .price-card.featured .price-btn:hover { background: var(--sky-50); }
+
+    .popular {
+      position: absolute;
+      z-index: 3;
+      top: 0.85rem;
+      right: 0.85rem;
+      font-size: 8.5px;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: #fff;
+      background: var(--ink);
+      padding: 0.35rem 0.6rem;
+      border-radius: 999px;
+    }
+
+    /* ---------- FOOTER ---------- */
+    .footer { background: var(--ink); color: #fff; margin-top: 1rem; padding: clamp(3rem, 6vw, 5rem) 0 2rem; }
+    .footer-top { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 2rem; padding-bottom: 2.5rem; border-bottom: 1px solid rgba(255, 255, 255, 0.12); }
+    .footer .brand { color: #fff; }
+    .footer .brand-mark { box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.4); }
+    .footer-tagline { margin: 1rem 0 0; max-width: 32ch; font-size: 13px; line-height: 1.65; color: rgba(230, 245, 255, 0.55); }
+
+    .footer-links { display: flex; flex-wrap: wrap; gap: 2.5rem; }
+    .footer-col h4 { margin: 0 0 0.9rem; font-size: 9px; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(255, 255, 255, 0.4); }
+    .footer-col a { display: block; font-size: 12.5px; color: rgba(230, 245, 255, 0.68); padding: 0.3rem 0; transition: color 0.25s var(--ease); }
+    .footer-col a:hover { color: #fff; }
+
+    .footer-bottom { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 1rem; padding-top: 1.75rem; font-size: 11px; color: rgba(230, 245, 255, 0.4); }
+
+    /* ---------- RESPONSIVE ---------- */
+    @media (max-width: 1080px) {
+      .hero-frame { aspect-ratio: auto; min-height: 640px; max-height: none; }
+      .hero-inner { grid-template-columns: 1fr; gap: 1.75rem; }
+      .portrait-card { width: min(100%, 300px); justify-self: start; aspect-ratio: 16 / 10; }
+      .hero-portrait-wrap { justify-content: flex-start; }
+      .hero-word { bottom: 1%; font-size: clamp(5rem, 16vw, 9rem); }
+      .hero-cards { grid-template-columns: 1fr; margin-top: 1.25rem; }
+      .fan-card:nth-child(2), .fan-card:nth-child(3), .fan-card:nth-child(4) { transform: none; }
+      .hero-cards .fan-card:hover { transform: translateY(-4px); }
+      .floating-cta { top: -16px; }
+      .features, .mannequin-grid { grid-template-columns: 1fr; }
+      .designer-band { grid-template-columns: 1fr; }
+      .designer-media { min-height: 260px; }
+      .designer-media::after { background: linear-gradient(to top, rgba(230, 245, 255, 0.95), transparent 60%); }
+      .steps-row { grid-template-columns: 1fr; }
+      .step-card::after { display: none; }
+      .pricing-grid { grid-template-columns: 1fr; max-width: 520px; margin: 0 auto; }
+      .image-card { max-height: 560px; }
+    }
+
+    @media (max-width: 900px) {
+      .nav-links { display: none; }
+      .nav-cta { display: none; }
+      .nav-toggle { display: inline-flex; }
+    }
+
+    @media (max-width: 620px) {
+      .hero-frame { border-radius: 1.5rem; min-height: 600px; }
+      .hero-inner { padding: 1.35rem; }
+      .hero h1 { font-size: 2.45rem; }
+      .hero-word { font-size: 4.6rem; bottom: 0.5%; }
+      .portrait-card { aspect-ratio: 16 / 11; }
+      .hero-cards { width: 100%; }
+      .hero-cards-wrap { padding-bottom: 3rem; }
+      .feature-list { grid-template-columns: 1fr; }
+      .mannequin-stage { min-height: 470px; }
+      .stage-panel { width: 190px; }
+      .pricing-head { flex-direction: column; align-items: flex-start; }
+      .footer-top { flex-direction: column; }
+      .hotspot-card { display: none; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; }
+      .reveal { opacity: 1; transform: none; }
+    }
+  </style>
+</head>
+<body>
+  <!-- NOTE: "MUSE" is a placeholder wordmark. Replace with client company name + logo. -->
+  <nav class="nav" aria-label="Primary">
+    <div class="nav-inner">
+      <a class="brand" href="#top">
+        <span class="brand-mark" aria-hidden="true"></span>
+        MUSE<span class="brand-dot">.</span>
+      </a>
+      <ul class="nav-links">
+        <li><a class="active" href="#features">Product</a></li>
+        <li><a href="#mannequin">Mannequin</a></li>
+        <li><a href="#designers">For designers</a></li>
+        <li><a href="#pricing">Pricing</a></li>
+      </ul>
+      <a class="nav-cta" href="#pricing">Get early access
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M9 7h8v8"/></svg>
+      </a>
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation" aria-expanded="false" aria-controls="mobileMenu">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      </button>
+    </div>
+    <div class="mobile-menu" id="mobileMenu">
+      <a href="#features">Product</a>
+      <a href="#mannequin">Mannequin</a>
+      <a href="#designers">For designers</a>
+      <a href="#pricing">Pricing</a>
+      <a class="nav-cta" href="#pricing">Get early access</a>
+    </div>
+  </nav>
+
+  <main id="top">
+    <!-- HERO -->
+    <section class="hero">
+      <div class="shell">
+        <div class="hero-frame">
+          <div class="hero-word" aria-hidden="true">COLOUR</div>
+          <div class="hero-inner">
+            <div class="reveal">
+              <div class="hero-badge">Colour intelligence · 01</div>
+              <h1>Wear the sky.<br />Own your <em>colour.</em></h1>
+              <p class="hero-sub">
+                A brighter way to choose colour. Profile a skin tone, check any garment,
+                and preview the look on a mannequin — before a single stitch.
+              </p>
+              <div class="hero-actions">
+                <a class="btn-ink" href="#pricing">
+                  Find your palette
+                  <span class="btn-icon" aria-hidden="true">
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+                  </span>
+                </a>
+                <a class="link-serif" href="#features">See the product</a>
+              </div>
+            </div>
+
+            <div class="hero-portrait-wrap reveal d2">
+              <div class="portrait-card">
+                <!-- PLACEHOLDER IMAGE: fashion portrait. Replace with client hero cutout / editorial. -->
+                <img
+                  src="https://images.unsplash.com/photo-1539109136881-3be0616acf4b?w=900&auto=format&fit=crop&q=80"
+                  alt="Placeholder fashion portrait for the hero"
+                  loading="eager"
+                  referrerpolicy="no-referrer"
+                />
+                <span class="portrait-tag">Warm · High contrast</span>
+
+                <span class="hotspot" aria-hidden="true"></span>
+                <div class="hotspot-card" aria-hidden="true">
+                  <div class="k">Fabric detail</div>
+                  <div class="v">Sky silk crepe</div>
+                  <div class="m">Dominant #37A9E8 · pairs with ivory and sun.</div>
+                </div>
+
+                <div class="palette-chip">
+                  <div class="row"><span>Your palette</span><b>Deep autumn</b></div>
+                  <div class="chips" aria-hidden="true">
+                    <i style="background:#37a9e8"></i>
+                    <i style="background:#a3ddff"></i>
+                    <i style="background:#ffe9c7"></i>
+                    <i style="background:#0c2233"></i>
+                    <i style="background:#ff7e6b"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- FANNED CARDS -->
+        <div class="hero-cards-wrap">
+          <div class="hero-cards">
+            <a class="floating-cta" href="#pricing"><span class="dot" aria-hidden="true"></span>Start free — no card</a>
+
+            <article class="fan-card reveal">
+              <div>
+                <div class="fan-label">01 — Palette</div>
+                <h3>Your colours, not the trend cycle.</h3>
+                <p>A palette built from your skin, hair, and contrast — not this season's moodboard.</p>
+              </div>
+              <div>
+                <div class="fan-swatches" aria-hidden="true">
+                  <i style="background:#37a9e8"></i>
+                  <i style="background:#a3ddff"></i>
+                  <i style="background:#ffe9c7"></i>
+                  <i style="background:#ff7e6b"></i>
+                  <i style="background:#0c2233"></i>
+                </div>
+                <a class="fan-link" href="#features" style="margin-top:0.9rem;">Explore the palette</a>
+              </div>
+            </article>
+
+            <article class="fan-card fan-center reveal d1">
+              <div>
+                <div class="fan-label">02 — Intelligence</div>
+                <h3>Colour decisions, made in daylight.</h3>
+                <p>Match scores, harmony rules, and the reason behind every pairing.</p>
+              </div>
+              <a class="fan-link" href="#pricing">Discover colour intelligence</a>
+            </article>
+
+            <article class="fan-card reveal d2">
+              <div>
+                <div class="fan-label">03 — Loved</div>
+                <div class="rating-row">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="m12 2 2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.3 5.9 20.6l1.4-6.8L2.2 9.1l6.9-.8L12 2Z"/></svg>
+                  <b>4.9</b>
+                </div>
+                <div class="reviews-line">
+                  <!-- PLACEHOLDER IMAGES: testimonial avatars -->
+                  <div class="avatars">
+                    <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100&auto=format&fit=crop&q=80" alt="Designer avatar placeholder 1" loading="lazy" referrerpolicy="no-referrer" />
+                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&auto=format&fit=crop&q=80" alt="Designer avatar placeholder 2" loading="lazy" referrerpolicy="no-referrer" />
+                    <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=100&auto=format&fit=crop&q=80" alt="Designer avatar placeholder 3" loading="lazy" referrerpolicy="no-referrer" />
+                  </div>
+                  <span>750+ designers</span>
+                </div>
+              </div>
+              <p>The colour tool studios reach for before the first fitting.</p>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FEATURES -->
+    <section class="section" id="features">
+      <div class="shell features">
+        <div class="reveal">
+          <p class="eyebrow">The product</p>
+          <div class="section-head">
+            <h2>Colour clarity, in <em>daylight.</em></h2>
+            <p>Replace trial and error with an answer you can explain to a client. Every result comes from colour science, not opinion.</p>
+          </div>
+
+          <div class="feature-list">
+            <div class="feature">
+              <div class="feature-icon">
+                <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3c3 3.6 6 6.4 6 10a6 6 0 0 1-12 0c0-3.6 3-6.4 6-10Z"/></svg>
+              </div>
+              <h3>Skin intelligence</h3>
+              <p>Depth, undertone, and contrast mapped to a personal palette.</p>
+            </div>
+            <div class="feature">
+              <div class="feature-icon">
+                <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8V5a1 1 0 0 1 1-1h3M16 4h3a1 1 0 0 1 1 1v3M20 16v3a1 1 0 0 1-1 1h-3M8 20H5a1 1 0 0 1-1-1v-3"/><circle cx="12" cy="12" r="3"/></svg>
+              </div>
+              <h3>Garment scan</h3>
+              <p>Upload a piece and extract its dominant colours automatically.</p>
+            </div>
+            <div class="feature">
+              <div class="feature-icon">
+                <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8"/><path d="M12 4v16M4 12h16"/></svg>
+              </div>
+              <h3>Harmony engine</h3>
+              <p>Every match scored, with a reason you can repeat to a client.</p>
+            </div>
+            <div class="feature">
+              <div class="feature-icon">
+                <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="6" r="2.5"/><path d="M6 20v-2a6 6 0 0 1 12 0v2"/></svg>
+              </div>
+              <h3>Mannequin preview</h3>
+              <p>See the outfit on a body in your own skin tone, before production.</p>
+            </div>
+            <div class="feature">
+              <div class="feature-icon">
+                <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 4h12v16l-6-4-6 4V4Z"/></svg>
+              </div>
+              <h3>Saved boards</h3>
+              <p>Collect palettes and outfits into shareable client boards.</p>
+            </div>
+            <div class="feature">
+              <div class="feature-icon">
+                <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg>
+              </div>
+              <h3>Designer workspaces</h3>
+              <p>Many clients, bulk garment checks, branded exports.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="image-card reveal d1">
+          <!-- PLACEHOLDER IMAGE: fabric / atelier detail -->
+          <img
+            src="https://images.unsplash.com/photo-1558769132-cb1aea458c5e?w=1100&auto=format&fit=crop&q=80"
+            alt="Placeholder fabric detail image"
+            loading="lazy"
+            referrerpolicy="no-referrer"
+          />
+          <span class="image-tag">Fabric analysis</span>
+          <div class="image-overlay">
+            <div class="top"><span>Scan result</span><b>Sky silk · 03</b></div>
+            <div class="metric">
+              <div class="metric-row"><span>Dominant colour</span><b>#37A9E8</b></div>
+              <div class="track"><i style="width:88%"></i></div>
+            </div>
+            <div class="metric">
+              <div class="metric-row"><span>Harmony</span><b>96%</b></div>
+              <div class="track"><i style="width:96%"></i></div>
+            </div>
+            <div class="metric">
+              <div class="metric-row"><span>Client contrast</span><b>High</b></div>
+              <div class="track"><i style="width:82%"></i></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- MANNEQUIN -->
+    <section class="section mannequin-band" id="mannequin">
+      <div class="shell mannequin-grid">
+        <div class="mannequin-copy reveal">
+          <p class="eyebrow">The mannequin</p>
+          <div class="section-head">
+            <h2>See it before you <em>sew it.</em></h2>
+            <p>Layered, recolourable, and rendered in your client's skin tone. No 3D pipeline, no per-use cost — just the look, instantly.</p>
+          </div>
+          <div class="pill-row">
+            <span class="pill">Skin-tone bound</span>
+            <span class="pill">3 body types</span>
+            <span class="pill">Instant recolor</span>
+          </div>
+        </div>
+
+        <div class="mannequin-stage reveal d1">
+          <span class="stage-tag">Preview · live</span>
+          <div class="stage-panel">
+            <div class="top"><span>System analysis</span><b>Synced</b></div>
+            <div class="metric">
+              <div class="metric-row"><span>Undertone</span><b>Warm</b></div>
+              <div class="track"><i style="width:92%"></i></div>
+            </div>
+            <div class="metric">
+              <div class="metric-row"><span>Contrast</span><b>High</b></div>
+              <div class="track"><i style="width:84%"></i></div>
+            </div>
+            <div class="metric">
+              <div class="metric-row"><span>Harmony</span><b>96%</b></div>
+              <div class="track"><i style="width:96%"></i></div>
+            </div>
+          </div>
+
+          <svg class="mannequin-svg" viewBox="0 0 260 460" role="img" aria-label="Digital mannequin wearing the selected colour">
+            <defs>
+              <linearGradient id="sheen2" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0" stop-color="#ffffff" stop-opacity="0.4"/>
+                <stop offset="0.45" stop-color="#ffffff" stop-opacity="0.06"/>
+                <stop offset="1" stop-color="#000000" stop-opacity="0.14"/>
+              </linearGradient>
+              <linearGradient id="form2" x1="0" y1="0" x2="1" y2="0">
+                <stop offset="0" stop-color="#e2d9c9"/>
+                <stop offset="0.5" stop-color="#f1eadf"/>
+                <stop offset="1" stop-color="#cfc5b3"/>
+              </linearGradient>
+            </defs>
+            <ellipse cx="130" cy="388" rx="64" ry="13" fill="#0c2233" opacity="0.14"/>
+            <path d="M126 244h8v124h-8Z" fill="#9c8f7c"/>
+            <ellipse cx="130" cy="374" rx="50" ry="11" fill="#9c8f7c"/>
+            <path d="M130 38c-18 0-26 10-26 24 0 8 4 16 10 20-18 6-34 18-40 36-6 18-4 42 2 64 5 18 12 34 18 50h14v12h44v-12h14c6-16 13-32 18-50 6-22 8-46 2-64-6-18-22-30-40-36 6-4 10-12 10-20 0-14-8-24-26-24Z" fill="url(#form2)" stroke="#bdb09a" stroke-width="1.2"/>
+            <path d="M104 150c10 6 42 6 52 0M100 186c12 7 48 7 60 0M103 214c11 6 43 6 54 0" stroke="#b7a992" stroke-width="1" fill="none" opacity="0.55"/>
+            <path d="M130 58c-12 0-20 8-22 18-12 6-26 18-30 34-4 18 0 40 6 62 5 17 11 34 16 50h60c5-16 11-33 16-50 6-22 10-44 6-62-4-16-18-28-30-34-2-10-10-18-22-18Z" fill="var(--garment)" stroke="rgba(12,34,51,0.14)" stroke-width="1.4"/>
+            <path d="M130 58c-12 0-20 8-22 18-12 6-26 18-30 34-4 18 0 40 6 62 5 17 11 34 16 50h60c5-16 11-33 16-50 6-22 10-44 6-62-4-16-18-28-30-34-2-10-10-18-22-18Z" fill="url(#sheen2)" opacity="0.9"/>
+            <path d="M130 58c-8 0-14 4-18 10 5 6 11 9 18 9s13-3 18-9c-4-6-10-10-18-10Z" fill="#0c2233" opacity="0.08"/>
+          </svg>
+
+          <div class="swatch-bar" role="group" aria-label="Preview garment colour">
+            <button class="swatch" style="background:#37a9e8" data-color="#37a9e8" aria-label="Sky" aria-pressed="true"></button>
+            <button class="swatch" style="background:#ffb84d" data-color="#ffb84d" aria-label="Sun" aria-pressed="false"></button>
+            <button class="swatch" style="background:#ff7e6b" data-color="#ff7e6b" aria-label="Coral" aria-pressed="false"></button>
+            <button class="swatch" style="background:#f1eadf" data-color="#f1eadf" aria-label="Ivory" aria-pressed="false"></button>
+            <button class="swatch" style="background:#6b7a45" data-color="#6b7a45" aria-label="Olive" aria-pressed="false"></button>
+            <button class="swatch" style="background:#6b3f5e" data-color="#6b3f5e" aria-label="Plum" aria-pressed="false"></button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- DESIGNERS -->
+    <section class="section" id="designers">
+      <div class="shell">
+        <div class="designer-band reveal">
+          <div class="designer-media">
+            <!-- PLACEHOLDER IMAGE: studio / atelier -->
+            <img
+              src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=1100&auto=format&fit=crop&q=80"
+              alt="Placeholder atelier or studio image"
+              loading="lazy"
+              referrerpolicy="no-referrer"
+            />
+          </div>
+          <div class="designer-copy">
+            <p class="eyebrow">For designers</p>
+            <h2>Run every client in <em>one place.</em></h2>
+            <p>Build client profiles, check whole collections, and send branded boards your clients can approve from their phone.</p>
+            <ul class="check-list">
+              <li><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Unlimited client profiles and history</li>
+              <li><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Bulk garment extraction with CSV export</li>
+              <li><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Branded boards and read-only client links</li>
+            </ul>
+            <a class="btn-sky" href="#pricing">Start Designer Pro
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- HOW IT WORKS -->
+    <section class="section" id="how">
+      <div class="shell">
+        <div class="section-head reveal">
+          <p class="eyebrow">How it works</p>
+          <h2>Three steps. <em>No guesswork.</em></h2>
+        </div>
+        <div class="steps-row">
+          <div class="step-card reveal">
+            <div class="step-num">01</div>
+            <h3>Build the profile</h3>
+            <p>Pick skin depth and undertone. Add hair, eye, and contrast for full seasonal analysis.</p>
+          </div>
+          <div class="step-card reveal d1">
+            <div class="step-num">02</div>
+            <h3>Check any garment</h3>
+            <p>Upload a piece or choose a colour. Get the match score, the reason, and two better swaps.</p>
+          </div>
+          <div class="step-card reveal d2">
+            <div class="step-num">03</div>
+            <h3>Preview and share</h3>
+            <p>See it on the mannequin, drop it into a board, and send a link your client can approve.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PRICING -->
+    <section class="section pricing-band" id="pricing">
+      <div class="shell">
+        <div class="pricing-head reveal">
+          <div>
+            <p class="eyebrow">Pricing</p>
+            <h2>Start free. Go deeper when it <em>pays.</em></h2>
+          </div>
+          <p>One complete result on the house. Depth, volume, and pro workflow when you need them.</p>
+        </div>
+
+        <div class="pricing-grid">
+          <article class="price-card reveal">
+            <div class="price-media" aria-hidden="true">
+              <div class="mini-chips">
+                <i style="background:#37a9e8"></i>
+                <i style="background:#a3ddff"></i>
+                <i style="background:#ffe9c7"></i>
+              </div>
+            </div>
+            <div class="price-body">
+              <div class="plan-name">Free</div>
+              <div class="price"><strong>$0</strong><span>forever</span></div>
+              <p class="plan-desc">One clear answer, no card required.</p>
+              <ul class="plan-features">
+                <li><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Swatch + undertone profile</li>
+                <li><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Core palette + colours to avoid</li>
+                <li><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>3 outfit checks per day</li>
+                <li><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>One saved board</li>
+              </ul>
+              <a class="price-btn" href="#top">Start free</a>
+            </div>
+          </article>
+
+          <article class="price-card featured reveal d1">
+            <div class="popular">Most popular</div>
+            <div class="price-media" aria-hidden="true">
+              <div class="mini-chips">
+                <i style="background:#ffffff"></i>
+                <i style="background:#ffb84d"></i>
+                <i style="background:#0c2233"></i>
+              </div>
+            </div>
+            <div class="price-body">
+              <div class="plan-name">Client Premium</div>
+              <div class="price"><strong>$9</strong><span>/ month</span></div>
+              <p class="plan-desc">Your full colour identity, unlocked.</p>
+              <ul class="plan-features">
+                <li><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Full 12-season analysis</li>
+                <li><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Foundation-shade mapping</li>
+                <li><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Unlimited checks + harmony matrix</li>
+                <li><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Unlimited boards + PDF export</li>
+              </ul>
+              <a class="price-btn" href="#top">Go premium</a>
+            </div>
+          </article>
+
+          <article class="price-card reveal d2">
+            <div class="price-media" aria-hidden="true">
+              <div class="mini-chips">
+                <i style="background:#0c2233"></i>
+                <i style="background:#37a9e8"></i>
+                <i style="background:#ff7e6b"></i>
+              </div>
+            </div>
+            <div class="price-body">
+              <div class="plan-name">Designer Pro</div>
+              <div class="price"><strong>$29</strong><span>/ seat / month</span></div>
+              <p class="plan-desc">For studios running many clients at once.</p>
+              <ul class="plan-features">
+                <li><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Multiple client profiles</li>
+                <li><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Branded boards + client links</li>
+                <li><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Bulk garment extraction + CSV</li>
+                <li><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Included try-on credits</li>
+              </ul>
+              <a class="price-btn" href="#top">Start 14-day trial</a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="shell">
+      <div class="footer-top">
+        <div>
+          <a class="brand" href="#top">
+            <span class="brand-mark" aria-hidden="true"></span>
+            MUSE<span class="brand-dot">.</span>
+          </a>
+          <p class="footer-tagline">Colour intelligence for the people who make clothes — and the people who wear them.</p>
+        </div>
+        <div class="footer-links">
+          <div class="footer-col">
+            <h4>Product</h4>
+            <a href="#features">Palette engine</a>
+            <a href="#mannequin">Mannequin preview</a>
+            <a href="#pricing">Pricing</a>
+          </div>
+          <div class="footer-col">
+            <h4>Company</h4>
+            <a href="#top">About</a>
+            <a href="#how">How it works</a>
+            <a href="#top">Contact</a>
+          </div>
+          <div class="footer-col">
+            <h4>Legal</h4>
+            <a href="#top">Privacy</a>
+            <a href="#top">Terms</a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© <span id="year">2026</span> MUSE. Placeholder brand for review.</span>
+        <span>Made for designers.</span>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    (function () {
+      var toggle = document.getElementById("navToggle");
+      var menu = document.getElementById("mobileMenu");
+      toggle.addEventListener("click", function () {
+        var open = menu.classList.toggle("open");
+        toggle.setAttribute("aria-expanded", String(open));
+      });
+      menu.querySelectorAll("a").forEach(function (a) {
+        a.addEventListener("click", function () {
+          menu.classList.remove("open");
+          toggle.setAttribute("aria-expanded", "false");
+        });
+      });
+
+      var reveals = document.querySelectorAll(".reveal");
+      if ("IntersectionObserver" in window) {
+        var observer = new IntersectionObserver(function (entries) {
+          entries.forEach(function (entry) {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("in");
+              observer.unobserve(entry.target);
+            }
+          });
+        }, { threshold: 0.12, rootMargin: "0px 0px -40px 0px" });
+        reveals.forEach(function (el) { observer.observe(el); });
+      } else {
+        reveals.forEach(function (el) { el.classList.add("in"); });
+      }
+
+      var swatches = document.querySelectorAll(".swatch");
+      swatches.forEach(function (btn) {
+        btn.addEventListener("click", function () {
+          document.documentElement.style.setProperty("--garment", btn.dataset.color);
+          swatches.forEach(function (b) { b.setAttribute("aria-pressed", "false"); });
+          btn.setAttribute("aria-pressed", "true");
+        });
+      });
+
+      document.getElementById("year").textContent = new Date().getFullYear();
+    })();
+  </script>
+</body>
+</html>
