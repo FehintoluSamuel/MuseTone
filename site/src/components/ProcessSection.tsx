@@ -16,7 +16,7 @@ const STEPS = [
   },
   {
     title: 'See it on a body',
-    copy: 'The palette meets an interactive 3D form before the first sample is cut.',
+    copy: 'The palette meets an interactive full-body mannequin before the first sample is cut.',
   },
 ];
 
@@ -74,13 +74,13 @@ export const ProcessSection: React.FC<ProcessSectionProps> = ({
           <div className="mt-6 flex flex-wrap items-center gap-6 border-t border-[#CBB8B0] pt-6">
             <button
               onClick={onStartClick}
-              className="inline-flex bg-[#171414] px-5 py-3 text-sm font-semibold text-white transition-colors hover:bg-black"
+              className="btn-pill-dark"
             >
               Start a colour profile
             </button>
             <button
               onClick={onStudioClick}
-              className="inline-flex text-[13px] font-semibold text-[#5A5350] underline decoration-[#B9534F] decoration-2 underline-offset-4 transition-colors hover:text-[#171414]"
+              className="btn-ghost-dark"
             >
               Studio plans
             </button>
@@ -108,13 +108,13 @@ export const ProcessSection: React.FC<ProcessSectionProps> = ({
                 <div className="mt-7 flex flex-wrap items-center gap-4">
                   <button
                     onClick={onStartClick}
-                    className="inline-flex bg-[#F7DCD8] px-6 py-3 text-sm font-semibold text-[#171414] transition-colors hover:bg-[#E9D9D1]"
+                    className="btn-pill-light"
                   >
                     Start free
                   </button>
                   <button
                     onClick={onStudioClick}
-                    className="text-[13px] font-semibold text-white/75 underline decoration-[#D9605C] decoration-2 underline-offset-4 transition-colors hover:text-white"
+                    className="btn-ghost"
                   >
                     Talk to the studio
                   </button>

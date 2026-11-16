@@ -95,7 +95,7 @@ export const EditorialHero: React.FC<EditorialHeroProps> = ({ onStartClick }) =>
             <button
               id="btn-start-free-pill"
               onClick={onStartClick}
-              className="mt-8 inline-flex items-center bg-[#B9534F] px-7 py-3.5 text-sm font-semibold text-white transition-colors hover:bg-[#A84440]"
+              className="btn-ghost mt-6"
             >
               Build a palette
             </button>

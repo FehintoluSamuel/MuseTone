@@ -21,7 +21,7 @@ export const AtelierBand: React.FC<AtelierBandProps> = ({ onExploreClick }) => {
             </p>
             <button
               onClick={onExploreClick}
-              className="mt-7 inline-flex bg-[#B9534F] px-6 py-3.5 text-sm font-semibold text-white transition-colors hover:bg-[#A84440]"
+              className="btn-ghost mt-7"
             >
               See the colour index
             </button>

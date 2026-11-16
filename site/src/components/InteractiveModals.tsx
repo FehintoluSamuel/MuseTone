@@ -93,7 +93,7 @@ export const InteractiveModals: React.FC<InteractiveModalsProps> = ({
                       alert('Welcome to Muse. Your palette is ready to build.');
                       onClose();
                     }}
-                    className="w-full bg-[#171414] px-6 py-3.5 text-center font-semibold text-white transition-colors hover:bg-black"
+                    className="btn-pill-dark w-full"
                   >
                     Create your palette
                   </button>
@@ -156,7 +156,7 @@ export const InteractiveModals: React.FC<InteractiveModalsProps> = ({
                   </div>
                   <button
                     type="submit"
-                    className="w-full bg-[#171414] px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-black"
+                    className="btn-pill-dark w-full"
                   >
                     Request early access
                   </button>
@@ -171,7 +171,7 @@ export const InteractiveModals: React.FC<InteractiveModalsProps> = ({
                     Colour decisions, made in daylight.
                   </h3>
                   <p className="mt-2 text-sm text-[#5A5350]">
-                    Deterministic colour science, explainable results, and a 3D form that wears
+                    Deterministic colour science, explainable results, and a 3D mannequin that wears
                     your client&apos;s skin tone.
                   </p>
                 </div>
@@ -192,7 +192,7 @@ export const InteractiveModals: React.FC<InteractiveModalsProps> = ({
                   <div className="py-4">
                     <dt className="text-sm font-semibold text-[#171414]">3D preview</dt>
                     <dd className="mt-1 text-sm text-[#5A5350]">
-                      The palette on an interactive dress form before the sample is cut.
+                      The palette on an interactive full-body mannequin before the sample is cut.
                     </dd>
                   </div>
                   <div className="py-4">
@@ -205,7 +205,7 @@ export const InteractiveModals: React.FC<InteractiveModalsProps> = ({
 
                 <button
                   onClick={onClose}
-                  className="w-full bg-[#171414] px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-black"
+                  className="btn-pill-dark w-full"
                 >
                   Close overview
                 </button>

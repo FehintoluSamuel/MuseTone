@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
+import type * as Three from 'three';
 
 const COLOURS = [
   { name: 'Brick', hex: '#B9534F' },
@@ -64,9 +65,9 @@ export const MannequinViewer: React.FC = () => {
       const scene = new THREE.Scene();
       scene.background = new THREE.Color('#171414');
 
-      const camera = new THREE.PerspectiveCamera(34, 1, 0.1, 100);
-      camera.position.set(0, 1.3, 4.2);
-      camera.lookAt(0, 1.02, 0);
+      const camera = new THREE.PerspectiveCamera(31, 1, 0.1, 100);
+      camera.position.set(0, 1.05, 4.55);
+      camera.lookAt(0, 0.94, 0);
 
       scene.add(new THREE.HemisphereLight('#F7DCD8', '#171414', 1.15));
 
@@ -87,71 +88,153 @@ export const MannequinViewer: React.FC = () => {
       scene.add(fill);
 
       const group = new THREE.Group();
-      group.rotation.y = -0.32;
+      group.rotation.y = -0.3;
       scene.add(group);
 
-      const formMaterial = new THREE.MeshStandardMaterial({
-        color: '#D8C0B8',
-        roughness: 0.58,
-        metalness: 0.02,
+      const bodyMaterial = new THREE.MeshStandardMaterial({
+        color: '#C9ADA3',
+        roughness: 0.62,
+        metalness: 0.01,
       });
       const dressMaterial = new THREE.MeshStandardMaterial({
         color: colourRef.current,
-        roughness: 0.62,
-        metalness: 0,
+        roughness: 0.58,
+        metalness: 0.01,
         side: THREE.DoubleSide,
+      });
+      const inkMaterial = new THREE.MeshStandardMaterial({
+        color: '#171414',
+        roughness: 0.48,
+        metalness: 0.04,
       });
       materialRef.current = dressMaterial;
 
-      const profile = [
-        new THREE.Vector2(0.3, 0.44),
-        new THREE.Vector2(0.34, 0.6),
-        new THREE.Vector2(0.32, 0.86),
-        new THREE.Vector2(0.28, 1.08),
-        new THREE.Vector2(0.245, 1.22),
-        new THREE.Vector2(0.33, 1.4),
-        new THREE.Vector2(0.42, 1.58),
-        new THREE.Vector2(0.38, 1.7),
-        new THREE.Vector2(0.22, 1.8),
-        new THREE.Vector2(0.17, 1.86),
+      const addSphere = (
+        radius: number,
+        position: [number, number, number],
+        scale: [number, number, number],
+        material: Three.Material
+      ) => {
+        const mesh = new THREE.Mesh(new THREE.SphereGeometry(radius, 40, 28), material);
+        mesh.position.set(...position);
+        mesh.scale.set(...scale);
+        mesh.castShadow = true;
+        mesh.receiveShadow = true;
+        group.add(mesh);
+        return mesh;
+      };
+
+      const addCapsule = (
+        start: [number, number, number],
+        end: [number, number, number],
+        radius: number,
+        material: Three.Material
+      ) => {
+        const from = new THREE.Vector3(...start);
+        const to = new THREE.Vector3(...end);
+        const direction = new THREE.Vector3().subVectors(to, from);
+        const length = direction.length();
+        const mesh = new THREE.Mesh(
+          new THREE.CapsuleGeometry(radius, Math.max(length - radius * 2, 0.02), 8, 20),
+          material
+        );
+        mesh.position.copy(from).add(to).multiplyScalar(0.5);
+        mesh.quaternion.setFromUnitVectors(new THREE.Vector3(0, 1, 0), direction.normalize());
+        mesh.castShadow = true;
+        mesh.receiveShadow = true;
+        group.add(mesh);
+        return mesh;
+      };
+
+      const bodyProfile = [
+        new THREE.Vector2(0.29, 0.94),
+        new THREE.Vector2(0.248, 1.02),
+        new THREE.Vector2(0.235, 1.1),
+        new THREE.Vector2(0.258, 1.22),
+        new THREE.Vector2(0.31, 1.32),
+        new THREE.Vector2(0.315, 1.39),
+        new THREE.Vector2(0.25, 1.43),
+        new THREE.Vector2(0.16, 1.46),
+        new THREE.Vector2(0.09, 1.48),
       ];
-      const dress = new THREE.Mesh(new THREE.LatheGeometry(profile, 72), dressMaterial);
+      const body = new THREE.Mesh(new THREE.LatheGeometry(bodyProfile, 64), bodyMaterial);
+      body.castShadow = true;
+      body.receiveShadow = true;
+      group.add(body);
+
+      addSphere(0.23, [0, 0.93, 0], [1.25, 0.75, 0.92], bodyMaterial);
+
+      const neck = new THREE.Mesh(
+        new THREE.CylinderGeometry(0.066, 0.078, 0.17, 28),
+        bodyMaterial
+      );
+      neck.position.y = 1.56;
+      neck.castShadow = true;
+      group.add(neck);
+
+      addSphere(0.135, [0, 1.72, 0], [0.92, 1.12, 0.96], bodyMaterial);
+
+      for (const side of [-1, 1]) {
+        addSphere(0.1, [side * 0.29, 1.38, 0], [1.05, 0.9, 0.95], bodyMaterial);
+        addCapsule([side * 0.3, 1.38, 0], [side * 0.405, 1.13, 0.04], 0.072, bodyMaterial);
+        addSphere(0.062, [side * 0.405, 1.13, 0.04], [1, 1, 1], bodyMaterial);
+        addCapsule([side * 0.405, 1.13, 0.04], [side * 0.445, 0.9, 0.09], 0.052, bodyMaterial);
+        addSphere(0.043, [side * 0.445, 0.9, 0.09], [1, 1, 1], bodyMaterial);
+
+        const hand = addSphere(0.07, [side * 0.455, 0.815, 0.1], [0.8, 1.25, 0.55], bodyMaterial);
+        hand.rotation.z = side * 0.12;
+        addCapsule(
+          [side * 0.42, 0.875, 0.085],
+          [side * 0.458, 0.815, 0.16],
+          0.024,
+          bodyMaterial
+        );
+        for (const finger of [-0.022, 0, 0.022]) {
+          addCapsule(
+            [side * 0.455 + finger, 0.79, 0.1],
+            [side * 0.455 + finger, 0.735, 0.11],
+            0.01,
+            bodyMaterial
+          );
+        }
+
+        addSphere(0.11, [side * 0.14, 0.92, 0], [1, 1, 0.95], bodyMaterial);
+        addCapsule([side * 0.14, 0.92, 0], [side * 0.145, 0.5, 0.015], 0.105, bodyMaterial);
+        addSphere(0.085, [side * 0.145, 0.5, 0.015], [1, 1, 1], bodyMaterial);
+        addCapsule([side * 0.145, 0.5, 0.015], [side * 0.15, 0.12, 0.02], 0.073, bodyMaterial);
+        addSphere(0.05, [side * 0.15, 0.12, 0.02], [1, 1, 1], bodyMaterial);
+        addSphere(0.1, [side * 0.15, 0.062, 0.075], [0.85, 0.52, 1.65], bodyMaterial);
+      }
+
+      const dressProfile = [
+        new THREE.Vector2(0.315, 0.64),
+        new THREE.Vector2(0.33, 0.72),
+        new THREE.Vector2(0.315, 0.86),
+        new THREE.Vector2(0.275, 1.0),
+        new THREE.Vector2(0.255, 1.08),
+        new THREE.Vector2(0.285, 1.2),
+        new THREE.Vector2(0.325, 1.31),
+        new THREE.Vector2(0.335, 1.37),
+        new THREE.Vector2(0.29, 1.41),
+      ];
+      const dress = new THREE.Mesh(new THREE.LatheGeometry(dressProfile, 72), dressMaterial);
       dress.castShadow = true;
       dress.receiveShadow = true;
       group.add(dress);
 
-      const neck = new THREE.Mesh(new THREE.SphereGeometry(0.17, 32, 18), formMaterial);
-      neck.position.y = 1.88;
-      neck.castShadow = true;
-      group.add(neck);
-
-      const belt = new THREE.Mesh(
-        new THREE.TorusGeometry(0.252, 0.012, 8, 64),
-        new THREE.MeshStandardMaterial({ color: '#171414', roughness: 0.45 })
-      );
+      const belt = new THREE.Mesh(new THREE.TorusGeometry(0.258, 0.011, 10, 72), inkMaterial);
       belt.rotation.x = Math.PI / 2;
-      belt.position.y = 1.22;
+      belt.position.y = 1.08;
       belt.castShadow = true;
       group.add(belt);
 
-      const hem = new THREE.Mesh(
-        new THREE.TorusGeometry(0.302, 0.009, 8, 64),
-        new THREE.MeshStandardMaterial({ color: '#171414', roughness: 0.45 })
-      );
+      const hem = new THREE.Mesh(new THREE.TorusGeometry(0.315, 0.008, 10, 72), inkMaterial);
       hem.rotation.x = Math.PI / 2;
-      hem.position.y = 0.44;
+      hem.position.y = 0.64;
       group.add(hem);
 
-      const pole = new THREE.Mesh(
-        new THREE.CylinderGeometry(0.028, 0.028, 0.44, 24),
-        new THREE.MeshStandardMaterial({ color: '#5A3E35', roughness: 0.5 })
-      );
-      pole.position.y = 0.22;
-      pole.castShadow = true;
-      group.add(pole);
-
       const base = new THREE.Mesh(
-        new THREE.CylinderGeometry(0.4, 0.44, 0.05, 64),
+        new THREE.CylinderGeometry(0.42, 0.45, 0.05, 72),
         new THREE.MeshStandardMaterial({ color: '#2A211F', roughness: 0.55 })
       );
       base.position.y = 0.025;
@@ -160,7 +243,7 @@ export const MannequinViewer: React.FC = () => {
       group.add(base);
 
       const floor = new THREE.Mesh(
-        new THREE.CircleGeometry(2.1, 64),
+        new THREE.CircleGeometry(2.1, 72),
         new THREE.MeshStandardMaterial({ color: '#201A18', roughness: 0.92 })
       );
       floor.rotation.x = -Math.PI / 2;
@@ -261,15 +344,15 @@ export const MannequinViewer: React.FC = () => {
     <div ref={frameRef} className="relative aspect-[4/5] w-full overflow-hidden bg-[#171414]">
       {failed ? (
         <img
-          src="/editorial/atelier-form.webp"
-          alt="Dress form in the Muse atelier"
+          src="/editorial/mannequin-fallback.webp"
+          alt="Full-body mannequin in the Muse studio"
           className="h-full w-full object-cover opacity-80"
         />
       ) : (
         <canvas
           ref={canvasRef}
           tabIndex={0}
-          aria-label="Interactive 3D dress form. Drag to rotate, or use the left and right arrow keys."
+          aria-label="Interactive 3D full-body mannequin with head, shoulders, hands, and legs. Drag to rotate, or use the left and right arrow keys."
           onKeyDown={(event) => {
             if (event.key !== 'ArrowLeft' && event.key !== 'ArrowRight') return;
             event.preventDefault();
@@ -282,21 +365,21 @@ export const MannequinViewer: React.FC = () => {
       {!ready && !failed && (
         <div className="pointer-events-none absolute inset-0 flex items-center justify-center bg-[#171414]">
           <span className="text-[11px] font-semibold uppercase tracking-[0.1em] text-[#D8CCC5]">
-            Preparing 3D form
+            Preparing 3D mannequin
           </span>
         </div>
       )}
 
       {!failed && (
         <div className="absolute inset-x-0 bottom-0 flex flex-wrap items-end justify-between gap-4 bg-[#171414]/95 p-4">
-          <div className="flex items-center gap-2" aria-label="Dress colour">
+          <div className="flex items-center gap-2" aria-label="Garment colour">
             {COLOURS.map((colour) => {
               const isActive = activeColour.name === colour.name;
               return (
                 <button
                   key={colour.name}
                   type="button"
-                  aria-label={`Set dress colour to ${colour.name}`}
+                  aria-label={`Set garment colour to ${colour.name}`}
                   aria-pressed={isActive}
                   onClick={() => setActiveColour(colour)}
                   className={`h-8 w-8 border transition-transform hover:scale-105 ${

@@ -21,7 +21,7 @@ export const MannequinStudio: React.FC = () => {
             body.
           </h2>
           <p className="mt-6 max-w-[430px] text-sm leading-relaxed text-[#4F4844]">
-            A palette only matters when it meets a body. Rotate the form, change the garment
+            A palette only matters when it meets a body. Rotate the mannequin, change the garment
             colour, and see how the same read holds across tone and light.
           </p>
 
@@ -37,7 +37,7 @@ export const MannequinStudio: React.FC = () => {
           </dl>
 
           <p className="mt-7 text-[11px] font-semibold uppercase tracking-[0.1em] text-[#4F4844]">
-            3D study / Interactive dress form
+            3D study / Full-body mannequin
           </p>
         </div>
 

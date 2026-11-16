@@ -34,7 +34,7 @@ export const SystemSection: React.FC<SystemSectionProps> = ({ onStartClick }) =>
             <div className="mt-8 flex flex-wrap items-center gap-5">
               <button
                 onClick={onStartClick}
-                className="inline-flex bg-[#B9534F] px-6 py-3.5 text-sm font-semibold text-white transition-colors hover:bg-[#A84440]"
+                className="btn-ghost"
               >
                 Open a sample profile
               </button>
