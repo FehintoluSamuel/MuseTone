@@ -10,12 +10,10 @@
     "lint": "tsc --noEmit"
   },
   "dependencies": {
-    "@types/three": "^0.187.0",
     "lucide-react": "^0.546.0",
     "motion": "^12.23.24",
     "react": "^19.0.1",
-    "react-dom": "^19.0.1",
-    "three": "^0.187.0"
+    "react-dom": "^19.0.1"
   },
   "devDependencies": {
     "@tailwindcss/vite": "^4.1.14",
