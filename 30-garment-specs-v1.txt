@@ -1,0 +1,506 @@
+30 GARMENT SPECS — V1
+
+Base mannequin: female/unisex from Stage 1.
+All garments are solid-color for clean recoloring and masking.
+For each garment: generate the front view first, then duplicate the block and change VIEW to three-quarter.
+Default colors are starting colors; each color zone can be recolored later.
+
+==================================================
+TOPS
+==================================================
+
+GARMENT ID: TOP-01
+CATEGORY: top
+VIEW: front
+GARMENT: oversized long-sleeve poplin shirt with a pointed collar, dropped shoulder seams, curved hem, front button placket, and one chest patch pocket
+FIT: oversized, hip length, relaxed sleeve
+FABRIC: matte cotton poplin, medium weight, subtle weave
+COLOR ZONES:
+- Main: #F1E8D8
+- Secondary: #F1E8D8
+- Trim: #E7DDCB
+- Buttons/hardware: #6B4F35
+- Lining: none
+PATTERN/PRINT: none
+CONSTRUCTION DETAILS: pointed collar, 6-button placket, single chest pocket, curved hem, two-piece sleeves, clean topstitching
+STYLING: untucked, sleeves down, no belt, no extra accessories
+
+GARMENT ID: TOP-02
+CATEGORY: top
+VIEW: front
+GARMENT: fitted ribbed tank top with a scoop neckline, narrow shoulder straps, and a straight hem
+FIT: fitted, cropped at high hip, close to body
+FABRIC: ribbed cotton jersey, mid weight, soft stretch
+COLOR ZONES:
+- Main: #171717
+- Secondary: #171717
+- Trim: #2A2A2A
+- Buttons/hardware: none
+- Lining: none
+PATTERN/PRINT: none
+CONSTRUCTION DETAILS: scoop neckline, narrow straps, ribbed body, clean bound edges, straight hem
+STYLING: tucked into bottom, no belt, no extra accessories
+
+GARMENT ID: TOP-03
+CATEGORY: top
+VIEW: front
+GARMENT: boxy heavyweight short-sleeve t-shirt with a ribbed crew neckline, dropped shoulders, and a straight hem
+FIT: boxy, hip length, relaxed short sleeve
+FABRIC: heavyweight cotton jersey, structured drape
+COLOR ZONES:
+- Main: #F7F7F5
+- Secondary: #F7F7F5
+- Trim: #E6E6E3
+- Buttons/hardware: none
+- Lining: none
+PATTERN/PRINT: none
+CONSTRUCTION DETAILS: ribbed crew neckline, dropped shoulder seams, wide short sleeves, straight hem, clean topstitching
+STYLING: untucked, sleeves down, no belt, no extra accessories
+
+GARMENT ID: TOP-04
+CATEGORY: top
+VIEW: front
+GARMENT: relaxed long-sleeve satin blouse with a soft point collar, concealed front placket, and gently curved hem
+FIT: relaxed, hip length, fluid long sleeve with narrow cuff
+FABRIC: satin, fluid drape, soft sheen
+COLOR ZONES:
+- Main: #D8C3A5
+- Secondary: #D8C3A5
+- Trim: #C9B18F
+- Buttons/hardware: #B9A17F
+- Lining: none
+PATTERN/PRINT: none
+CONSTRUCTION DETAILS: soft point collar, concealed placket, narrow cuffs, curved hem, back yoke, French seams
+STYLING: tucked into bottom, sleeves down, no belt, no extra accessories
+
+GARMENT ID: TOP-05
+CATEGORY: top
+VIEW: front
+GARMENT: long-sleeve fine-gauge merino knit top with a high round neckline, slim sleeves, and a straight hem
+FIT: slim, hip length, close-fitting sleeve
+FABRIC: fine-gauge merino wool knit, lightweight, soft handfeel
+COLOR ZONES:
+- Main: #B08A62
+- Secondary: #B08A62
+- Trim: #9C7954
+- Buttons/hardware: none
+- Lining: none
+PATTERN/PRINT: none
+CONSTRUCTION DETAILS: high round neckline, fully fashioned sleeves, ribbed cuffs and hem, fine knit texture
+STYLING: untucked, sleeves down, no belt, no extra accessories
+
+GARMENT ID: TOP-06
+CATEGORY: top
+VIEW: front
+GARMENT: short-sleeve knit polo shirt with a soft spread collar, two-button placket, and straight hem
+FIT: regular, hip length, relaxed short sleeve
+FABRIC: mercerized cotton knit, mid weight, subtle lustre
+COLOR ZONES:
+- Main: #6B7280
+- Secondary: #6B7280
+- Trim: #5A616B
+- Buttons/hardware: #E7E1D6
+- Lining: none
+PATTERN/PRINT: none
+CONSTRUCTION DETAILS: soft spread collar, two-button placket, ribbed sleeve cuffs, straight hem, side vents
+STYLING: untucked, collar flat, sleeves down, no belt, no extra accessories
+
+GARMENT ID: TOP-07
+CATEGORY: top
+VIEW: front
+GARMENT: corset-style structured top with a square neckline, defined waist seams, and a cropped hem
+FIT: fitted, cropped above waist, structured bodice
+FABRIC: structured satin, firm body, slight sheen
+COLOR ZONES:
+- Main: #6E2A32
+- Secondary: #6E2A32
+- Trim: #4F1D23
+- Buttons/hardware: #B9A17F
+- Lining: #3A1418
+PATTERN/PRINT: none
+CONSTRUCTION DETAILS: square neckline, vertical boning channels, defined waist seams, concealed back zip, cropped hem
+STYLING: untucked, no belt, no extra accessories
+
+GARMENT ID: TOP-08
+CATEGORY: top
+VIEW: front
+GARMENT: camp-collar short-sleeve shirt with an open collar, straight hem, and single patch pocket
+FIT: relaxed, hip length, boxy short sleeve
+FABRIC: viscose twill, matte, fluid drape
+COLOR ZONES:
+- Main: #2F4F7A
+- Secondary: #2F4F7A
+- Trim: #274265
+- Buttons/hardware: #E7E1D6
+- Lining: none
+PATTERN/PRINT: none
+CONSTRUCTION DETAILS: camp collar, button front, single patch pocket, straight hem, side vents
+STYLING: untucked, collar flat, sleeves down, no belt, no extra accessories
+
+GARMENT ID: TOP-09
+CATEGORY: top
+VIEW: front
+GARMENT: oversized pullover hoodie with a double-layer hood, kangaroo pocket, ribbed cuffs, and ribbed hem
+FIT: oversized, hip length, relaxed sleeve
+FABRIC: heavyweight cotton fleece, brushed interior
+COLOR ZONES:
+- Main: #E7E1D6
+- Secondary: #E7E1D6
+- Trim: #D6CFC2
+- Buttons/hardware: #B9BCC2
+- Lining: none
+PATTERN/PRINT: none
+CONSTRUCTION DETAILS: double-layer hood, flat drawcords, kangaroo pocket, ribbed cuffs and hem, dropped shoulder
+STYLING: untucked, hood down, sleeves down, no belt, no extra accessories
+
+GARMENT ID: TOP-10
+CATEGORY: top
+VIEW: front
+GARMENT: cropped denim shirt with a pointed collar, snap front placket, chest flap pockets, and raw hem
+FIT: cropped at waist, relaxed through body
+FABRIC: washed cotton denim, mid weight, soft handfeel
+COLOR ZONES:
+- Main: #6F8FAF
+- Secondary: #6F8FAF
+- Trim: #5A7A99
+- Buttons/hardware: #B9BCC2
+- Lining: none
+PATTERN/PRINT: none
+CONSTRUCTION DETAILS: pointed collar, snap placket, two chest flap pockets, dropped shoulder, raw cropped hem
+STYLING: untucked, sleeves down, no belt, no extra accessories
+
+==================================================
+BOTTOMS
+==================================================
+
+GARMENT ID: BOT-01
+CATEGORY: bottom
+VIEW: front
+GARMENT: high-rise wide-leg tailored trousers with pressed front creases, side seam pockets, and a clean waistband
+FIT: high-rise, wide leg, full length, relaxed through hip
+FABRIC: wool suiting, mid weight, matte finish
+COLOR ZONES:
+- Main: #3A3D44
+- Secondary: #3A3D44
+- Trim: #2A2D33
+- Buttons/hardware: #B9BCC2
+- Lining: none
+PATTERN/PRINT: none
+CONSTRUCTION DETAILS: clean waistband, concealed hook closure, side seam pockets, pressed creases, wide hem
+STYLING: waistband at natural waist, no belt, no extra accessories
+
+GARMENT ID: BOT-02
+CATEGORY: bottom
+VIEW: front
+GARMENT: high-rise straight-leg jeans with a five-pocket construction, zip fly, and clean hem
+FIT: high-rise, straight leg, full length, close through hip
+FABRIC: 12 oz stretch denim, mid weight, matte finish
+COLOR ZONES:
+- Main: #334A66
+- Secondary: #334A66
+- Trim: #263A50
+- Buttons/hardware: #B9BCC2
+- Lining: none
+PATTERN/PRINT: none
+CONSTRUCTION DETAILS: five-pocket construction, zip fly, metal shank button, belt loops, clean hem
+STYLING: waistband at natural waist, no belt, no extra accessories
+
+GARMENT ID: BOT-03
+CATEGORY: bottom
+VIEW: front
+GARMENT: high-rise pleated midi skirt with knife pleats, a clean waistband, and a straight hem
+FIT: high-rise, relaxed through hip, midi length
+FABRIC: wool-blend crepe, mid weight, matte finish
+COLOR ZONES:
+- Main: #B08A62
+- Secondary: #B08A62
+- Trim: #9C7954
+- Buttons/hardware: #6B4F35
+- Lining: none
+PATTERN/PRINT: none
+CONSTRUCTION DETAILS: clean waistband, concealed side zip, knife pleats, straight midi hem
+STYLING: waistband at natural waist, no belt, no extra accessories
+
+GARMENT ID: BOT-04
+CATEGORY: bottom
+VIEW: front
+GARMENT: high-rise pencil skirt with a clean waistband, back vent, and knee-length hem
+FIT: high-rise, fitted through hip and thigh, knee length
+FABRIC: stretch wool, mid weight, matte finish
+COLOR ZONES:
+- Main: #171717
+- Secondary: #171717
+- Trim: #2A2A2A
+- Buttons/hardware: #B9BCC2
+- Lining: none
+PATTERN/PRINT: none
+CONSTRUCTION DETAILS: clean waistband, concealed back zip, center back vent, knee-length hem, full lining
+STYLING: waistband at natural waist, no belt, no extra accessories
+
+GARMENT ID: BOT-05
+CATEGORY: bottom
+VIEW: front
+GARMENT: mid-rise relaxed cargo trousers with large side flap pockets, knee darts, and elasticated back waist
+FIT: mid-rise, relaxed through leg, full length
+FABRIC: cotton ripstop, mid weight, matte finish
+COLOR ZONES:
+- Main: #5F6B4F
+- Secondary: #5F6B4F
+- Trim: #4E5941
+- Buttons/hardware: #B9BCC2
+- Lining: none
+PATTERN/PRINT: none
+CONSTRUCTION DETAILS: side flap pockets, knee darts, elasticated back waist, zip fly, adjustable hem tabs
+STYLING: waistband at natural waist, no belt, no extra accessories
+
+GARMENT ID: BOT-06
+CATEGORY: bottom
+VIEW: front
+GARMENT: high-rise tailored shorts with pressed creases, side seam pockets, and a clean hem
+FIT: high-rise, relaxed through thigh, mid-thigh length
+FABRIC: linen-viscose blend, mid weight, matte finish
+COLOR ZONES:
+- Main: #E7E1D6
+- Secondary: #E7E1D6
+- Trim: #D6CFC2
+- Buttons/hardware: #B9BCC2
+- Lining: none
+PATTERN/PRINT: none
+CONSTRUCTION DETAILS: clean waistband, concealed hook closure, side seam pockets, pressed creases, clean hem
+STYLING: waistband at natural waist, no belt, no extra accessories
+
+GARMENT ID: BOT-07
+CATEGORY: bottom
+VIEW: front
+GARMENT: mid-rise bias-cut satin midi skirt with a fluid drape and clean waistband
+FIT: mid-rise, fluid through hip, midi length
+FABRIC: satin, fluid drape, soft sheen
+COLOR ZONES:
+- Main: #4A3428
+- Secondary: #4A3428
+- Trim: #3A281E
+- Buttons/hardware: none
+- Lining: none
+PATTERN/PRINT: none
+CONSTRUCTION DETAILS: clean waistband, concealed side zip, bias-cut panels, fluid midi hem
+STYLING: waistband at natural waist, no belt, no extra accessories
+
+GARMENT ID: BOT-08
+CATEGORY: bottom
+VIEW: front
+GARMENT: high-rise wide-leg jeans with a five-pocket construction, zip fly, and full-length wide hem
+FIT: high-rise, wide leg, full length, relaxed through hip
+FABRIC: 13 oz rigid denim, heavy weight, matte finish
+COLOR ZONES:
+- Main: #2B2B2B
+- Secondary: #2B2B2B
+- Trim: #1F1F1F
+- Buttons/hardware: #B9BCC2
+- Lining: none
+PATTERN/PRINT: none
+CONSTRUCTION DETAILS: five-pocket construction, zip fly, metal shank button, belt loops, wide full-length hem
+STYLING: waistband at natural waist, no belt, no extra accessories
+
+==================================================
+OUTERWEAR
+==================================================
+
+GARMENT ID: OUT-01
+CATEGORY: outerwear
+VIEW: front
+GARMENT: single-breasted suit blazer with structured shoulders, notch lapels, two flap pockets, and a clean hem
+FIT: relaxed, hip length, structured shoulder, straight body
+FABRIC: wool suiting, mid weight, matte finish
+COLOR ZONES:
+- Main: #3A3D44
+- Secondary: #3A3D44
+- Trim: #2A2D33
+- Buttons/hardware: #B9BCC2
+- Lining: #6B7280
+PATTERN/PRINT: none
+CONSTRUCTION DETAILS: notch lapels, single-breasted two-button front, structured shoulder, two flap pockets, center back vent, full lining
+STYLING: worn open over neutral base layer, sleeves down, no belt, no extra accessories
+
+GARMENT ID: OUT-02
+CATEGORY: outerwear
+VIEW: front
+GARMENT: double-breasted trench coat with a storm flap, notch collar, epaulettes, and knee-length hem
+FIT: oversized, knee length, relaxed through body
+FABRIC: cotton gabardine, mid-heavy weight, matte finish
+COLOR ZONES:
+- Main: #B08A62
+- Secondary: #B08A62
+- Trim: #9C7954
+- Buttons/hardware: #6B4F35
+- Lining: #D6CFC2
+PATTERN/PRINT: none
+CONSTRUCTION DETAILS: double-breasted front, storm flap, notch collar, epaulettes, belt loops, self-belt tied at waist, knee-length hem
+STYLING: worn open, belt tied at waist, sleeves down, no extra accessories
+
+GARMENT ID: OUT-03
+CATEGORY: outerwear
+VIEW: front
+GARMENT: cropped leather jacket with a stand collar, asymmetric zip, and zipped side pockets
+FIT: cropped at waist, fitted through body, slim sleeve
+FABRIC: matte lambskin leather, mid weight, soft handfeel
+COLOR ZONES:
+- Main: #171717
+- Secondary: #171717
+- Trim: #2A2A2A
+- Buttons/hardware: #B9BCC2
+- Lining: #3A3D44
+PATTERN/PRINT: none
+CONSTRUCTION DETAILS: stand collar, asymmetric zip, zipped side pockets, zip cuffs, cropped hem, full lining
+STYLING: worn open, zipper visible, sleeves down, no belt, no extra accessories
+
+GARMENT ID: OUT-04
+CATEGORY: outerwear
+VIEW: front
+GARMENT: oversized wool coat with a clean notch collar, concealed front closure, and mid-calf length
+FIT: oversized, mid-calf length, relaxed through body
+FABRIC: wool-cashmere blend, heavy weight, matte finish
+COLOR ZONES:
+- Main: #E7E1D6
+- Secondary: #E7E1D6
+- Trim: #D6CFC2
+- Buttons/hardware: #6B4F35
+- Lining: #B08A62
+PATTERN/PRINT: none
+CONSTRUCTION DETAILS: notch collar, concealed front closure, dropped shoulder, side seam pockets, center back vent, full lining
+STYLING: worn open, sleeves down, no belt, no extra accessories
+
+GARMENT ID: OUT-05
+CATEGORY: outerwear
+VIEW: front
+GARMENT: utility shacket with a pointed collar, chest flap pockets, and a straight hip-length hem
+FIT: oversized, hip length, relaxed through body
+FABRIC: cotton twill, mid weight, matte finish
+COLOR ZONES:
+- Main: #5F6B4F
+- Secondary: #5F6B4F
+- Trim: #4E5941
+- Buttons/hardware: #B9BCC2
+- Lining: none
+PATTERN/PRINT: none
+CONSTRUCTION DETAILS: pointed collar, button front, two chest flap pockets, dropped shoulder, straight hem, side vents
+STYLING: worn open over neutral base layer, sleeves down, no belt, no extra accessories
+
+==================================================
+DRESSES
+==================================================
+
+GARMENT ID: DRESS-01
+CATEGORY: dress
+VIEW: front
+GARMENT: bias-cut slip dress with a cowl neckline, thin adjustable straps, and a midi hem
+FIT: fluid, close through body, midi length
+FABRIC: satin, fluid drape, soft sheen
+COLOR ZONES:
+- Main: #D8C3A5
+- Secondary: #D8C3A5
+- Trim: #C9B18F
+- Buttons/hardware: none
+- Lining: none
+PATTERN/PRINT: none
+CONSTRUCTION DETAILS: cowl neckline, thin adjustable straps, bias-cut panels, midi hem, French seams
+STYLING: worn alone, no belt, no extra accessories
+
+GARMENT ID: DRESS-02
+CATEGORY: dress
+VIEW: front
+GARMENT: fitted long-sleeve knit midi dress with a high round neckline and a straight midi hem
+FIT: fitted, close through body, midi length
+FABRIC: ribbed viscose knit, mid weight, soft stretch
+COLOR ZONES:
+- Main: #171717
+- Secondary: #171717
+- Trim: #2A2A2A
+- Buttons/hardware: none
+- Lining: none
+PATTERN/PRINT: none
+CONSTRUCTION DETAILS: high round neckline, fitted long sleeves, ribbed body, straight midi hem
+STYLING: worn alone, no belt, no extra accessories
+
+GARMENT ID: DRESS-03
+CATEGORY: dress
+VIEW: front
+GARMENT: midi shirt dress with a point collar, button front, chest patch pocket, and self-belt at the waist
+FIT: relaxed, midi length, relaxed sleeve
+FABRIC: cotton poplin, medium weight, subtle weave
+COLOR ZONES:
+- Main: #F1E8D8
+- Secondary: #F1E8D8
+- Trim: #E7DDCB
+- Buttons/hardware: #6B4F35
+- Lining: none
+PATTERN/PRINT: none
+CONSTRUCTION DETAILS: point collar, button front, chest patch pocket, self-belt, side seam pockets, midi hem
+STYLING: self-belt tied at waist, sleeves down, no extra accessories
+
+GARMENT ID: DRESS-04
+CATEGORY: dress
+VIEW: front
+GARMENT: strapless column dress with a clean straight neckline, internal boning, and a full-length hem
+FIT: fitted through bodice, straight column, full length
+FABRIC: structured crepe, mid weight, matte finish
+COLOR ZONES:
+- Main: #2F4F7A
+- Secondary: #2F4F7A
+- Trim: #274265
+- Buttons/hardware: none
+- Lining: #1F3550
+PATTERN/PRINT: none
+CONSTRUCTION DETAILS: straight strapless neckline, internal boning, concealed back zip, column silhouette, full-length hem, full lining
+STYLING: worn alone, no belt, no extra accessories
+
+==================================================
+SHOES
+==================================================
+
+GARMENT ID: SHOE-01
+CATEGORY: shoes
+VIEW: front
+GARMENT: classic almond-toe leather loafer with a low block heel and metal bit detail
+FIT: almond toe, low block heel, slip-on
+FABRIC: polished leather, mid weight, smooth finish
+COLOR ZONES:
+- Main: #4A3428
+- Secondary: #3A281E
+- Trim: #6B4F35
+- Buttons/hardware: #B9BCC2
+- Lining: #D6CFC2
+PATTERN/PRINT: none
+CONSTRUCTION DETAILS: almond toe, leather upper, metal bit, low block heel, leather sole, stitched welt
+STYLING: worn on both feet, no socks, no extra accessories
+
+GARMENT ID: SHOE-02
+CATEGORY: shoes
+VIEW: front
+GARMENT: pointed-toe slingback heel with a slim ankle strap and a 65mm heel
+FIT: pointed toe, 65mm heel, slingback strap
+FABRIC: satin, soft sheen, smooth finish
+COLOR ZONES:
+- Main: #171717
+- Secondary: #2A2A2A
+- Trim: #3A3D44
+- Buttons/hardware: #B9BCC2
+- Lining: #D6CFC2
+PATTERN/PRINT: none
+CONSTRUCTION DETAILS: pointed toe, satin upper, slingback strap, slim ankle strap with buckle, 65mm covered heel
+STYLING: worn on both feet, no socks, no extra accessories
+
+GARMENT ID: SHOE-03
+CATEGORY: shoes
+VIEW: front
+GARMENT: minimal low-top leather sneaker with a clean lace-up front and flat rubber sole
+FIT: low-top, lace-up, rounded toe
+FABRIC: smooth leather, mid weight, matte finish
+COLOR ZONES:
+- Main: #F7F7F5
+- Secondary: #E6E6E3
+- Trim: #D6CFC2
+- Buttons/hardware: none
+- Lining: #E6E6E3
+PATTERN/PRINT: none
+CONSTRUCTION DETAILS: smooth leather upper, flat waxed laces, rounded toe, flat rubber sole, clean side panels
+STYLING: worn on both feet, no socks, no extra accessories

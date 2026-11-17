@@ -6,7 +6,7 @@ interface AtelierBandProps {
 
 export const AtelierBand: React.FC<AtelierBandProps> = ({ onExploreClick }) => {
   return (
-    <section id="atelier" className="mt-16 w-full scroll-mt-20 bg-[#171414]/85 text-white sm:mt-24">
+    <section id="atelier" className="mt-16 w-full scroll-mt-20 bg-[#171414] text-white sm:mt-24">
       <div className="grid w-full md:grid-cols-[0.78fr_1.22fr]">
         <div className="flex flex-col justify-between px-5 py-12 sm:px-8 lg:px-12 lg:py-16">
           <div>

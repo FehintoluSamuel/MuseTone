@@ -31,7 +31,7 @@ export const InteractiveModals: React.FC<InteractiveModalsProps> = ({
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             onClick={onClose}
-            className="absolute inset-0 bg-[#171414]/80"
+            className="absolute inset-0 bg-[#171414]"
           />
 
           <motion.div

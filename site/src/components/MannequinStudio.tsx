@@ -11,7 +11,7 @@ export const MannequinStudio: React.FC = () => {
   return (
     <section
       id="mannequin"
-      className="mt-20 w-full scroll-mt-20 bg-[#171414]/85 py-16 text-white sm:mt-28 sm:py-24"
+      className="mt-20 w-full scroll-mt-20 bg-[#171414] py-16 text-white sm:mt-28 sm:py-24"
     >
       <div className="mx-auto w-full max-w-[1664px] px-4 sm:px-6 lg:px-8">
         <div className="grid gap-8 border-b border-white/15 pb-8 md:grid-cols-[1.1fr_0.9fr] md:items-end">

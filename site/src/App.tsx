@@ -5,10 +5,13 @@ import { AtelierBand } from './components/AtelierBand';
 import { CampaignSection } from './components/CampaignSection';
 import { MotionSection } from './components/MotionSection';
 import { MannequinStudio } from './components/MannequinStudio';
+import { SpinShowcase } from './components/SpinShowcase';
 import { SystemSection } from './components/SystemSection';
 import { ColourIndex } from './components/ColourIndex';
 import { ProcessSection } from './components/ProcessSection';
 import { InteractiveModals } from './components/InteractiveModals';
+import { SpinDemo } from './components/SpinDemo';
+import { TryOnDemo } from './components/TryOnDemo';
 
 export default function App() {
   const [activeNav, setActiveNav] = useState('Explore');
@@ -20,6 +23,10 @@ export default function App() {
     setActiveNav(nav);
     document.getElementById(nav.toLowerCase())?.scrollIntoView({ block: 'start' });
   };
+
+  if (new URLSearchParams(window.location.search).has('tryon-demo')) {
+    return <TryOnDemo />;
+  }
 
   return (
     <div className="relative flex min-h-screen flex-col items-center justify-start bg-transparent pb-16 selection:bg-[#B9534F] selection:text-white">
@@ -40,6 +47,8 @@ export default function App() {
 
           <MannequinStudio />
 
+          <SpinShowcase />
+
           <CampaignSection onExploreClick={() => setActiveModal('learn-more')} />
 
           <MotionSection />
@@ -59,6 +68,8 @@ export default function App() {
         activeModal={activeModal}
         onClose={() => setActiveModal(null)}
       />
+
+      {new URLSearchParams(window.location.search).has('spin-demo') && <SpinDemo />}
     </div>
   );
 }

@@ -105,7 +105,7 @@ export const EditorialHero: React.FC<EditorialHeroProps> = ({ onStartClick }) =>
     >
       <div
         aria-hidden="true"
-        className="absolute inset-0 -z-10 bg-[rgba(23,20,20,0.63)]"
+        className="absolute inset-0 -z-10 bg-[rgba(23,20,20,0.93)]"
       />
       <div className="relative z-10 mx-auto flex w-full max-w-[1400px] flex-1 flex-col px-5 pb-8 pt-28 sm:px-8 sm:pb-10 sm:pt-32 lg:px-12 lg:pb-12">
         <div className="flex justify-center">

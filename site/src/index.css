@@ -392,4 +392,552 @@
   }
 }
 
+.spin-shell {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 3 / 2;
+  overflow: hidden;
+  background: #e2e4e8;
+}
+
+.spin-artboard {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 1500px;
+  height: 1000px;
+  transform-origin: center center;
+  color: #111;
+  font-family: 'IBM Plex Mono', monospace;
+}
+
+.spin-artboard button {
+  padding: 0;
+  border: 0;
+  background: none;
+  color: inherit;
+  font: inherit;
+  cursor: pointer;
+}
+
+.spin-logo {
+  position: absolute;
+  left: 28px;
+  top: 18px;
+  font-family: 'Inter Tight', sans-serif;
+  font-size: 27px;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+}
+
+.spin-crumb {
+  position: absolute;
+  left: 28px;
+  top: 54px;
+  font-size: 11px;
+  letter-spacing: 0.03em;
+}
+
+.spin-nav {
+  position: absolute;
+  left: 50%;
+  top: 16px;
+  display: flex;
+  gap: 6px;
+  transform: translateX(-50%);
+}
+
+.spin-pill {
+  display: flex;
+  align-items: center;
+  height: 35px;
+  padding: 0 17px;
+  border-radius: 4px;
+  background: #fff;
+  font-size: 13px;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  clip-path: polygon(0 0, calc(100% - 6px) 0, 100% 6px, 100% 100%, 6px 100%, 0 calc(100% - 6px));
+}
+
+.spin-pill:hover {
+  background: #f6f6f7;
+}
+
+.spin-acct {
+  position: absolute;
+  right: 28px;
+  top: 18px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  font-size: 13px;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+}
+
+.spin-bag b {
+  font-weight: 500;
+}
+
+.spin-bag.is-bumping b {
+  display: inline-block;
+  animation: spin-bag-bump 0.5s cubic-bezier(0.3, 1.8, 0.5, 1);
+}
+
+@keyframes spin-bag-bump {
+  0% {
+    transform: translateY(0) scale(1);
+  }
+  35% {
+    transform: translateY(-6px) scale(1.4);
+  }
+  100% {
+    transform: translateY(0) scale(1);
+  }
+}
+
+.spin-lines {
+  position: absolute;
+  inset: 0;
+  z-index: 15;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.spin-lines path {
+  fill: none;
+  stroke: #fff;
+  stroke-width: 2;
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+  transition: stroke-dashoffset 0.35s ease;
+}
+
+.spin-lines.is-front path {
+  stroke-dashoffset: 0;
+  transition-duration: 0.7s;
+}
+
+.spin-card {
+  position: absolute;
+  z-index: 20;
+  background: #fff;
+  color: #111;
+}
+
+.spin-info {
+  left: 18px;
+  top: 300px;
+  width: 420px;
+  padding: 36px 28px 26px 38px;
+  clip-path: polygon(
+    0 0,
+    130px 0,
+    140px 8px,
+    100% 8px,
+    100% calc(100% - 8px),
+    calc(100% - 290px) calc(100% - 8px),
+    calc(100% - 300px) 100%,
+    10px 100%,
+    10px 120px,
+    0 112px
+  );
+}
+
+.spin-buy {
+  left: 1105px;
+  top: 385px;
+  width: 375px;
+  padding: 30px 26px 26px;
+  clip-path: polygon(
+    0 8px,
+    265px 8px,
+    275px 0,
+    100% 0,
+    100% calc(100% - 8px),
+    300px calc(100% - 8px),
+    290px 100%,
+    10px 100%,
+    10px calc(100% - 40px),
+    0 calc(100% - 48px)
+  );
+}
+
+.spin-name {
+  font-size: 13px;
+  line-height: 1.45;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.spin-price-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 10px;
+  font-size: 13px;
+}
+
+.spin-tag {
+  padding: 2px 4px;
+  background: #eceef1;
+  font-size: 11px;
+}
+
+.spin-accordion {
+  margin-top: 22px;
+}
+
+.spin-acc-head {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  padding: 8px 0;
+  font-size: 13px;
+  text-transform: uppercase;
+}
+
+.spin-acc-body {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.45s cubic-bezier(0.65, 0, 0.25, 1);
+}
+
+.spin-acc-row.is-open .spin-acc-body {
+  grid-template-rows: 1fr;
+}
+
+.spin-acc-body > div {
+  overflow: hidden;
+}
+
+.spin-acc-body p {
+  padding: 4px 0 12px;
+  font-family: 'Tinos', serif;
+  font-size: 15.5px;
+  line-height: 1.38;
+}
+
+.spin-label {
+  font-size: 13px;
+  letter-spacing: 0.05em;
+}
+
+.spin-sizes {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 6px;
+  margin-top: 10px;
+}
+
+.spin-size {
+  position: relative;
+  z-index: 2;
+  height: 36px;
+  background: #eceef1;
+  font-size: 13px;
+}
+
+.spin-size.is-selected {
+  background: transparent;
+  color: #fff;
+}
+
+.spin-hl {
+  position: absolute;
+  top: 0;
+  z-index: 1;
+  height: 36px;
+  background: #111;
+  transition:
+    left 0.45s cubic-bezier(0.65, 0, 0.25, 1),
+    width 0.45s cubic-bezier(0.65, 0, 0.25, 1);
+}
+
+.spin-note {
+  margin-top: 10px;
+  color: #7b7e84;
+  font-size: 10.5px;
+  line-height: 1.45;
+  text-transform: uppercase;
+}
+
+.spin-underline {
+  color: #111;
+  text-decoration: underline;
+}
+
+.spin-actions {
+  display: flex;
+  gap: 6px;
+  margin-top: 22px;
+}
+
+.spin-save {
+  width: 62px;
+  height: 36px;
+  background: #111;
+  color: #fff;
+  font-size: 13px;
+  text-transform: uppercase;
+}
+
+.spin-save.is-saved {
+  background: #3a3d44;
+}
+
+.spin-preorder {
+  position: relative;
+  flex: 1;
+  height: 36px;
+  overflow: hidden;
+  background: #111;
+  color: #fff;
+  font-size: 13px;
+  text-transform: uppercase;
+}
+
+.spin-preorder-roll {
+  position: absolute;
+  inset: 0;
+}
+
+.spin-preorder-roll span {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.45s cubic-bezier(0.65, 0, 0.25, 1);
+}
+
+.spin-preorder-roll span:first-child {
+  transform: translateY(0);
+}
+
+.spin-preorder-roll span:last-child {
+  transform: translateY(100%);
+}
+
+.spin-preorder.is-added .spin-preorder-roll span:first-child {
+  transform: translateY(-100%);
+}
+
+.spin-preorder.is-added .spin-preorder-roll span:last-child {
+  transform: translateY(0);
+}
+
+.spin-stage {
+  position: absolute;
+  left: 480px;
+  top: 70px;
+  z-index: 10;
+  width: 540px;
+  height: 960px;
+  cursor: grab;
+  touch-action: none;
+}
+
+.spin-stage .spin-turntable {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.spin-hotspots {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.spin-hotspot {
+  position: absolute;
+  transform: translate(-50%, -50%) scale(0);
+  opacity: 0;
+  pointer-events: none;
+  transition:
+    transform 0.35s cubic-bezier(0.3, 1.6, 0.5, 1),
+    opacity 0.35s;
+}
+
+.spin-hotspot.is-visible {
+  transform: translate(-50%, -50%) scale(1);
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.spin-pin {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  height: 22px;
+  border: 1px solid rgba(17, 17, 17, 0.15);
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.92);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.12);
+  color: #111;
+  font-size: 14px;
+  line-height: 1;
+}
+
+.spin-pin::after {
+  position: absolute;
+  inset: -1px;
+  border: 1px solid rgba(255, 255, 255, 0.9);
+  border-radius: 50%;
+  content: '';
+  animation: spin-ping 2.2s infinite;
+}
+
+@keyframes spin-ping {
+  0% {
+    transform: scale(0.6);
+    opacity: 0.9;
+  }
+  100% {
+    transform: scale(1.5);
+    opacity: 0;
+  }
+}
+
+.spin-tip {
+  position: absolute;
+  top: 50%;
+  width: 210px;
+  padding: 12px 14px;
+  background: #fff;
+  color: #111;
+  font-size: 11px;
+  line-height: 1.45;
+  transform: translateY(-50%);
+  clip-path: inset(0 100% 0 0);
+  transition: clip-path 0.45s cubic-bezier(0.65, 0, 0.25, 1);
+}
+
+.spin-tip b {
+  display: block;
+  margin-bottom: 4px;
+  font-weight: 500;
+  text-transform: uppercase;
+}
+
+.spin-hotspot:hover .spin-tip {
+  clip-path: inset(0);
+}
+
+.spin-deg {
+  position: absolute;
+  bottom: 62px;
+  left: 50%;
+  width: 240px;
+  color: #7b7e84;
+  font-size: 11px;
+  letter-spacing: 0.06em;
+  text-align: center;
+  transform: translateX(-50%);
+  pointer-events: none;
+}
+
+.spin-deg-bar {
+  position: relative;
+  width: 120px;
+  height: 1px;
+  margin: 10px auto;
+  background: #b9bcc2;
+}
+
+.spin-deg-dot {
+  position: absolute;
+  top: 50%;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #111;
+  transform: translate(-50%, -50%);
+}
+
+.spin-deg-num {
+  color: #111;
+}
+
+.spin-looks {
+  position: absolute;
+  left: 38px;
+  top: 790px;
+  z-index: 20;
+  display: flex;
+  gap: 14px;
+}
+
+.spin-look {
+  position: relative;
+  width: 56px;
+  height: 56px;
+  background: #fff;
+}
+
+.spin-look canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+  opacity: 0.7;
+  filter: grayscale(1);
+}
+
+.spin-look.is-active canvas {
+  opacity: 1;
+  filter: none;
+}
+
+.spin-corner {
+  position: absolute;
+  width: 7px;
+  height: 7px;
+  background: #111;
+  opacity: 0;
+}
+
+.spin-look.is-active .spin-corner {
+  opacity: 1;
+}
+
+.spin-corner-tl {
+  left: -3px;
+  top: -3px;
+}
+
+.spin-corner-tr {
+  right: -3px;
+  top: -3px;
+}
+
+.spin-corner-bl {
+  bottom: -3px;
+  left: -3px;
+}
+
+.spin-corner-br {
+  right: -3px;
+  bottom: -3px;
+}
+
+.spin-fly {
+  position: absolute;
+  z-index: 40;
+  width: 60px;
+  height: 80px;
+  background-color: #fff;
+  background-position: center;
+  background-size: cover;
+  box-shadow: 0 9px 24px rgba(0, 0, 0, 0.18);
+  pointer-events: none;
+}
+
 
