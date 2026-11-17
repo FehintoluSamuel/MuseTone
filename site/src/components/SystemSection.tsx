@@ -4,160 +4,66 @@ interface SystemSectionProps {
   onStartClick: () => void;
 }
 
-const READ = [
-  { label: 'Tone', value: 'Warm' },
-  { label: 'Undertone', value: 'Olive' },
-  { label: 'Contrast', value: 'High' },
+const STEPS = [
+  {
+    title: 'Skin read',
+    copy: 'Tone, undertone and contrast are declared and checked, then resolved into a five-tone palette you can explain. No selfie, no guessing.',
+  },
+  {
+    title: 'Styling studio',
+    copy: 'Move through eight complete looks and six light grades, with controls for face, hair, makeup, body, accessories, tattoos and detail.',
+  },
+  {
+    title: 'Motion study',
+    copy: 'Rotate the silhouette through a 360-degree study with front and back views, so the line is read before a sample is cut.',
+  },
+  {
+    title: 'Colour try-on',
+    copy: 'Five tops are mapped to the mannequin. Recolour by mask, compare the original, and save the colour match to a look.',
+  },
+  {
+    title: 'Saved matches',
+    copy: 'Keep the colour matches that work. Reopen them from your library and compare alternatives without starting the read again.',
+  },
 ];
-
-const PALETTE = ['#E9D9D1', '#D8C0B8', '#D9605C', '#B9534F', '#171414'];
 
 export const SystemSection: React.FC<SystemSectionProps> = ({ onStartClick }) => {
   return (
     <section
-      id="technology"
+      id="features"
       className="relative mt-20 w-full scroll-mt-20 overflow-hidden bg-[#171414] py-20 text-white sm:mt-28 sm:py-28"
     >
       <div className="mx-auto w-full max-w-[1280px] px-4 sm:px-6 lg:px-8">
-        <div className="grid gap-12 lg:grid-cols-12 lg:gap-16">
-          <div className="lg:col-span-5">
-            <h2 className="font-['Montserrat'] text-[clamp(42px,5.5vw,82px)] font-black leading-[0.92] tracking-[-0.04em] text-white">
-              The read,
-              <br />
-              made visible.
+        <div className="grid gap-10 lg:grid-cols-[minmax(0,0.78fr)_minmax(0,1.35fr)] lg:gap-20 xl:gap-28">
+          <div className="lg:sticky lg:top-28 lg:self-start">
+            <h2 className="max-w-[420px] font-['Montserrat'] text-[clamp(28px,3vw,44px)] font-semibold leading-[1.05] tracking-[-0.04em] text-white">
+              How Muse works.
             </h2>
-            <p className="mt-6 max-w-[390px] text-sm leading-relaxed text-[#D8CCC5]">
-              Tone, undertone, and contrast are resolved into a palette you can explain, then
-              checked against the garment and the body before a sample is cut.
+            <p className="mt-5 max-w-[340px] text-[15px] leading-[1.7] text-white/45">
+              Five moves from skin read to saved match, before the first stitch.
             </p>
-
-            <div className="mt-8 flex flex-wrap items-center gap-5">
-              <button
-                onClick={onStartClick}
-                className="btn-ghost"
-              >
-                Open a sample profile
-              </button>
-              <span className="text-[11px] font-semibold uppercase tracking-[0.1em] text-[#C9BDB7]">
-                No selfie. No guess.
-              </span>
-            </div>
-
-            <dl className="mt-12 grid grid-cols-3 gap-4 border-t border-[#3A3230] pt-5">
-              {READ.map((item) => (
-                <div key={item.label}>
-                  <dt className="text-[11px] font-semibold uppercase tracking-[0.1em] text-[#C9BDB7]">
-                    {item.label}
-                  </dt>
-                  <dd className="mt-2 text-lg font-semibold tracking-tight text-white">
-                    {item.value}
-                  </dd>
-                </div>
-              ))}
-            </dl>
+            <button
+              onClick={onStartClick}
+              className="mt-8 text-sm font-semibold text-white underline decoration-[#D9605C] decoration-2 underline-offset-4 transition-colors hover:text-[#F7DCD8]"
+            >
+              Start with a skin read
+            </button>
           </div>
 
-          <div className="lg:col-span-7">
-            <div className="border border-[#3A3230] bg-[#211C1B]">
-              <div className="flex items-center justify-between gap-3 border-b border-[#3A3230] px-4 py-3 text-[11px] font-semibold uppercase tracking-[0.1em] text-[#C9BDB7] sm:px-5">
-                <span>Sample profile</span>
-                <span>01</span>
-              </div>
-
-              <div className="grid gap-4 p-4 sm:grid-cols-[1.05fr_0.95fr] sm:p-5">
-                <figure className="relative min-h-[380px] overflow-hidden bg-[#D8C0B8] sm:min-h-[470px]">
-                  <img
-                    src="/editorial/look-leather.webp"
-                    alt="Model in a black leather jacket and heels against a pale studio backdrop"
-                    width="1200"
-                    height="1800"
-                    loading="eager"
-                    decoding="async"
-                    className="absolute inset-0 h-full w-full object-cover object-[50%_18%]"
-                  />
-                  <figcaption className="absolute inset-x-0 bottom-0 bg-[#171414] px-4 py-3">
-                    <p className="text-[11px] font-semibold uppercase tracking-[0.1em] text-[#C9BDB7]">
-                      Amara / 26
-                    </p>
-                    <p className="mt-1 text-xl font-semibold tracking-tight text-white">
-                      Spring / Deep
-                    </p>
-                  </figcaption>
-                </figure>
-
-                <div className="flex flex-col divide-y divide-[#3A3230]">
-                  <div className="pb-5">
-                    <div className="flex items-center justify-between gap-3">
-                      <p className="text-[11px] font-semibold uppercase tracking-[0.1em] text-[#C9BDB7]">
-                        Skin read
-                      </p>
-                      <span className="text-[11px] font-semibold uppercase tracking-[0.1em] text-[#A99B94]">
-                        ITA 42
-                      </span>
-                    </div>
-                    <dl className="mt-4 space-y-3">
-                      {READ.map((item) => (
-                        <div
-                          key={item.label}
-                          className="flex items-center justify-between gap-4 border-t border-[#3A3230] pt-3"
-                        >
-                          <dt className="text-xs text-[#D8CCC5]">{item.label}</dt>
-                          <dd className="text-sm font-semibold text-white">{item.value}</dd>
-                        </div>
-                      ))}
-                    </dl>
-                  </div>
-
-                  <div className="py-5">
-                    <div className="flex items-center justify-between gap-3">
-                      <p className="text-[11px] font-semibold uppercase tracking-[0.1em] text-[#C9BDB7]">
-                        Harmony
-                      </p>
-                      <span className="text-[11px] font-semibold uppercase tracking-[0.1em] text-[#A99B94]">
-                        High
-                      </span>
-                    </div>
-                    <div className="mt-5 flex items-center justify-between gap-3">
-                      <span className="text-xs text-[#D8CCC5]">Palette</span>
-                      <span className="text-[11px] font-semibold uppercase tracking-[0.1em] text-[#A99B94]">
-                        5 tones
-                      </span>
-                    </div>
-                    <div className="mt-2 grid grid-cols-5 gap-1.5" aria-hidden="true">
-                      {PALETTE.map((hex) => (
-                        <span
-                          key={hex}
-                          className="h-10 border border-black/10"
-                          style={{ backgroundColor: hex }}
-                        />
-                      ))}
-                    </div>
-                  </div>
-
-                  <div className="pt-5">
-                    <p className="text-[11px] font-semibold uppercase tracking-[0.1em] text-[#C9BDB7]">
-                      Garment check
-                    </p>
-                    <div className="mt-3 flex items-end justify-between gap-4">
-                      <div>
-                        <p className="text-sm font-semibold text-white">Silk / Ember</p>
-                        <p className="mt-1 text-[11px] uppercase tracking-[0.1em] text-[#A99B94]">
-                          Harmonises
-                        </p>
-                      </div>
-                      <span className="border border-[#D9605C] px-3 py-1 text-sm font-semibold uppercase tracking-[0.1em] text-[#F7DCD8]">
-                        Pass
-                      </span>
-                    </div>
-                  </div>
+          <div className="border-t border-white/10">
+            {STEPS.map((step, index) => (
+              <article
+                key={step.title}
+                className="grid gap-4 border-b border-white/10 py-8 sm:grid-cols-[96px_minmax(0,1fr)] sm:gap-8 sm:py-10 lg:grid-cols-[120px_minmax(0,1fr)] lg:py-11"
+              >
+                <div className="font-['Montserrat'] text-[clamp(40px,5vw,64px)] font-bold leading-none tracking-[-0.04em] text-white">
+                  {String(index + 1).padStart(2, '0')}
                 </div>
-              </div>
-            </div>
-
-            <p className="mt-3 flex items-center justify-between gap-4 border-t border-[#3A3230] pt-2 text-[11px] font-semibold uppercase tracking-[0.1em] text-[#A99B94]">
-              <span>Interface study / Pexels</span>
-              <span>Muse / 2026</span>
-            </p>
+                <p className="max-w-[62ch] text-[clamp(16px,1.1vw,18px)] leading-[1.7] text-white/55">
+                  <span className="font-semibold text-white">{step.title}.</span> {step.copy}
+                </p>
+              </article>
+            ))}
           </div>
         </div>
       </div>

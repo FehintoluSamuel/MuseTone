@@ -2,26 +2,25 @@ import React, { useState } from 'react';
 import { Navbar } from './components/Navbar';
 import { EditorialHero, HeroBackdrop } from './components/EditorialHero';
 import { AtelierBand } from './components/AtelierBand';
-import { CampaignSection } from './components/CampaignSection';
+import { PricingSection } from './components/PricingSection';
 import { MotionSection } from './components/MotionSection';
 import { MannequinStudio } from './components/MannequinStudio';
 import { SpinShowcase } from './components/SpinShowcase';
 import { SystemSection } from './components/SystemSection';
-import { ColourIndex } from './components/ColourIndex';
-import { ProcessSection } from './components/ProcessSection';
+import { StudioSection } from './components/StudioSection';
 import { InteractiveModals } from './components/InteractiveModals';
 import { SpinDemo } from './components/SpinDemo';
 import { TryOnDemo } from './components/TryOnDemo';
 
 export default function App() {
-  const [activeNav, setActiveNav] = useState('Explore');
+  const [activeNav, setActiveNav] = useState('explore');
   const [activeModal, setActiveModal] = useState<
     'start' | 'get-started' | 'learn-more' | null
   >(null);
 
-  const handleNavClick = (nav: string) => {
-    setActiveNav(nav);
-    document.getElementById(nav.toLowerCase())?.scrollIntoView({ block: 'start' });
+  const handleNavClick = (id: string) => {
+    setActiveNav(id);
+    document.getElementById(id)?.scrollIntoView({ block: 'start' });
   };
 
   if (new URLSearchParams(window.location.search).has('tryon-demo')) {
@@ -49,15 +48,16 @@ export default function App() {
 
           <SpinShowcase />
 
-          <CampaignSection onExploreClick={() => setActiveModal('learn-more')} />
-
           <MotionSection />
 
           <SystemSection onStartClick={() => setActiveModal('start')} />
 
-          <ColourIndex onExploreClick={() => setActiveModal('learn-more')} />
+          <PricingSection
+            onStartClick={() => setActiveModal('start')}
+            onChoosePlan={() => setActiveModal('get-started')}
+          />
 
-          <ProcessSection
+          <StudioSection
             onStartClick={() => setActiveModal('start')}
             onStudioClick={() => setActiveModal('get-started')}
           />
@@ -67,6 +67,8 @@ export default function App() {
       <InteractiveModals
         activeModal={activeModal}
         onClose={() => setActiveModal(null)}
+        onStartClick={() => setActiveModal('start')}
+        onStudioClick={() => setActiveModal('get-started')}
       />
 
       {new URLSearchParams(window.location.search).has('spin-demo') && <SpinDemo />}

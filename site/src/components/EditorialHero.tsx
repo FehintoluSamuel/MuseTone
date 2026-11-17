@@ -108,18 +108,6 @@ export const EditorialHero: React.FC<EditorialHeroProps> = ({ onStartClick }) =>
         className="absolute inset-0 -z-10 bg-[rgba(23,20,20,0.93)]"
       />
       <div className="relative z-10 mx-auto flex w-full max-w-[1400px] flex-1 flex-col px-5 pb-8 pt-28 sm:px-8 sm:pb-10 sm:pt-32 lg:px-12 lg:pb-12">
-        <div className="flex justify-center">
-          <div className="flex items-center gap-3 text-white/80">
-            <span className="relative flex h-8 w-8 items-center justify-center" aria-hidden="true">
-              <span className="absolute inset-0 rounded-[4px] border border-white/60" />
-              <span className="absolute -bottom-0.5 -right-0.5 h-2 w-2 rounded-full bg-[#D9605C]" />
-            </span>
-            <span className="font-['Montserrat'] text-[11px] font-bold uppercase tracking-[0.3em] text-white/85">
-              Muse
-            </span>
-          </div>
-        </div>
-
         <div className="flex flex-1 flex-col items-center justify-center py-12 text-center sm:py-16">
           <motion.div
             initial={reduceMotion ? false : { opacity: 0, y: 18 }}

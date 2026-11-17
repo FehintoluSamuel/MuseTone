@@ -18,14 +18,50 @@ export const AtelierBand: React.FC<AtelierBandProps> = ({ onExploreClick }) => {
               </span>
             </h2>
             <p className="mt-6 max-w-[390px] text-sm leading-relaxed text-[#D8CCC5]">
-              A closet is a palette before it is a wardrobe. Muse reads the pieces you already own
-              and shows what belongs beside them.
+              Personal palettes, garment checks, and mannequin previews, before the first stitch.
             </p>
+
+            <dl className="mt-8 divide-y divide-white/10 border-y border-white/10">
+              <div className="grid grid-cols-[38px_1fr] gap-3 py-3">
+                <dt className="text-[11px] font-semibold uppercase tracking-[0.1em] text-[#A99B94]">
+                  01
+                </dt>
+                <dd>
+                  <p className="text-sm font-semibold text-white">Colour index</p>
+                  <p className="mt-1 text-xs leading-relaxed text-[#A99B94]">
+                    Five tones, mapped to tone, undertone and contrast.
+                  </p>
+                </dd>
+              </div>
+              <div className="grid grid-cols-[38px_1fr] gap-3 py-3">
+                <dt className="text-[11px] font-semibold uppercase tracking-[0.1em] text-[#A99B94]">
+                  02
+                </dt>
+                <dd>
+                  <p className="text-sm font-semibold text-white">Garment check</p>
+                  <p className="mt-1 text-xs leading-relaxed text-[#A99B94]">
+                    A fabric photo becomes a colour read you can explain.
+                  </p>
+                </dd>
+              </div>
+              <div className="grid grid-cols-[38px_1fr] gap-3 py-3">
+                <dt className="text-[11px] font-semibold uppercase tracking-[0.1em] text-[#A99B94]">
+                  03
+                </dt>
+                <dd>
+                  <p className="text-sm font-semibold text-white">Mannequin preview</p>
+                  <p className="mt-1 text-xs leading-relaxed text-[#A99B94]">
+                    The palette on a body before the first sample is cut.
+                  </p>
+                </dd>
+              </div>
+            </dl>
+
             <button
               onClick={onExploreClick}
               className="btn-ghost mt-7"
             >
-              See the colour index
+              Explore the rail
             </button>
           </div>
           <p className="mt-10 text-[11px] font-semibold uppercase tracking-[0.1em] text-[#A99B94]">
