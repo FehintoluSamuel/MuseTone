@@ -34,7 +34,7 @@ export default function App() {
         <Navbar
           activeNav={activeNav}
           onNavClick={handleNavClick}
-          onGetStartedClick={() => setActiveModal('get-started')}
+          onGetStartedClick={() => setActiveModal('start')}
         />
 
         <header id="explore" className="relative w-full scroll-mt-20">

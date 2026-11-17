@@ -244,7 +244,7 @@ export const TryOnDemo: React.FC = () => {
 
   const saveLook = () => {
     setSavedLooks((count) => count + 1);
-    setSaveMessage('Look saved locally');
+    setSaveMessage('Look saved on this device');
     if (savedTimer.current) window.clearTimeout(savedTimer.current);
     savedTimer.current = window.setTimeout(() => setSaveMessage(''), 2200);
   };
@@ -262,12 +262,12 @@ export const TryOnDemo: React.FC = () => {
             </a>
             <span className="hidden h-4 w-px bg-white/20 sm:block" />
             <span className="font-mono text-[10px] uppercase tracking-[0.18em] text-white/45">
-              Try-on engine / v1 preview
+              Colour try-on / Studio demo
             </span>
           </div>
           <div className="flex items-center gap-4">
             <span className="hidden font-mono text-[10px] uppercase tracking-[0.16em] text-white/35 sm:block">
-              5 tops / front view / live color
+              Tops / front view / live recolour
             </span>
             <a
               href="/"
@@ -285,12 +285,12 @@ export const TryOnDemo: React.FC = () => {
               Front view
             </div>
             <div className="absolute right-5 top-5 z-10 rounded-full border border-white/10 bg-black/20 px-3 py-1.5 font-mono text-[9px] uppercase tracking-[0.16em] text-white/45 backdrop-blur">
-              2D layer demo
+              Layer demo
             </div>
 
             <canvas
               ref={canvasRef}
-              aria-label={`${top.name} on mannequin`}
+              aria-label={`${top.name} on the model`}
               className="max-h-[68vh] w-auto max-w-full rounded-[16px] object-contain shadow-[0_30px_90px_rgba(0,0,0,0.48)]"
             />
 
@@ -303,7 +303,7 @@ export const TryOnDemo: React.FC = () => {
             <div className="absolute bottom-5 left-5 right-5 flex flex-wrap items-center justify-between gap-3 rounded-2xl border border-white/10 bg-black/25 px-4 py-3 backdrop-blur">
               <div className="flex items-center gap-2 font-mono text-[9px] uppercase tracking-[0.14em] text-white/50">
                 <span className="h-1.5 w-1.5 rounded-full bg-white/50" />
-                Base mannequin
+                Base model
                 <span className="text-white/20">/</span>
                 <span className="text-white/85">{top.id} top layer</span>
                 <span className="text-white/20">/</span>
@@ -311,10 +311,10 @@ export const TryOnDemo: React.FC = () => {
                   className="inline-block h-2.5 w-2.5 rounded-full border border-white/20"
                   style={{ backgroundColor: original ? '#B9BCC2' : mainColor }}
                 />
-                <span>{original ? 'Original color' : mainColor}</span>
+                <span>{original ? 'Original colour' : mainColor}</span>
               </div>
               <span className="font-mono text-[9px] uppercase tracking-[0.14em] text-white/35">
-                Drag-free / color only
+                Drag-free / colour only
               </span>
             </div>
           </section>
@@ -324,7 +324,7 @@ export const TryOnDemo: React.FC = () => {
               <div className="flex items-end justify-between gap-4">
                 <div>
                   <p className="font-mono text-[9px] uppercase tracking-[0.18em] text-white/40">
-                    01 / Garment
+                    Garment
                   </p>
                   <h1 className="mt-2 font-['Tinos',serif] text-[30px] leading-[1.05] sm:text-[36px]">
                     {top.name}
@@ -369,7 +369,7 @@ export const TryOnDemo: React.FC = () => {
               <div className="flex items-end justify-between gap-4">
                 <div>
                   <p className="font-mono text-[9px] uppercase tracking-[0.18em] text-white/40">
-                    02 / Color
+                    Colour
                   </p>
                   <h2 className="mt-1 font-['Tinos',serif] text-[24px]">
                     Main fabric
@@ -400,8 +400,8 @@ export const TryOnDemo: React.FC = () => {
                       ? 'border-[#B9534F] ring-2 ring-[#B9534F]/25'
                       : 'border-white/15 hover:border-white/35'
                   } bg-[linear-gradient(135deg,#F1E8D8_0%,#B08A62_50%,#171717_100%)]`}
-                  aria-label="Original color"
-                  title="Original color"
+                  aria-label="Original colour"
+                  title="Original colour"
                 />
                 {COLORS.map((color) => (
                   <button
@@ -448,12 +448,12 @@ export const TryOnDemo: React.FC = () => {
 
             <section className="rounded-[28px] border border-white/10 bg-[#191716] p-5 sm:p-6">
               <p className="font-mono text-[9px] uppercase tracking-[0.18em] text-white/40">
-                03 / Layer stack
+                Layer stack
               </p>
               <div className="mt-4 space-y-2">
                 <div className="flex items-center justify-between rounded-xl border border-white/10 px-3 py-2.5">
                   <span className="font-mono text-[10px] uppercase tracking-[0.12em] text-white/55">
-                    Base mannequin
+                    Base model
                   </span>
                   <span className="font-mono text-[9px] uppercase tracking-[0.12em] text-white/30">
                     Locked
@@ -469,7 +469,7 @@ export const TryOnDemo: React.FC = () => {
                 </div>
                 <div className="flex items-center justify-between rounded-xl border border-white/10 px-3 py-2.5">
                   <span className="font-mono text-[10px] uppercase tracking-[0.12em] text-white/55">
-                    Color overlay
+                    Colour overlay
                   </span>
                   <span className="font-mono text-[9px] uppercase tracking-[0.12em] text-white/35">
                     {original ? 'Original' : mainColor}
@@ -497,9 +497,9 @@ export const TryOnDemo: React.FC = () => {
             </section>
 
             <p className="px-2 font-mono text-[9px] leading-5 tracking-[0.04em] text-white/30">
-              Demo note: masks are auto-generated from the five front renders.
-              Production assets will use tighter per-garment masks, separate
-              trim/button zones, and front plus three-quarter layers.
+              Demo note: masks are built from the front renders. Production assets
+              will use tighter per-garment masks, separate trim and button zones,
+              and front plus three-quarter layers.
             </p>
           </aside>
         </main>

@@ -50,24 +50,25 @@ export const SpinShowcase: React.FC = () => {
         <div className="grid gap-8 border-b border-white/15 pb-8 md:grid-cols-[1.1fr_0.9fr] md:items-end">
           <div>
             <p className="text-xs font-semibold uppercase tracking-[0.1em] text-white/55">
-              MUSE / Motion study
+              MUSE / Turntable
             </p>
             <h2 className="mt-3 font-['Montserrat'] text-[clamp(46px,6.6vw,92px)] font-black leading-[0.9] tracking-[-0.04em] text-white">
               <span className="box-decoration-clone rounded-[2px] bg-[linear-gradient(90deg,#D9605C_0%,#C65D58_55%,#9E3F3B_100%)] bg-[length:100%_80%] bg-center bg-no-repeat px-3 text-white shadow-[0_8px_24px_rgba(0,0,0,0.28)]">
-                The form,
+                Check the
                 <br />
-                in the round.
+                drape.
               </span>
             </h2>
           </div>
 
           <div className="md:justify-self-end">
             <p className="max-w-[460px] text-base leading-[1.7] text-white/70">
-              A single silhouette, turning under studio light. Drag to read the drape, the weight,
-              and the way colour changes across a seam.
+              Use the turntable to see how a garment falls, how the colour shifts across a seam, and
+              whether the back works as hard as the front. Spin it before you cut, buy or style the
+              piece.
             </p>
             <p className="mt-4 text-xs font-semibold uppercase tracking-[0.08em] text-white/55">
-              360° study / 01
+              Turntable preview
             </p>
           </div>
         </div>
@@ -75,11 +76,11 @@ export const SpinShowcase: React.FC = () => {
         <div className="mt-8 grid gap-8 sm:mt-10 lg:grid-cols-[0.72fr_1.28fr] lg:items-end lg:gap-12">
           <div className="lg:pb-10">
             <p className="text-xs font-semibold uppercase tracking-[0.08em] text-white/55">
-              Turn the look
+              What to check
             </p>
             <p className="mt-3 max-w-[360px] text-base leading-[1.7] text-white/70">
-              The stage holds the frame while you rotate. Use the thumbnails to return to the
-              front or back.
+              Spin the model, then compare the front, side and back. Look for drape, weight and
+              colour across the seams.
             </p>
 
             <div className="mt-8 border-t border-white/15 pt-4">
@@ -162,13 +163,13 @@ export const SpinShowcase: React.FC = () => {
                 fit="cover"
                 dragPixelsPerTurn={720}
                 onAngleChange={handleAngleChange}
-                ariaLabel="Drag to rotate the Muse 360 study"
+                ariaLabel="Drag to rotate the MUSE turntable study"
                 className="h-full w-full"
               />
 
               <div className="pointer-events-none absolute inset-x-4 top-4 flex items-center justify-between gap-3">
                 <span className="bg-[#171414] px-3 py-2 text-xs font-semibold uppercase tracking-[0.14em] text-white backdrop-blur">
-                  MUSE / 360
+                  MUSE / TURNTABLE
                 </span>
                 <span className="bg-[#171414] px-3 py-2 text-xs font-semibold tabular-nums uppercase tracking-[0.14em] text-white backdrop-blur">
                   {degrees}°
@@ -188,10 +189,10 @@ export const SpinShowcase: React.FC = () => {
             <figcaption className="flex items-end justify-between gap-4 bg-[#171414] px-4 py-4 text-white sm:px-5">
               <div>
                 <p className="text-xs font-semibold uppercase tracking-[0.08em] text-white/55">
-                  360 study / 01
+                  Turntable preview
                 </p>
                 <p className="mt-1 text-2xl font-semibold tracking-tight text-white">
-                  The silhouette
+                  Check the turn
                 </p>
               </div>
               <span className="text-base font-semibold tabular-nums text-[#F7DCD8]">

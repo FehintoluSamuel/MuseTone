@@ -1,0 +1,366 @@
+MUSE — COPYWRITING BRIEF
+Date: 17 November 2026
+Source of truth: PROPOSAL.md + current site/src page copy
+Purpose: establish the positioning and page structure before writing final conversion copy
+
+
+1. APP NAME & CORE FUNCTION
+---------------------------
+
+App name
+MUSE
+
+Core function
+MUSE is a web-first colour-intelligence platform for fashion. It helps a designer,
+stylist, or client answer one practical question: "Which colours and combinations
+suit this person, this garment, and this outfit?"
+
+What it actually does
+- Profiles skin tone, undertone, and contrast.
+- Builds a personal five-tone palette with a clear explanation.
+- Reads the colour of a garment from a fabric photo.
+- Scores and explains colour harmony, including suggested swaps.
+- Previews the palette on an interactive full-body mannequin.
+- Shows eight complete looks and six light grades.
+- Includes a 360-degree silhouette study.
+- Includes five try-on tops that can be recoloured by mask.
+- Saves colour matches and client looks for later comparison.
+- Gives designers a repeatable client workflow rather than one-off guesswork.
+
+What it is not
+- Not a generative-AI virtual try-on product.
+- Not an AR fitting room.
+- Not a generic "what season are you?" quiz.
+- Not a thrift, resale, or tailor marketplace.
+- Not a native mobile app yet. The current experience is web-first.
+
+Core promise
+"Before the first stitch."
+
+Supporting idea
+MUSE makes colour decisions visible, explainable, and repeatable before time or money
+is spent on a sample.
+
+Why this matters for copy
+Lead with the decision and the outcome, not the technology. "Colour intelligence"
+is the product category; "AI" is not the selling point. The differentiator is
+deterministic, explainable colour science plus a mannequin preview.
+
+
+2. TARGET AUDIENCE
+------------------
+
+Primary audience
+1. Independent fashion designers and small atelier teams.
+   They need repeatable colour decisions, fewer wasted samples, and language they
+   can use with clients.
+
+2. Stylists and image / colour consultants.
+   They manage multiple clients, need fast palette reads, and need to explain a
+   recommendation with confidence.
+
+3. Boutique studio owners and small fashion teams.
+   They want a shared client workflow without enterprise software.
+
+Secondary audience
+4. Fashion-conscious individuals.
+   They want a personal palette, a second opinion on a garment, and confidence
+   before buying or commissioning.
+
+Best-fit user mindset
+- "I know what I like, but I need to explain why it works."
+- "I keep testing the same colour combinations from scratch."
+- "I do not want another black-box AI tool or another selfie upload."
+- "I want to see the colour on a body before I commit."
+
+Not the current core audience
+- Gen Z streetwear shoppers looking for resale or outfit inspiration.
+- Consumers looking for AR try-on or body measurement.
+- Large enterprise fashion brands needing a full PLM integration.
+
+Primary user jobs
+- Build a reliable palette for a client.
+- Check whether a fabric or garment works.
+- Show the result on a body.
+- Save the match and return to it later.
+- Explain the decision in a fitting room or client presentation.
+
+
+3. KEY PAIN POINT & VALUE PROPOSITION
+-------------------------------------
+
+The pain
+Colour decisions are slow, subjective, and repeated constantly. Designers rely on
+experience and trial; clients rely on guesswork and social media. A poor colour
+choice is often discovered late, after fabric, time, or a sample has already been
+committed.
+
+The consequences
+- Re-sampling and wasted material.
+- Second-guessing in fittings.
+- Inconsistent advice across clients.
+- Recommendations that are hard to defend.
+- Palettes that look good online but behave differently in daylight, evening light,
+  or on camera.
+
+Current alternatives and their gaps
+- Colour-analysis quizzes: give a palette but do not show it on a body or check a
+  garment.
+- AI try-on tools: often require selfies, feel like a black box, and carry privacy
+  and trust concerns.
+- Designer intuition / spreadsheets: flexible, but hard to repeat and explain.
+- Generic wardrobe apps: organise clothes but do not support a designer's colour
+  workflow.
+
+Value proposition
+MUSE turns skin tone, undertone, contrast, and garment colour into a clear palette
+and a body-level preview you can explain, repeat, and save — before a sample is cut.
+
+Why it is better
+- Explainable: the result is a colour read, not a magic verdict.
+- Repeatable: the same profile and rules can be used again.
+- Visual: the palette is shown on a mannequin, not only as swatches.
+- Private by design: no selfie or face-image processing in v1.
+- Fast: the target is a usable palette in under 60 seconds and a garment check in
+  under 3 minutes. Treat these as product targets until they are tested in public copy.
+- Low-cost at the point of use: the browser-rendered mannequin avoids a per-render
+  generative-AI cost.
+
+Main objections the copy must answer
+- "Is this just another colour quiz?"
+  Answer: it checks a garment and shows the result on a body.
+- "Is this accurate?"
+  Answer: explain the inputs and the colour logic; show the result; avoid absolute
+  claims about taste.
+- "Do I have to upload my face?"
+  Answer: no. The profile is self-declared and checked, with no face image in v1.
+- "Why would I pay for this?"
+  Answer: repeatable client work, saved matches, and a faster path to a decision.
+- "Can I use this with clients?"
+  Answer: Studio and Atelier tiers support saved looks, shared palettes, and
+  multi-client work.
+
+Proof needed before final copy
+- At least two designer or stylist testimonials.
+- One concrete before/after workflow example.
+- A named colour consultant or industry co-sign, if available.
+- A clear demo of the mannequin and garment check.
+Without proof, the page must rely on the product demonstration itself. Do not invent
+usage numbers, client names, or accuracy claims.
+
+
+4. BRAND TONE & AESTHETIC
+-------------------------
+
+Tone in one line
+Quietly luxurious, exacting, and warm — like a studio director, not a growth marketer.
+
+Voice principles
+- Lead with the decision, not the technology.
+- Use studio language: palette, rail, seam, fabric, sample, fitting, light, match.
+- Be specific. Replace "effortless style" with "a colour read you can explain."
+- Confident, never absolute. Colour advice should feel expert, not authoritarian.
+- Short sentences. Let the product and photography carry the emotion.
+- Use British English: colour, fitting, atelier, personalised.
+
+Words and phrases that fit
+- colour intelligence
+- the rail, in colour
+- before the first stitch
+- a read you can explain
+- on the body
+- studio light
+- save the match
+- client-ready
+- repeatable
+- quieter, clearer, sharper
+
+Words and phrases to avoid
+- AI-powered, AI magic, revolutionary, game-changing
+- unlock, elevate, transform, seamless, effortless
+- "find your perfect style"
+- "your personal colour journey"
+- "10x your styling"
+- "the future of fashion"
+- generic fashion-tech hype with no product proof
+
+Visual and verbal identity
+- Editorial fashion, not SaaS.
+- Warm neutrals: shell, rose, ember, brick, ink.
+- Deep near-black studio backgrounds.
+- Oxblood / brick accent for emphasis.
+- Montserrat display type with Archivo body copy.
+- Photography should feel like a studio study: fabric, light, drape, silhouette.
+- Motion should be restrained: muted loops, slow turns, no jump-cut hype.
+
+Brand naming note
+Use "MUSE" for the brand in headlines and "Muse" only where the existing UI uses
+title case. Standardise one form before launch.
+
+
+5. LANDING PAGE SECTIONS IN THE CURRENT BUILD
+---------------------------------------------
+
+Global navigation
+Items: Explore / Motion / Colour / Features / Pricing / Studio
+Primary CTA: Get started
+Current behaviour: "Get started" opens the studio-access modal.
+
+1. Hero — #explore
+Current headline: "Colour Vision."
+Current subhead: "Personal palettes, garment checks, and mannequin previews, before
+the first stitch."
+Current CTA: "Build a palette"
+Conversion job: state the outcome immediately and move the user into a free profile.
+Copy opportunity: make the promise more concrete than "Colour Vision" while keeping
+the editorial tone.
+
+2. Colour / Atelier band — #atelier
+Current headline: "The rail, in colour."
+Current subhead: "Personal palettes, garment checks, and mannequin previews, before
+the first stitch."
+Current proof points:
+- 01 Colour index — "Five tones, mapped to tone, undertone and contrast."
+- 02 Garment check — "A fabric photo becomes a colour read you can explain."
+- 03 Mannequin preview — "The palette on a body before the first sample is cut."
+Current CTA: "Explore the rail" (opens Atelier notes modal)
+Conversion job: explain the three-step value in plain language.
+Copy opportunity: turn the three proof points into a clear problem-to-outcome
+sequence rather than a feature list.
+
+3. Virtual styling studio — #mannequin
+Current headline: "On the body."
+Current subhead: "A full-body cut-out study. Build the look, move through the tabs,
+and watch the same face and pose hold across eight outfits and six grades of light."
+Current experience: interactive styling studio with eight looks, six light grades,
+and controls for face, hair, makeup, body, accessories, tattoos, and detail.
+Conversion job: demonstrate the product and make the mannequin feel useful, not
+decorative.
+Copy opportunity: add a short instruction line that tells the user what to try first.
+
+4. 360 motion study — #spin-showcase
+Current headline: "The form, in the round."
+Current subhead: "A single silhouette, turning under studio light. Drag to read the
+drape, the weight, and the way colour changes across a seam."
+Current interaction: drag to rotate, front/back thumbnails, angle readout.
+Current label: "360° study / 01"
+Conversion job: prove that colour and form can be studied together.
+Copy opportunity: connect the interaction to a real design decision, for example
+checking drape or colour across a seam before sampling.
+
+5. Editorial motion — #motion
+Current headline: "The edit, in motion."
+Current subhead: "A red dress and a black suit, seen under studio light. The palette
+moves before the first sample is cut."
+Current tiles: "Her edit / Red" and "His edit / Suit"
+Current note: "Muted loops. Pause to hold the frame."
+Conversion job: build desire and show the brand's visual world.
+Copy opportunity: use this as the emotional proof of the palette, not as a separate
+product feature.
+
+6. How Muse works — #features
+Current headline: "How Muse works."
+Current subhead: "Five moves from skin read to saved match, before the first stitch."
+Current steps:
+- 01 Skin read
+- 02 Styling studio
+- 03 Motion study
+- 04 Colour try-on
+- 05 Saved matches
+Current CTA: "Start with a skin read"
+Conversion job: remove uncertainty and show the workflow.
+Copy opportunity: name the user outcome in each step, not only the feature.
+
+7. Pricing — #pricing
+Current headline: "Pricing"
+Current subhead: "Choose the tier that matches how you work. Move up when the studio
+needs more colour, more looks, or more room for clients."
+Current tiers:
+- Read — Free: 1 colour profile, 8 studio looks, 5 try-on tops, 360° motion study,
+  save up to 3 looks. CTA: "Start free".
+- Studio — $19/month or $15/month annual: unlimited colour profiles, 6 light grades,
+  full colour index, unlimited saved looks, priority email support.
+  CTA: "Choose Studio".
+- Atelier — $49/month or $39/month annual: multi-client profiles, shared palettes,
+  team seats, early access to garment drops, dedicated studio support.
+  CTA: "Talk to the studio".
+Current note: "Monthly plans can be cancelled anytime. Annual billing saves 20%."
+Conversion job: help each user identify the right tier and reduce pricing anxiety.
+Copy opportunity: state who each tier is for before listing features. Clarify whether
+"Free" means immediate access or early-access waitlist.
+
+8. Studio close — #studio
+Current headline: "Build the look before the garment."
+Current subhead: "Start with one palette. Keep every client, fitting, and colour
+decision in one place."
+Current CTAs: "Start free" and "Talk to the studio"
+Conversion job: final conversion and studio/team lead capture.
+Copy opportunity: make the final CTA specific to the visitor type — individual,
+stylist, or studio team.
+
+9. Footer
+Current: Muse / 2026, anchor links, "Colour intelligence / 2026"
+Missing: privacy, terms, contact, and any legal or trust copy. Add before launch.
+
+10. Modals
+- Muse / Personal — "Muse Personal", free profile, "Create your palette".
+- Muse / Studio — "Get started with Muse", early-access form, "Request early access".
+- Muse / Atelier — "The rail, in colour", colour index and process notes.
+Copy opportunity: align modal language with the page CTA so the user always knows
+what they are getting: free profile, studio access, or early access.
+
+Not present on the page today
+- Social proof / logo strip / testimonials.
+- A dedicated problem-versus-solution section.
+- FAQ / objection handling.
+- App-store download CTA.
+- Legal footer.
+- A clear "book a demo" path for studio teams.
+
+These are conversion gaps, not necessarily missing design sections. Add them only if
+there is real proof or a real next step behind them.
+
+
+6. RECOMMENDED MESSAGING ORDER
+------------------------------
+
+1. Hero: the outcome — a colour decision you can see and explain.
+2. Colour: the three moves — profile, garment check, mannequin.
+3. Mannequin: the product proof — try it on the body.
+4. 360: the form proof — read colour and drape together.
+5. Motion: the emotional proof — the palette in studio light.
+6. Features: the full workflow — from skin read to saved match.
+7. Pricing: the right tier for the way you work.
+8. Studio: the final step — start a palette or talk to the studio.
+
+Message pillars
+- Read the person, not the trend.
+- Check the garment before the sample.
+- See it on the body.
+- Keep the match.
+- Explain the decision.
+
+Recommended hero direction for the next copy pass
+Keep "Colour Vision." only if the rest of the hero makes the outcome literal. A
+stronger conversion hero would pair the editorial line with one concrete promise,
+for example: "See the palette on the body before the first stitch." Use the final
+version only after the product demo and CTA path are confirmed.
+
+
+7. OPEN ITEMS TO CONFIRM BEFORE FINAL COPY
+------------------------------------------
+
+1. Is the primary conversion a free account, an early-access request, or a studio
+   demo? The current modals mix all three.
+2. Is pricing live, or is it still a concept? Do not promise checkout if billing is
+   not connected.
+3. What can be claimed publicly today: no face uploads, deterministic colour logic,
+   saved looks, client profiles, and the mannequin demo? Confirm each.
+4. Do we have at least two real testimonials or a named consultant co-sign? If not,
+   keep proof product-led and avoid invented authority.
+5. Is the launch market UK, EU, or US English? The current page uses British spelling.
+6. Does "MUSE" or "Muse" win as the standard written brand form?
+7. Should the page sell to designers first, or to individual clients first? The
+   current page speaks to both and risks diluting the primary CTA.
+8. Is the 360 study and the five-top try-on available to free users, or only as a
+   demo? Align pricing copy with actual access.

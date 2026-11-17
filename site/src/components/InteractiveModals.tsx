@@ -19,16 +19,16 @@ const PALETTE = [
 
 const PROCESS_STEPS = [
   {
-    title: 'Profile the skin',
-    copy: 'Tone, undertone, and contrast are declared and checked. No selfie, no guessing.',
+    title: 'Build the profile',
+    copy: 'Capture tone, undertone and contrast for a client or yourself, then turn it into a palette you can explain.',
   },
   {
-    title: 'Check the garment',
-    copy: 'A fabric photo becomes an explainable colour read you can defend in the fitting room.',
+    title: 'Read the fabric',
+    copy: 'Photograph the cloth you are considering and compare its colour with the palette before you buy or cut.',
   },
   {
-    title: 'See it on a body',
-    copy: 'The palette meets an interactive full-body mannequin before the first sample is cut.',
+    title: 'See the full look',
+    copy: 'Put the palette on a full-body model and check the whole outfit before the first sample.',
   },
 ];
 
@@ -60,10 +60,10 @@ export const InteractiveModals: React.FC<InteractiveModalsProps> = ({
 
   const meta =
     activeModal === 'start'
-      ? 'Muse / Personal'
+      ? 'MUSE / Personal'
       : activeModal === 'get-started'
-        ? 'Muse / Studio'
-        : 'Muse / Atelier';
+        ? 'MUSE / Studio'
+        : 'MUSE / Atelier';
 
   return (
     <AnimatePresence>
@@ -80,7 +80,7 @@ export const InteractiveModals: React.FC<InteractiveModalsProps> = ({
           <motion.div
             role="dialog"
             aria-modal="true"
-            aria-label="Muse dialog"
+            aria-label="MUSE dialog"
             initial={reduceMotion ? false : { opacity: 0, scale: 0.97, y: 12 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={reduceMotion ? undefined : { opacity: 0, scale: 0.97, y: 12 }}
@@ -107,30 +107,33 @@ export const InteractiveModals: React.FC<InteractiveModalsProps> = ({
                 <div className="space-y-8">
                   <div>
                     <p className="text-xs font-semibold uppercase tracking-[0.12em] text-[#D9605C]">
-                      Free profile
+                      Free colour profile
                     </p>
                     <h3 className="mt-3 font-['Montserrat'] text-4xl font-black leading-[0.94] tracking-[-0.04em] text-white sm:text-5xl">
-                      Muse Personal
+                      Create your
+                      <br />
+                      colour profile.
                     </h3>
                     <p className="mt-3 max-w-[430px] text-base leading-[1.7] text-white/60">
-                      One profile, a core palette, and a place to keep the reads that work.
+                      A working colour profile, a palette you can explain, and a place to keep the
+                      reads that work. Use it for client work or your own outfits.
                     </p>
                   </div>
 
                   <dl className="divide-y divide-white/10 border-y border-white/10">
                     <div className="flex items-center justify-between gap-4 py-4 text-base">
-                      <dt className="text-white/55">Palette depth</dt>
+                      <dt className="text-white/55">Built from</dt>
                       <dd className="text-right font-semibold text-white">
-                        Undertone + core colours
+                        Tone, undertone and contrast
                       </dd>
                     </div>
                     <div className="flex items-center justify-between gap-4 py-4 text-base">
-                      <dt className="text-white/55">Garment checks</dt>
-                      <dd className="font-semibold text-white">Daily</dd>
+                      <dt className="text-white/55">Fabric colour checks</dt>
+                      <dd className="font-semibold text-white">Included</dd>
                     </div>
                     <div className="flex items-center justify-between gap-4 py-4 text-base">
-                      <dt className="text-white/55">Saved boards</dt>
-                      <dd className="font-semibold text-white">One profile</dd>
+                      <dt className="text-white/55">Look library</dt>
+                      <dd className="font-semibold text-white">A few saved looks</dd>
                     </div>
                     <div className="flex items-center justify-between gap-4 py-4">
                       <dt className="text-base text-white/55">Price</dt>
@@ -145,7 +148,7 @@ export const InteractiveModals: React.FC<InteractiveModalsProps> = ({
                       onClick={onClose}
                       className="btn-pill-light w-full sm:w-auto"
                     >
-                      Create your palette
+                      Build my palette
                     </button>
                     <button
                       onClick={onClose}
@@ -155,7 +158,7 @@ export const InteractiveModals: React.FC<InteractiveModalsProps> = ({
                     </button>
                   </div>
                   <p className="text-xs font-semibold uppercase tracking-[0.08em] text-white/40">
-                    Upgrade any time. Your profile and boards stay with you.
+                    Free to start. No card needed. Studio and Atelier access is by request.
                   </p>
                 </div>
               )}
@@ -167,12 +170,13 @@ export const InteractiveModals: React.FC<InteractiveModalsProps> = ({
                       Studio access
                     </p>
                     <h3 className="mt-3 font-['Montserrat'] text-4xl font-black leading-[0.94] tracking-[-0.04em] text-white sm:text-5xl">
-                      Get started
+                      Talk to the
                       <br />
-                      with Muse.
+                      studio.
                     </h3>
                     <p className="mt-3 max-w-[430px] text-base leading-[1.7] text-white/60">
-                      Colour intelligence for designers, stylists, and the clients they dress.
+                      For independent designers, stylists and ateliers. Request access to client
+                      profiles, shared palettes and saved looks.
                     </p>
                   </div>
 
@@ -212,10 +216,10 @@ export const InteractiveModals: React.FC<InteractiveModalsProps> = ({
                         I am a
                       </label>
                       <select className="w-full border-0 border-b border-white/15 bg-[#171414] px-0 py-3 text-base text-white focus:border-[#D9605C] focus:outline-none focus:ring-0">
-                        <option>Fashion designer</option>
-                        <option>Stylist / image consultant</option>
-                        <option>Client / individual</option>
-                        <option>Studio / team</option>
+                        <option>Independent designer</option>
+                        <option>Stylist or image consultant</option>
+                        <option>Atelier or studio team</option>
+                        <option>Client or individual</option>
                       </select>
                     </div>
 
@@ -224,10 +228,10 @@ export const InteractiveModals: React.FC<InteractiveModalsProps> = ({
                         type="submit"
                         className="btn-pill-light w-full sm:w-auto"
                       >
-                        Request early access
+                        Request Studio access
                       </button>
                       <p className="text-xs font-semibold uppercase tracking-[0.08em] text-white/40">
-                        We reply within two working days.
+                        No checkout. We'll reply by email.
                       </p>
                     </div>
                   </form>
@@ -241,13 +245,13 @@ export const InteractiveModals: React.FC<InteractiveModalsProps> = ({
                       Atelier notes
                     </p>
                     <h3 className="mt-3 font-['Montserrat'] text-5xl font-black leading-[0.9] tracking-[-0.04em] text-white sm:text-6xl">
-                      The rail,
+                      From palette
                       <br />
-                      in colour.
+                      to full look.
                     </h3>
                     <p className="mt-4 max-w-[620px] text-base leading-[1.7] text-white/60">
-                      Personal palettes, garment checks, and mannequin previews, before the first
-                      stitch.
+                      Use the colour profile to set the palette, read the fabric, and see the full
+                      look on a model before the first sample.
                     </p>
                   </div>
 
@@ -255,20 +259,21 @@ export const InteractiveModals: React.FC<InteractiveModalsProps> = ({
                     <div className="flex items-end justify-between gap-4 border-b border-white/10 pb-4">
                       <div>
                         <p className="text-xs font-semibold uppercase tracking-[0.12em] text-white/40">
-                          01 / Colour index
+                          Colour profile
                         </p>
                         <h4 className="mt-2 text-2xl font-semibold leading-tight text-white sm:text-3xl">
                           Not every red belongs on every skin.
                         </h4>
                       </div>
                       <span className="shrink-0 text-xs font-semibold uppercase tracking-[0.12em] text-white/45">
-                        05 tones
+                        Core palette
                       </span>
                     </div>
 
                     <p className="mt-4 max-w-[620px] text-base leading-[1.7] text-white/60">
-                      The engine reads tone, undertone, and contrast, then builds a palette that
-                      behaves in daylight, evening light, and on camera.
+                      MUSE reads tone, undertone and contrast, then builds a palette you can use for
+                      client work or your own wardrobe. It holds up in daylight, evening light and on
+                      camera.
                     </p>
 
                     <div className="mt-6 grid grid-cols-5 gap-2">
@@ -303,30 +308,30 @@ export const InteractiveModals: React.FC<InteractiveModalsProps> = ({
                     <div className="flex items-end justify-between gap-4 border-b border-white/10 pb-4">
                       <div>
                         <p className="text-xs font-semibold uppercase tracking-[0.12em] text-white/40">
-                          02 / Process
+                          How it works
                         </p>
                         <h4 className="mt-2 text-2xl font-semibold leading-tight text-white sm:text-3xl">
-                          From skin tone to a finished look.
+                          From colour call to full look.
                         </h4>
                       </div>
                       <span className="shrink-0 text-xs font-semibold uppercase tracking-[0.12em] text-white/45">
-                        03 steps
+                        Your workflow
                       </span>
                     </div>
 
                     <p className="mt-4 max-w-[620px] text-base leading-[1.7] text-white/60">
-                      A deterministic colour workflow for designers who need to explain the
-                      decision, not just make it.
+                      A colour workflow for designers and personal styling: make the decision, then
+                      explain it.
                     </p>
 
                     <div className="mt-5 divide-y divide-white/10 border-y border-white/10">
-                      {PROCESS_STEPS.map((step, index) => (
+                      {PROCESS_STEPS.map((step) => (
                         <div
                           key={step.title}
                           className="grid grid-cols-[42px_1fr] gap-4 py-5 sm:grid-cols-[64px_1fr]"
                         >
                           <span className="font-['Montserrat'] text-3xl font-black leading-none tracking-[-0.04em] text-[#D9605C]">
-                            0{index + 1}
+                            →
                           </span>
                           <div>
                             <p className="text-base font-semibold text-white">{step.title}</p>
@@ -344,13 +349,13 @@ export const InteractiveModals: React.FC<InteractiveModalsProps> = ({
                       onClick={onStartClick}
                       className="btn-pill-light w-full sm:w-auto"
                     >
-                      Start a colour profile
+                      Build my palette
                     </button>
                     <button
                       onClick={onStudioClick}
                       className="btn-ghost w-full sm:w-auto"
                     >
-                      Studio plans
+                      Talk to the studio
                     </button>
                   </div>
                 </div>

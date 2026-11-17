@@ -24,9 +24,9 @@ export const SpinDemo: React.FC = () => {
         <div className="flex items-start justify-between gap-4">
           <div>
             <p className="text-xs font-semibold uppercase tracking-[0.12em] text-white/55">
-              MUSE / Turntable engine
+              MUSE / Turntable
             </p>
-            <h3 className="mt-1 text-xl font-semibold">Spin demo</h3>
+            <h3 className="mt-1 text-xl font-semibold">Turntable demo</h3>
           </div>
           <button
             type="button"
@@ -51,7 +51,7 @@ export const SpinDemo: React.FC = () => {
                   return (
                     <img
                       src="/editorial/mannequin-ember.webp"
-                      alt="Mannequin turntable placeholder"
+                      alt="Model turntable placeholder"
                       className="h-full w-full object-contain"
                       style={{
                         transform: `perspective(900px) rotateY(${wave * 16}deg) scaleX(${0.9 + 0.1 * Math.cos(current * Math.PI * 2)})`,
@@ -101,8 +101,8 @@ export const SpinDemo: React.FC = () => {
           </button>
           <span className="text-right text-xs leading-relaxed text-white/50">
             {useSpecClip
-              ? 'MUSE 360 reference clip — turntable engine check.'
-              : 'Static cutout placeholder — no real 360° frames.'}
+              ? 'MUSE reference clip. A check for the turntable.'
+              : 'Static cutout placeholder. No real turntable frames yet.'}
           </span>
         </div>
       </div>

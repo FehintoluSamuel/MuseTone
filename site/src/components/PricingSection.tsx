@@ -18,52 +18,51 @@ interface Tier {
 
 const TIERS: Tier[] = [
   {
-    code: '01 / Free',
+    code: 'Start here',
     name: 'Read',
     monthly: 0,
     annual: 0,
     cta: 'Start free',
     features: [
-      '1 colour profile',
-      '8 studio looks',
-      '5 try-on tops',
-      '360° motion study',
-      'Save up to 3 looks',
+      'A full colour profile',
+      'Fabric colour reads',
+      'Styling studio access',
+      'Turntable outfit previews',
+      'Saved looks to revisit',
     ],
-    note: 'No card required. One profile and three saved looks.',
+    note: 'For personal wardrobes and first client work. No card required.',
   },
   {
-    code: '02 / Individual',
+    code: 'Solo studio',
     name: 'Studio',
     monthly: 19,
     annual: 15,
-    cta: 'Choose Studio',
+    cta: 'Request Studio access',
     highlight: true,
     features: [
       'Everything in Read',
-      'Unlimited colour profiles',
-      '6 light grades',
-      'Full colour index',
+      'Unlimited client profiles',
       'Unlimited saved looks',
+      'Full colour index',
+      'More light conditions',
       'Priority email support',
     ],
-    note: 'For one stylist. Cancel anytime.',
+    note: 'For independent designers and stylists. Access by request.',
   },
   {
-    code: '03 / Team',
+    code: 'Shared studio',
     name: 'Atelier',
     monthly: 49,
     annual: 39,
     cta: 'Talk to the studio',
     features: [
       'Everything in Studio',
-      'Multi-client profiles',
-      'Shared palettes',
-      'Team seats',
+      'Shared client profiles and palettes',
+      'Team access for your studio',
       'Early access to garment drops',
       'Dedicated studio support',
     ],
-    note: 'For teams. Fair-use limits apply.',
+    note: 'For studios working across clients. Access by request.',
   },
 ];
 
@@ -84,8 +83,8 @@ export const PricingSection: React.FC<PricingSectionProps> = ({
             Pricing
           </h2>
           <p className="mx-auto mt-4 max-w-[620px] text-[clamp(17px,1.3vw,19px)] leading-[1.65] text-white/60">
-            Choose the tier that matches how you work. Move up when the studio needs more colour,
-            more looks, or more room for clients.
+            Start free for your own wardrobe or first client. Move to Studio for unlimited profiles
+            and saved looks. Choose Atelier when the work is shared.
           </p>
 
           <div className="mt-8 flex items-center justify-center gap-3 text-base font-semibold">
@@ -111,7 +110,7 @@ export const PricingSection: React.FC<PricingSectionProps> = ({
               Annual
             </button>
             <span className="text-xs font-bold uppercase tracking-[0.1em] text-[#D9605C]">
-              Save 20%
+              Annual costs less
             </span>
           </div>
         </div>
@@ -125,8 +124,8 @@ export const PricingSection: React.FC<PricingSectionProps> = ({
             const billingNote = !isPaid
               ? 'No card required'
               : billing === 'annual'
-                ? 'Billed annually'
-                : 'Billed monthly';
+                ? 'Annual launch price'
+                : 'Monthly launch price';
 
             return (
               <article
@@ -203,7 +202,7 @@ export const PricingSection: React.FC<PricingSectionProps> = ({
         </div>
 
         <p className="mt-10 text-center text-xs font-semibold uppercase tracking-[0.08em] text-white/40">
-          Monthly plans can be cancelled anytime. Annual billing saves 20%.
+          Launch pricing. Annual costs less. Billing is not live yet; paid access is by request.
         </p>
       </div>
     </section>

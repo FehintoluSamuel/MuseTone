@@ -120,23 +120,25 @@ export const EditorialHero: React.FC<EditorialHeroProps> = ({ onStartClick }) =>
               <br />
               <span className="text-[#F7DCD8]">Vision.</span>
             </h1>
-            <p className="mx-auto mt-7 max-w-[600px] text-[clamp(17px,1.4vw,20px)] leading-[1.65] text-white/90">
-              Personal palettes, garment checks, and mannequin previews, before the first stitch.
+            <p className="mx-auto mt-7 max-w-[650px] text-[clamp(17px,1.4vw,20px)] leading-[1.65] text-white/90">
+              Create a colour profile, read fabric colour, and see the whole look on a model before
+              you cut, buy or wear it. Built for designers and for anyone who wants their outfit
+              colours to work together.
             </p>
             <button
               id="btn-start-free-pill"
               onClick={onStartClick}
               className="btn-ghost mt-6"
             >
-              Build a palette
+              Build a free palette
             </button>
           </motion.div>
         </div>
 
-        <div className="grid grid-cols-2 items-end gap-4 border-t border-white/25 pt-4 text-xs font-semibold uppercase tracking-[0.12em] text-white/85 sm:flex sm:justify-between">
-          <span>Personal / Studio</span>
-          <span className="hidden sm:inline">Colour intelligence / 2026</span>
-          <span>Atelier study / Pexels</span>
+        <div className="grid grid-cols-2 items-end gap-4 border-t border-white/25 pt-4 text-[0.56875rem] font-semibold uppercase tracking-[0.12em] text-white/85 sm:flex sm:justify-between">
+          <span>Designers + outfit matching</span>
+          <span className="hidden sm:inline">No selfie uploads</span>
+          <span className="translate-x-[25%] sm:translate-x-0">Atelier study / Pexels</span>
         </div>
       </div>
     </section>

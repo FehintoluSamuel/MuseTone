@@ -6,24 +6,24 @@ interface SystemSectionProps {
 
 const STEPS = [
   {
-    title: 'Skin read',
-    copy: 'Tone, undertone and contrast are declared and checked, then resolved into a five-tone palette you can explain. No selfie, no guessing.',
+    title: 'Build a colour profile',
+    copy: 'Capture tone, undertone and contrast for a client or yourself, then turn it into a palette you can explain and reuse.',
   },
   {
-    title: 'Styling studio',
-    copy: 'Move through eight complete looks and six light grades, with controls for face, hair, makeup, body, accessories, tattoos and detail.',
+    title: 'Read a fabric',
+    copy: 'Photograph the cloth you are considering and compare its colour with the palette before you buy or cut.',
   },
   {
-    title: 'Motion study',
-    copy: 'Rotate the silhouette through a 360-degree study with front and back views, so the line is read before a sample is cut.',
+    title: 'Style the full look',
+    copy: 'Dress a full-body model, change garment, light and detail, and compare complete outfits side by side.',
   },
   {
-    title: 'Colour try-on',
-    copy: 'Five tops are mapped to the mannequin. Recolour by mask, compare the original, and save the colour match to a look.',
+    title: 'Test colour on the body',
+    copy: 'Recolour a garment on the model, compare it with the original, and save the match that works.',
   },
   {
-    title: 'Saved matches',
-    copy: 'Keep the colour matches that work. Reopen them from your library and compare alternatives without starting the read again.',
+    title: 'Keep the matches',
+    copy: 'Return to saved looks, compare alternatives and reuse the colour decisions that worked.',
   },
 ];
 
@@ -37,16 +37,18 @@ export const SystemSection: React.FC<SystemSectionProps> = ({ onStartClick }) =>
         <div className="grid gap-10 lg:grid-cols-[minmax(0,0.78fr)_minmax(0,1.35fr)] lg:gap-20 xl:gap-28">
           <div className="lg:sticky lg:top-28 lg:self-start">
             <h2 className="max-w-[440px] font-['Montserrat'] text-[clamp(36px,3.8vw,54px)] font-bold leading-[1.02] tracking-[-0.04em] text-white">
-              How Muse works.
+              What you can
+              <br />
+              do in MUSE.
             </h2>
             <p className="mt-5 max-w-[380px] text-base leading-[1.7] text-white/55">
-              Five moves from skin read to saved match, before the first stitch.
+              Everything you need to make the colour call, from a client profile to a saved look.
             </p>
             <button
               onClick={onStartClick}
               className="mt-8 text-base font-semibold text-white underline decoration-[#D9605C] decoration-2 underline-offset-4 transition-colors hover:text-[#F7DCD8]"
             >
-              Start with a skin read
+              Start free with a colour profile
             </button>
           </div>
 

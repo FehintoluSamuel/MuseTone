@@ -9,11 +9,11 @@ interface NavbarProps {
 
 const NAV_ITEMS: NavItem[] = [
   { id: 'explore', label: 'Explore', href: '#explore' },
-  { id: 'motion', label: 'Motion', href: '#motion' },
   { id: 'atelier', label: 'Colour', href: '#atelier' },
+  { id: 'mannequin', label: 'Studio', href: '#mannequin' },
+  { id: 'motion', label: 'Motion', href: '#motion' },
   { id: 'features', label: 'Features', href: '#features' },
   { id: 'pricing', label: 'Pricing', href: '#pricing' },
-  { id: 'studio', label: 'Studio', href: '#studio' },
 ];
 
 export const Navbar: React.FC<NavbarProps> = ({
@@ -76,7 +76,7 @@ export const Navbar: React.FC<NavbarProps> = ({
         <a
           href="#explore"
           id="nav-logo"
-          aria-label="Muse home"
+          aria-label="MUSE home"
           className="flex shrink-0 items-center gap-2.5 text-white transition-opacity hover:opacity-80"
           onClick={(e) => {
             e.preventDefault();
@@ -87,7 +87,7 @@ export const Navbar: React.FC<NavbarProps> = ({
             <span className="absolute inset-0 rounded-[3px] border-[1.5px] border-white" />
             <span className="absolute -bottom-0.5 -right-0.5 h-1.5 w-1.5 rounded-full bg-[#D9605C]" />
           </span>
-          <span className="text-base font-semibold tracking-[-0.01em]">Muse</span>
+          <span className="text-base font-semibold tracking-[-0.01em]">MUSE</span>
         </a>
 
         <div className="ml-auto hidden items-center gap-5 min-[721px]:flex min-[961px]:gap-10">

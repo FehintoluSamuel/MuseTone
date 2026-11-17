@@ -46,7 +46,7 @@ import {
   X,
 } from 'lucide-react';
 
-type Tab = 'DNA' | 'BODY' | 'STYLE' | 'PERSONALITY' | 'STORY';
+type Tab = 'PROFILE' | 'BODY' | 'STYLE' | 'PERSONALITY' | 'STORY';
 type StyleKey =
   | 'outfits'
   | 'body'
@@ -392,7 +392,7 @@ const TRAITS = [
 const TUNE_CONFIG: Record<TuneKey, TuneConfig> = {
   face: {
     title: 'Face',
-    note: 'changes re-render the model',
+    note: 'the preview updates as you go',
     presets: ['Soft', 'Defined', 'Natural', 'Sculpted'],
     sliders: [
       { key: 'smile', label: 'Smile', min: 0, max: 100, value: 35 },
@@ -402,7 +402,7 @@ const TUNE_CONFIG: Record<TuneKey, TuneConfig> = {
   },
   hair: {
     title: 'Hair',
-    note: 'changes re-render the model',
+    note: 'the preview updates as you go',
     swatches: ['#14110f', '#3b2a20', '#6b4a35', '#a07c5a', '#d9c3a1'],
     presets: ['High bun', 'Low bun', 'Long straight', 'Bob', 'Ponytail'],
     sliders: [
@@ -412,7 +412,7 @@ const TUNE_CONFIG: Record<TuneKey, TuneConfig> = {
   },
   makeup: {
     title: 'Makeup',
-    note: 'changes re-render the model',
+    note: 'the preview updates as you go',
     swatches: ['#e8b4a8', '#d98c8c', '#b5525e', '#8e3c4a'],
     presets: ['No-makeup', 'Glass skin', 'Soft glam', 'Editorial'],
     sliders: [
@@ -430,13 +430,13 @@ const TUNE_CONFIG: Record<TuneKey, TuneConfig> = {
   },
   tattoos: {
     title: 'Tattoos',
-    note: 'changes re-render the model',
+    note: 'the preview updates as you go',
     presets: ['None', 'Fine line', 'Floral', 'Script', 'Minimal dots'],
     sliders: [{ key: 'opacity', label: 'Opacity', min: 0, max: 100, value: 0 }],
   },
   details: {
     title: 'Details',
-    note: 'changes re-render the model',
+    note: 'the preview updates as you go',
     presets: ['Studio', 'Natural', 'Cinematic'],
     sliders: [
       { key: 'skin', label: 'Skin texture', min: 0, max: 100, value: 70 },
@@ -744,7 +744,7 @@ export const StylingStudio: React.FC = () => {
     setPreview(null);
     startLook(DEFAULT_STATE.look, () => {
       dispatch({ type: 'commit', patch: DEFAULT_STATE });
-      showToast('Reset to default');
+      showToast('Back to the starting look');
     });
   }, [showToast, startLook]);
 
@@ -797,10 +797,10 @@ export const StylingStudio: React.FC = () => {
         const next = new Set(current);
         if (next.has(key)) {
           next.delete(key);
-          showToast('Removed from cart');
+          showToast('Removed from the rail');
         } else {
           next.add(key);
-          showToast('Added to cart');
+          showToast('Added to the rail');
         }
         return next;
       });
@@ -814,10 +814,10 @@ export const StylingStudio: React.FC = () => {
         const next = new Set(current);
         if (next.has(index)) {
           next.delete(index);
-          showToast('Removed from favourites');
+          showToast('Taken out of favourites');
         } else {
           next.add(index);
-          showToast('Added to favourites');
+          showToast('Saved to favourites');
         }
         return next;
       });
@@ -829,14 +829,14 @@ export const StylingStudio: React.FC = () => {
     const snapshot: Snapshot = { ...view, look: selectedLook };
     setSaved((current) => [{ id: Date.now(), snapshot }, ...current].slice(0, 8));
     setLibraryOpen(true);
-    showToast('Saved to library');
+    showToast('Saved to your library');
   }, [selectedLook, showToast, view]);
 
   const applySaved = useCallback(
     (snapshot: Snapshot) => {
       setLibraryOpen(false);
       startLook(snapshot.look, () => dispatch({ type: 'commit', patch: snapshot }));
-      showToast('Look loaded');
+      showToast('That look is back');
     },
     [showToast, startLook]
   );
@@ -849,7 +849,7 @@ export const StylingStudio: React.FC = () => {
     setScrambleText(IDENTITIES[next].name);
     setShuffleTick((tick) => tick + 1);
     rescan();
-    showToast('Identity re-seeded');
+    showToast('New profile selected');
   }, [identityIndex, rescan, showToast]);
 
   useEffect(() => {
@@ -885,7 +885,7 @@ export const StylingStudio: React.FC = () => {
     const next = nameDraft.trim() || identity.name;
     setCustomName(next);
     setEditingName(false);
-    showToast('Name updated');
+    showToast('Profile name updated');
   }, [identity.name, nameDraft, showToast]);
 
   const setTuneValue = useCallback(
@@ -1277,7 +1277,7 @@ const DesktopTopBar: React.FC = () => {
           STYLING STUDIO
         </span>
       </div>
-      <div className="absolute left-[410px] top-[22px]">
+      <div className="absolute left-[410px] top-[22px] translate-x-[20%]">
         <StudioTabs width={720} />
       </div>
       <div className="absolute right-[28px] top-[24px]">
@@ -1292,7 +1292,7 @@ const StudioTabs: React.FC<{ width?: number; compact?: boolean }> = ({
   compact = false,
 }) => {
   const { tab, setTab } = useStudio();
-  const tabs: Tab[] = ['DNA', 'BODY', 'STYLE', 'PERSONALITY', 'STORY'];
+  const tabs: Tab[] = ['PROFILE', 'BODY', 'STYLE', 'PERSONALITY', 'STORY'];
 
   return (
     <div
@@ -1349,9 +1349,9 @@ const TopIcons: React.FC<{ compact?: boolean }> = ({ compact = false }) => {
   return (
     <div className={`flex shrink-0 items-center ${compact ? 'gap-1.5 sm:gap-2' : 'gap-3'}`}>
       <IconButton
-        label={`Cart, ${cart.size} pieces`}
+        label={`Selection, ${cart.size} pieces`}
         compact={compact}
-        onClick={() => showToast(cart.size ? `${cart.size} pieces in cart` : 'Cart is empty')}
+        onClick={() => showToast(cart.size ? `${cart.size} pieces on the rail` : 'Your rail is empty')}
       >
         <ShoppingCart className="h-5 w-5" />
         <Badge count={cart.size} />
@@ -1426,9 +1426,9 @@ const MoreMenu: React.FC = () => {
   }, [moreOpen, setMoreOpen]);
 
   const items = [
-    { label: 'Share look', message: 'Share link copied', icon: Share2 },
-    { label: 'Export render', message: 'Exported 4K render', icon: Download },
-    { label: 'Duplicate', message: 'Duplicated as new VELL', icon: Copy },
+    { label: 'Share preview', message: 'Preview link ready', icon: Share2 },
+    { label: 'Export preview', message: 'Preview export ready', icon: Download },
+    { label: 'Duplicate look', message: 'Duplicated as a new look', icon: Copy },
     { label: 'Settings', message: 'Settings saved', icon: Settings },
   ];
 
@@ -1500,7 +1500,7 @@ const ProfileCard: React.FC<{ desktop?: boolean }> = ({ desktop = false }) => {
                 if (event.key === 'Enter') saveName();
                 if (event.key === 'Escape') setEditingName(false);
               }}
-              aria-label="Character name"
+              aria-label="Profile name"
               className="min-w-0 flex-1 rounded-lg border border-white/70 bg-white/15 px-2 py-1 text-lg font-normal text-white outline-none ring-1 ring-white/70 sm:text-[22px]"
             />
           ) : (
@@ -1517,7 +1517,7 @@ const ProfileCard: React.FC<{ desktop?: boolean }> = ({ desktop = false }) => {
           )}
           <button
             type="button"
-            aria-label="Edit name"
+            aria-label="Edit profile name"
             onClick={() => {
               setNameDraft(displayName);
               setEditingName(true);
@@ -1529,7 +1529,7 @@ const ProfileCard: React.FC<{ desktop?: boolean }> = ({ desktop = false }) => {
           <button
             type="button"
             key={shuffleTick}
-            aria-label="Shuffle identity"
+            aria-label="New profile"
             onClick={shuffleIdentity}
             className="studio-shuffle flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-white/30 bg-white/10 text-white transition-colors hover:bg-white/20"
           >
@@ -1537,11 +1537,9 @@ const ProfileCard: React.FC<{ desktop?: boolean }> = ({ desktop = false }) => {
           </button>
         </div>
         <div className="mt-1.5 flex flex-wrap items-center gap-x-2 gap-y-1 text-xs text-white/85 sm:text-sm">
-          <span>{identity.age}</span>
-          <span className="h-4 w-px bg-white/25" />
           <span>{identity.city}</span>
           <span className="h-4 w-px bg-white/25" />
-          <span>{identity.temp}</span>
+          <span>{identity.heritage}</span>
         </div>
       </div>
     </div>
@@ -1649,7 +1647,7 @@ const RandomizeButton: React.FC<{ desktop?: boolean }> = ({ desktop = false }) =
     pickLook(next);
     setFilter(FILTERS[Math.floor(Math.random() * 4)].name);
     setRealism(55 + Math.floor(Math.random() * 45), true);
-    showToast('Randomized look');
+    showToast('New look selected');
   };
 
   if (!desktop) {
@@ -1660,7 +1658,7 @@ const RandomizeButton: React.FC<{ desktop?: boolean }> = ({ desktop = false }) =
         className="studio-glass flex w-full items-center justify-center gap-3 rounded-2xl px-4 py-3 text-sm text-white"
       >
         <RefreshCw className={`h-4 w-4 ${reduceMotion ? '' : 'studio-spin-once'}`} />
-        Randomize VELL
+        Try another look
       </button>
     );
   }
@@ -1677,7 +1675,7 @@ const RandomizeButton: React.FC<{ desktop?: boolean }> = ({ desktop = false }) =
       aria-hidden={hidden}
     >
       <RefreshCw className={`h-4 w-4 ${reduceMotion ? '' : 'studio-spin-once'}`} />
-      Randomize VELL
+      Try another look
     </button>
   );
 };
@@ -1718,7 +1716,7 @@ const ModelStage: React.FC<{ mobile?: boolean }> = ({ mobile = false }) => {
     >
       <div
         role="group"
-        aria-label="Mannequin preview"
+        aria-label="Model preview"
         className="absolute inset-0 transition-transform duration-1000"
         style={{
           transform: framingTransform,
@@ -1860,7 +1858,7 @@ const RightPanel: React.FC<{ desktop?: boolean }> = ({ desktop = false }) => {
               ) : (
                 <TuneView item={styleView} />
               ))}
-            {tab === 'DNA' && <DnaView />}
+            {tab === 'PROFILE' && <DnaView />}
             {tab === 'BODY' && <BodyView />}
             {tab === 'PERSONALITY' && <PersonalityView />}
             {tab === 'STORY' && <StoryView />}
@@ -1898,7 +1896,7 @@ const OutfitsView: React.FC = () => {
 
   return (
     <div className="flex min-h-full flex-col">
-      <ViewHeader title="Outfits" note={`${looks.length} looks`} />
+      <ViewHeader title="Outfits" note="the collection" />
 
       <div className="studio-no-scrollbar mt-4 flex items-start gap-1 overflow-x-auto sm:justify-between sm:gap-0">
         {CATEGORIES.map((item) => {
@@ -2008,7 +2006,7 @@ const OutfitsView: React.FC = () => {
                 <div className="overflow-hidden">
                   <div className="space-y-1 px-2 pb-2">
                     {pieces.length === 0 ? (
-                      <p className="px-1 py-2 text-xs text-white/65">Nothing in this look</p>
+                      <p className="px-1 py-2 text-xs text-white/65">No pieces in this look</p>
                     ) : (
                       pieces.map((piece, index) => {
                         const key = `${lookIndex}-${group.key}-${index}`;
@@ -2160,7 +2158,7 @@ const TuneView: React.FC<{ item: TuneKey }> = ({ item }) => {
       </div>
 
       <p className="mt-auto pt-6 text-xs leading-relaxed text-white/65">
-        Tune controls are applied to the live render and replayed with the scan line.
+        Every change shows on the model, then replays with the scan line.
       </p>
     </div>
   );
@@ -2171,10 +2169,10 @@ const DnaView: React.FC = () => {
 
   return (
     <div className="flex min-h-full flex-col">
-      <ViewHeader title="DNA" note="identity seed" />
+      <ViewHeader title="Profile" note="who you're styling" />
 
       <div className="mt-4 overflow-hidden rounded-2xl border border-white/25 bg-white/5 p-2">
-        <svg viewBox="0 0 300 120" role="img" aria-label="Animated DNA helix" className="w-full">
+        <svg viewBox="0 0 300 120" role="img" aria-label="Animated profile mark" className="w-full">
           <g className="studio-dna">
             {Array.from({ length: 26 }).map((_, index) => {
               const x = 28 + index * 9.8;
@@ -2204,9 +2202,8 @@ const DnaView: React.FC = () => {
 
       <dl className="mt-5 divide-y divide-white/15 text-sm">
         {[
-          ['Seed', identity.seed],
+          ['City', identity.city],
           ['Heritage', identity.heritage],
-          ['Age', String(identity.age)],
           ['Eye colour', identity.eye],
           ['Hair', identity.hair],
         ].map(([label, value]) => (
@@ -2223,9 +2220,9 @@ const DnaView: React.FC = () => {
         className="mt-auto flex h-[46px] w-full items-center justify-center gap-2 rounded-[14px] border-[1.5px] border-white text-base font-medium text-white transition-colors hover:bg-white hover:text-[#171414]"
       >
         <RefreshCw className="h-4 w-4" />
-        Re-seed identity
+        New profile
       </button>
-      <p className="mt-3 text-center text-xs text-white/65">Current name: {displayName}</p>
+      <p className="mt-3 text-center text-xs text-white/65">Profile name: {displayName}</p>
     </div>
   );
 };
@@ -2307,7 +2304,7 @@ const BodyView: React.FC = () => {
       </div>
 
       <p className="mt-auto pt-6 text-xs leading-relaxed text-white/65">
-        Height and build commit to history on release. Framing stays in sync with the Pose button.
+        Let go to save the height and build. Framing follows the Pose control.
       </p>
     </div>
   );
@@ -2326,7 +2323,7 @@ const PersonalityView: React.FC = () => {
 
   return (
     <div className="flex min-h-full flex-col">
-      <ViewHeader title="Personality" note="pick up to 3" />
+      <ViewHeader title="Personality" note="choose a few" />
 
       <div className="mt-4 flex flex-wrap gap-2">
         {TRAITS.map((trait) => {
@@ -2451,7 +2448,6 @@ const Radar: React.FC<{ scores: number[] }> = ({ scores }) => {
 const StoryView: React.FC = () => {
   const {
     displayName,
-    view,
     identity,
     look,
     traits,
@@ -2461,7 +2457,7 @@ const StoryView: React.FC = () => {
   } = useStudio();
   const [typed, setTyped] = useState('');
 
-  const bio = `${displayName} is ${view.height} cm of ${traits[0]?.toLowerCase() ?? 'quiet'} energy from ${identity.city}. Mornings start with a long walk along the river in her ${look.name.toLowerCase()} look; friends call her ${traits[1]?.toLowerCase() ?? 'warm'} and a little ${traits[2]?.toLowerCase() ?? 'curious'}. She collects film cameras, keeps a sketchbook of strangers' outfits, and is saving for a studio of her own.`;
+  const bio = `${displayName} lives in ${identity.city} and brings ${traits[0]?.toLowerCase() ?? 'quiet'} energy into the studio. She likes the ${look.name.toLowerCase()} look for long days: a walk by the river, a notebook in her bag, and a film camera she probably doesn't need. Friends would call her ${traits[1]?.toLowerCase() ?? 'warm'}, with a ${traits[2]?.toLowerCase() ?? 'curious'} streak.`;
 
   useEffect(() => {
     if (reduceMotion) {
@@ -2480,7 +2476,7 @@ const StoryView: React.FC = () => {
 
   return (
     <div className="flex min-h-full flex-col">
-      <ViewHeader title="Story" note="auto-written from your choices" />
+      <ViewHeader title="Story" note="built from your choices" />
       <div className="mt-4 min-h-[260px] rounded-2xl border border-white/25 bg-white/5 p-4 text-base leading-[1.7] text-white/85">
         {typed}
         <span className="studio-caret ml-0.5 inline-block h-[1em] w-[2px] translate-y-[2px] bg-white align-baseline" />
@@ -2544,14 +2540,14 @@ const RealismPanel: React.FC<{ desktop?: boolean }> = ({ desktop = false }) => {
       }`}
     >
       <RangeRow
-        label="Realism"
+        label="Finish"
         value={view.realism}
         min={0}
         max={100}
         suffix="%"
         onChange={(value) => setRealism(value)}
         onCommit={(value) => setRealism(value, true)}
-        endLabels={['Stylized', 'Hyper Realistic']}
+        endLabels={['Soft', 'Crisp']}
       />
     </div>
   );

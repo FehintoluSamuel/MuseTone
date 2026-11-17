@@ -12,46 +12,51 @@ export const AtelierBand: React.FC<AtelierBandProps> = ({ onExploreClick }) => {
           <div>
             <h2 className="font-['Montserrat'] text-[clamp(44px,5.8vw,82px)] font-black leading-[0.9] tracking-[-0.04em] text-[#F7F2EF]">
               <span className="box-decoration-clone rounded-[2px] bg-[linear-gradient(90deg,#D9605C_0%,#C65D58_55%,#9E3F3B_100%)] bg-[length:100%_80%] bg-center bg-no-repeat px-3 text-[#F7F2EF] shadow-[0_8px_24px_rgba(0,0,0,0.28)]">
-                The rail,
+                From skin
                 <br />
-                in colour.
+                to sample.
               </span>
             </h2>
             <p className="mt-6 max-w-[420px] text-[17px] leading-[1.7] text-[#D8CCC5]">
-              Personal palettes, garment checks, and mannequin previews, before the first stitch.
+              Use MUSE to build a colour profile for a client or for yourself, read the fabric
+              you're considering, and see how the palette looks on a full-body model before you cut,
+              buy or wear it.
             </p>
 
             <dl className="mt-8 divide-y divide-white/10 border-y border-white/10">
               <div className="grid grid-cols-[38px_1fr] gap-3 py-3">
                 <dt className="text-xs font-semibold uppercase tracking-[0.08em] text-[#A99B94]">
-                  01
+                  →
                 </dt>
                 <dd>
-                  <p className="text-base font-semibold text-white">Colour index</p>
+                  <p className="text-base font-semibold text-white">Colour profile</p>
                   <p className="mt-1 text-sm leading-[1.6] text-[#B9ACA5]">
-                    Five tones, mapped to tone, undertone and contrast.
+                    Capture tone, undertone and contrast, then turn it into a palette you can use and
+                    explain.
                   </p>
                 </dd>
               </div>
               <div className="grid grid-cols-[38px_1fr] gap-3 py-3">
                 <dt className="text-xs font-semibold uppercase tracking-[0.08em] text-[#A99B94]">
-                  02
+                  →
                 </dt>
                 <dd>
-                  <p className="text-base font-semibold text-white">Garment check</p>
+                  <p className="text-base font-semibold text-white">Fabric colour read</p>
                   <p className="mt-1 text-sm leading-[1.6] text-[#B9ACA5]">
-                    A fabric photo becomes a colour read you can explain.
+                    Photograph a fabric and compare its colour with the palette before you buy the
+                    cloth.
                   </p>
                 </dd>
               </div>
               <div className="grid grid-cols-[38px_1fr] gap-3 py-3">
                 <dt className="text-xs font-semibold uppercase tracking-[0.08em] text-[#A99B94]">
-                  03
+                  →
                 </dt>
                 <dd>
-                  <p className="text-base font-semibold text-white">Mannequin preview</p>
+                  <p className="text-base font-semibold text-white">Full-body preview</p>
                   <p className="mt-1 text-sm leading-[1.6] text-[#B9ACA5]">
-                    The palette on a body before the first sample is cut.
+                    See the palette on a model, so you know how the colours read together before the
+                    first sample.
                   </p>
                 </dd>
               </div>
@@ -61,7 +66,7 @@ export const AtelierBand: React.FC<AtelierBandProps> = ({ onExploreClick }) => {
               onClick={onExploreClick}
               className="btn-ghost mt-7"
             >
-              Explore the rail
+              See the colour workflow
             </button>
           </div>
           <p className="mt-10 text-xs font-semibold uppercase tracking-[0.08em] text-[#A99B94]">

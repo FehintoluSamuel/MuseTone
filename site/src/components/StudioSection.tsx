@@ -24,15 +24,15 @@ export const StudioSection: React.FC<StudioSectionProps> = ({
                 before the garment.
               </h2>
               <p className="mt-5 max-w-[460px] text-base leading-[1.7] text-[#D8CCC5]">
-                Start with one palette. Keep every client, fitting, and colour decision in one
-                place.
+                Create a colour profile, read the fabric, style the full look and save the
+                combinations you want to return to. Use it for client work or for your own wardrobe.
               </p>
               <div className="mt-7 flex flex-wrap items-center gap-4">
                 <button
                   onClick={onStartClick}
                   className="btn-pill-light"
                 >
-                  Start free
+                  Start a free palette
                 </button>
                 <button
                   onClick={onStudioClick}
@@ -63,13 +63,16 @@ export const StudioSection: React.FC<StudioSectionProps> = ({
       </div>
 
       <footer className="mt-8 flex flex-col gap-4 border-t border-[#CBB8B0] pt-5 text-xs font-semibold uppercase tracking-[0.08em] text-[#5A5350] sm:flex-row sm:items-center sm:justify-between">
-        <span>Muse / 2026</span>
+        <span>MUSE / Colour intelligence</span>
         <div className="flex flex-wrap gap-5">
-          <a href="#motion" className="transition-colors hover:text-[#171414]">
-            Motion
-          </a>
           <a href="#atelier" className="transition-colors hover:text-[#171414]">
             Colour
+          </a>
+          <a href="#mannequin" className="transition-colors hover:text-[#171414]">
+            Studio
+          </a>
+          <a href="#motion" className="transition-colors hover:text-[#171414]">
+            Motion
           </a>
           <a href="#features" className="transition-colors hover:text-[#171414]">
             Features
@@ -77,11 +80,8 @@ export const StudioSection: React.FC<StudioSectionProps> = ({
           <a href="#pricing" className="transition-colors hover:text-[#171414]">
             Pricing
           </a>
-          <a href="#studio" className="transition-colors hover:text-[#171414]">
-            Studio
-          </a>
         </div>
-        <span>Colour intelligence / 2026</span>
+        <span>For designers and colour-led wardrobes</span>
       </footer>
     </section>
   );

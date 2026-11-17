@@ -132,18 +132,23 @@ export const MotionSection: React.FC = () => {
         <div className="grid gap-6 lg:grid-cols-12 lg:items-end lg:gap-10">
           <div className="lg:col-span-8">
             <h2 className="font-['Montserrat'] text-[clamp(48px,7vw,96px)] font-black leading-[0.88] tracking-[-0.04em] text-[#171414]">
-              The edit,
+              See how the
               <br />
-              in motion.
+              colour moves.
             </h2>
           </div>
           <div className="lg:col-span-4">
             <p className="max-w-[380px] text-base leading-[1.7] text-[#5A5350]">
-              A red dress and a black suit, seen under studio light. The palette moves before the
-              first sample is cut.
+              Watch a look in motion to judge how the fabric behaves in real light. Use it to choose
+              colours that still work when the garment moves, not just when it's standing still.
             </p>
+            <ul className="mt-5 space-y-2 border-t border-[#CBB8B0] pt-4 text-sm font-medium leading-[1.6] text-[#5A5350]">
+              <li>Check colour in movement</li>
+              <li>Compare complete looks</li>
+              <li>Pause on the frame you need</li>
+            </ul>
             <p className="mt-4 text-xs font-semibold uppercase tracking-[0.08em] text-[#5A5350]">
-              Muted loops. Pause to hold the frame.
+              Motion preview / pause to hold a frame
             </p>
           </div>
         </div>
@@ -152,15 +157,15 @@ export const MotionSection: React.FC = () => {
           <VideoTile
             src="/motion/red-motion.mp4"
             poster="/motion/red-motion-poster.webp"
-            label="Her edit / Red"
-            description="Fashion model in a red dress posing in a studio"
+            label="Red dress / Colour in motion"
+            description="Model in a red dress moving under studio light"
             frameClassName="h-[440px] sm:h-[460px] lg:h-[560px]"
           />
           <VideoTile
             src="/motion/suit-motion.mp4"
             poster="/motion/suit-motion-poster.webp"
-            label="His edit / Suit"
-            description="Man in a black suit posing in a studio"
+            label="Black suit / Colour in motion"
+            description="Model in a black suit moving under studio light"
             delay={0.08}
             frameClassName="h-[440px] sm:h-[460px] lg:h-[560px]"
           />

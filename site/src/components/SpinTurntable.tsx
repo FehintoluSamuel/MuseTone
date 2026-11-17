@@ -81,7 +81,7 @@ export const SpinTurntable = forwardRef<SpinTurntableHandle, SpinTurntableProps>
       onBackdropColor,
       onCacheReady,
       showProgress = true,
-      ariaLabel = 'Drag to rotate the model',
+      ariaLabel = 'Drag to rotate the study',
     },
     ref
   ) => {
@@ -451,7 +451,7 @@ export const SpinTurntable = forwardRef<SpinTurntableHandle, SpinTurntableProps>
           />
           {!cacheReady && showProgress && (
             <div className="absolute inset-0 flex items-center justify-center bg-[#171414]/95 text-xs font-semibold uppercase tracking-[0.1em] text-white/80">
-              Building frames {cacheProgress}%
+              Preparing the turntable {cacheProgress}%
             </div>
           )}
         </>
