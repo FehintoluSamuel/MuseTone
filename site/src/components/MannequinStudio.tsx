@@ -11,7 +11,7 @@ export const MannequinStudio: React.FC = () => {
   return (
     <section
       id="mannequin"
-      className="mt-20 w-full scroll-mt-20 bg-[#171414] py-16 text-white sm:mt-28 sm:py-24"
+      className="mt-20 w-full scroll-mt-20 bg-[#171414]/85 py-16 text-white sm:mt-28 sm:py-24"
     >
       <div className="mx-auto w-full max-w-[1664px] px-4 sm:px-6 lg:px-8">
         <div className="grid gap-8 border-b border-white/15 pb-8 md:grid-cols-[1.1fr_0.9fr] md:items-end">
@@ -20,9 +20,11 @@ export const MannequinStudio: React.FC = () => {
               MUSE / Virtual styling studio
             </p>
             <h2 className="mt-3 font-['Montserrat'] text-[clamp(40px,6vw,82px)] font-black leading-[0.92] tracking-[-0.035em] text-white">
-              On the
-              <br />
-              body.
+              <span className="box-decoration-clone rounded-[2px] bg-[linear-gradient(90deg,#D9605C_0%,#C65D58_55%,#9E3F3B_100%)] bg-[length:100%_80%] bg-center bg-no-repeat px-3 text-white shadow-[0_8px_24px_rgba(0,0,0,0.28)]">
+                On the
+                <br />
+                body.
+              </span>
             </h2>
           </div>
 

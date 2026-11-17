@@ -1,19 +1,8 @@
 import React, { useEffect, useRef } from 'react';
-import { motion, useReducedMotion, useScroll, useTransform } from 'motion/react';
+import { motion, useReducedMotion } from 'motion/react';
 
-interface EditorialHeroProps {
-  onStartClick: () => void;
-}
-
-export const EditorialHero: React.FC<EditorialHeroProps> = ({ onStartClick }) => {
-  const reduceMotion = useReducedMotion();
-  const heroRef = useRef<HTMLElement>(null);
+export const HeroBackdrop: React.FC = () => {
   const videoRef = useRef<HTMLVideoElement>(null);
-  const { scrollYProgress } = useScroll({
-    target: heroRef,
-    offset: ['start start', 'end start'],
-  });
-  const mediaScale = useTransform(scrollYProgress, [0, 1], [1, 1.1]);
 
   useEffect(() => {
     const video = videoRef.current;
@@ -84,32 +73,40 @@ export const EditorialHero: React.FC<EditorialHeroProps> = ({ onStartClick }) =>
   }, []);
 
   return (
-    <section
-      ref={heroRef}
-      className="relative isolate flex min-h-[100svh] w-full flex-col overflow-hidden bg-[#171414] text-white lg:max-h-[1000px]"
+    <div
+      aria-hidden="true"
+      className="pointer-events-none fixed inset-0 z-0 overflow-hidden bg-[#171414]"
     >
-      <motion.div
-        aria-hidden="true"
-        style={reduceMotion ? { scale: 1 } : { scale: mediaScale }}
-        className="absolute inset-0 -z-20"
-      >
-        <video
-          ref={videoRef}
-          src="/editorial/heroVideo_1.mp4"
-          poster="/editorial/heroVideo_1-poster.webp"
-          autoPlay
-          muted
-          loop
-          playsInline
-          preload="auto"
-          className="h-full w-full object-cover object-[50%_45%] brightness-[0.58] saturate-[0.82]"
-        />
-      </motion.div>
+      <video
+        ref={videoRef}
+        src="/editorial/heroVideo_1.mp4"
+        poster="/editorial/heroVideo_1-poster.webp"
+        autoPlay
+        muted
+        loop
+        playsInline
+        preload="auto"
+        className="absolute inset-0 h-full w-full object-cover object-[50%_45%] brightness-[0.66] saturate-[0.82]"
+      />
+    </div>
+  );
+};
+
+interface EditorialHeroProps {
+  onStartClick: () => void;
+}
+
+export const EditorialHero: React.FC<EditorialHeroProps> = ({ onStartClick }) => {
+  const reduceMotion = useReducedMotion();
+
+  return (
+    <section
+      className="relative isolate flex min-h-[100svh] w-full flex-col overflow-hidden bg-transparent text-white lg:max-h-[1000px]"
+    >
       <div
         aria-hidden="true"
         className="absolute inset-0 -z-10 bg-[rgba(23,20,20,0.63)]"
       />
-
       <div className="relative z-10 mx-auto flex w-full max-w-[1400px] flex-1 flex-col px-5 pb-8 pt-28 sm:px-8 sm:pb-10 sm:pt-32 lg:px-12 lg:pb-12">
         <div className="flex justify-center">
           <div className="flex items-center gap-3 text-white/80">

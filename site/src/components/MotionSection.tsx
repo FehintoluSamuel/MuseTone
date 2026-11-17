@@ -126,7 +126,7 @@ export const MotionSection: React.FC = () => {
   return (
     <section
       id="motion"
-      className="mx-auto mt-20 w-full max-w-[1280px] scroll-mt-20 px-4 sm:mt-28 sm:px-6 lg:px-8"
+      className="mx-auto mt-20 w-full max-w-[1280px] scroll-mt-20 bg-[#E5CEC9]/85 px-4 sm:mt-28 sm:px-6 lg:px-8"
     >
       <div className="border-t border-[#CBB8B0] pt-8 sm:pt-10">
         <div className="grid gap-6 lg:grid-cols-12 lg:items-end lg:gap-10">

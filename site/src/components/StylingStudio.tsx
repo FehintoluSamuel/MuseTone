@@ -499,22 +499,6 @@ function historyReducer(state: HistoryState, action: HistoryAction): HistoryStat
   return { states, index: states.length - 1 };
 }
 
-function useMediaQuery(query: string) {
-  const [matches, setMatches] = useState(() =>
-    typeof window === 'undefined' ? false : window.matchMedia(query).matches
-  );
-
-  useEffect(() => {
-    const media = window.matchMedia(query);
-    const update = () => setMatches(media.matches);
-    update();
-    media.addEventListener('change', update);
-    return () => media.removeEventListener('change', update);
-  }, [query]);
-
-  return matches;
-}
-
 function clamp(value: number, min: number, max: number) {
   return Math.min(max, Math.max(min, value));
 }
@@ -635,7 +619,6 @@ const StudioProvider: React.FC<{ value: StudioApi; children: ReactNode }> = ({
 }) => <StudioContext.Provider value={value}>{children}</StudioContext.Provider>;
 
 export const StylingStudio: React.FC = () => {
-  const isDesktop = useMediaQuery('(min-width: 1200px)');
   const reduceMotion = Boolean(useReducedMotion());
   const [history, dispatch] = useReducer(historyReducer, {
     states: [DEFAULT_STATE],
@@ -968,13 +951,7 @@ export const StylingStudio: React.FC = () => {
     [rescan]
   );
 
-  const goToPanel = useCallback(() => {
-    if (isDesktop) return;
-    document.getElementById('studio-panel')?.scrollIntoView({
-      behavior: reduceMotion ? 'auto' : 'smooth',
-      block: 'center',
-    });
-  }, [isDesktop, reduceMotion]);
+  const goToPanel = useCallback(() => {}, []);
 
   const selectStyle = useCallback(
     (key: StyleKey) => {
@@ -1177,7 +1154,7 @@ export const StylingStudio: React.FC = () => {
   return (
     <StudioProvider value={api}>
       <div className="studio-ui relative">
-        {isDesktop ? <DesktopStudio /> : <StackedStudio />}
+        <DesktopStudio />
         <Toast />
       </div>
     </StudioProvider>
@@ -1227,35 +1204,6 @@ const DesktopStudio: React.FC = () => {
         <LibraryDrawer desktop />
         <MoreMenu />
       </div>
-    </div>
-  );
-};
-
-const StackedStudio: React.FC = () => {
-  return (
-    <div className="space-y-4">
-      <StackedTopBar />
-      <div className="relative aspect-[9/16] overflow-hidden rounded-3xl border border-white/20 bg-[#171414] sm:aspect-[3/4]">
-        <Scene>
-          <MobileModelStage />
-        </Scene>
-      </div>
-      <ProfileCard />
-      <StyleMenu />
-      <div id="studio-panel">
-        <RightPanel />
-      </div>
-      <ControlBar />
-      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
-        <RealismPanel />
-        <FilterPanel />
-      </div>
-      <SavePanel />
-      <LibraryDrawer />
-      <MoreMenu />
-      <p className="px-1 text-[11px] font-semibold uppercase tracking-[0.1em] text-white/65">
-        Full-body cut-out study / 08 looks
-      </p>
     </div>
   );
 };
@@ -1338,25 +1286,6 @@ const DesktopTopBar: React.FC = () => {
     </>
   );
 };
-
-const StackedTopBar: React.FC = () => (
-  <div className="space-y-3">
-    <div className="flex items-center justify-between gap-4">
-      <div className="flex items-baseline gap-3">
-        <span className="font-['Syne'] text-3xl font-extrabold leading-none tracking-[-0.02em] text-white">
-          MUSE
-        </span>
-        <span className="hidden text-[11px] font-normal tracking-[0.12em] text-white/65 sm:inline">
-          STYLING STUDIO
-        </span>
-      </div>
-      <TopIcons compact />
-    </div>
-    <div className="overflow-x-auto pb-1 studio-no-scrollbar">
-      <StudioTabs compact />
-    </div>
-  </div>
-);
 
 const StudioTabs: React.FC<{ width?: number; compact?: boolean }> = ({
   width,
@@ -1900,8 +1829,6 @@ const ModelStage: React.FC<{ mobile?: boolean }> = ({ mobile = false }) => {
     </div>
   );
 };
-
-const MobileModelStage: React.FC = () => <ModelStage mobile />;
 
 const RightPanel: React.FC<{ desktop?: boolean }> = ({ desktop = false }) => {
   const { tab, styleView } = useStudio();

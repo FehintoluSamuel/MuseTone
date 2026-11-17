@@ -16,7 +16,7 @@ export const SystemSection: React.FC<SystemSectionProps> = ({ onStartClick }) =>
   return (
     <section
       id="technology"
-      className="relative mt-20 w-full scroll-mt-20 overflow-hidden bg-[#171414] py-20 text-white sm:mt-28 sm:py-28"
+      className="relative mt-20 w-full scroll-mt-20 overflow-hidden bg-[#171414]/85 py-20 text-white sm:mt-28 sm:py-28"
     >
       <div className="mx-auto w-full max-w-[1280px] px-4 sm:px-6 lg:px-8">
         <div className="grid gap-12 lg:grid-cols-12 lg:gap-16">

@@ -28,7 +28,7 @@ export const ProcessSection: React.FC<ProcessSectionProps> = ({
     <>
       <section
         id="process"
-        className="mx-auto mt-20 w-full max-w-[1280px] scroll-mt-20 px-4 sm:mt-28 sm:px-6 lg:px-8"
+        className="mx-auto mt-20 w-full max-w-[1280px] scroll-mt-20 bg-[#E5CEC9]/85 px-4 sm:mt-28 sm:px-6 lg:px-8"
       >
         <div className="border-t border-[#CBB8B0] pt-8 sm:pt-10">
           <div className="grid gap-6 lg:grid-cols-12 lg:items-end lg:gap-10">
@@ -71,16 +71,16 @@ export const ProcessSection: React.FC<ProcessSectionProps> = ({
             ))}
           </div>
 
-          <div className="mt-6 flex flex-wrap items-center gap-6 border-t border-[#CBB8B0] pt-6">
+          <div className="mt-6 flex flex-col items-stretch gap-3 border-t border-[#CBB8B0] pt-6 sm:flex-row sm:flex-wrap sm:items-center sm:gap-6">
             <button
               onClick={onStartClick}
-              className="btn-pill-dark"
+              className="btn-pill-dark w-full sm:w-auto"
             >
               Start a colour profile
             </button>
             <button
               onClick={onStudioClick}
-              className="btn-ghost-dark"
+              className="btn-ghost-dark w-full -translate-y-[5%] sm:w-auto"
             >
               Studio plans
             </button>
@@ -90,9 +90,9 @@ export const ProcessSection: React.FC<ProcessSectionProps> = ({
 
       <section
         id="studio"
-        className="mx-auto mt-20 w-full max-w-[1280px] scroll-mt-20 px-4 sm:mt-28 sm:px-6 lg:px-8"
+        className="mx-auto mt-20 w-full max-w-[1280px] scroll-mt-20 bg-[#E5CEC9]/85 px-4 sm:mt-28 sm:px-6 lg:px-8"
       >
-        <div className="overflow-hidden bg-[#171414] text-white">
+        <div className="overflow-hidden bg-[#171414]/85 text-white">
           <div className="grid lg:grid-cols-[1fr_420px]">
             <div className="px-6 py-12 sm:px-10 sm:py-16 lg:px-12">
               <div className="max-w-[620px]">
