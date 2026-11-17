@@ -1,35 +1,20 @@
-import React, { useCallback, useRef, useState } from 'react';
+import React, { useCallback, useEffect, useRef, useState } from 'react';
 import { SpinTurntable, SpinTurntableHandle } from './SpinTurntable';
 
-const SPEC_CLIP = '/spin/okta-turn.mp4';
+const FRAMES = Array.from(
+  { length: 48 },
+  (_, index) => `/spin/frames/frame-${String(index).padStart(3, '0')}.jpg`
+);
 
 export const SpinShowcase: React.FC = () => {
   const turntable = useRef<SpinTurntableHandle>(null);
-  const lookCanvases = useRef<(HTMLCanvasElement | null)[]>([]);
   const [angle, setAngle] = useState(0);
   const [activeLook, setActiveLook] = useState(0);
 
-  const drawThumbs = useCallback(() => {
-    const handle = turntable.current;
-    if (!handle) return;
-    const count = handle.getFrameCount();
-    if (!count) return;
-    [0, Math.floor(count * 0.5)].forEach((frameIndex, lookIndex) => {
-      const blob = handle.getFrameBlob(frameIndex);
-      const canvas = lookCanvases.current[lookIndex];
-      if (!blob || !canvas) return;
-      void createImageBitmap(blob).then((bitmap) => {
-        const context = canvas.getContext('2d');
-        if (!context) return;
-        canvas.width = 96;
-        canvas.height = 96;
-        const crop = bitmap.width * 0.62;
-        const sourceX = (bitmap.width - crop) / 2;
-        const sourceY = bitmap.height * 0.07;
-        context.clearRect(0, 0, 96, 96);
-        context.drawImage(bitmap, sourceX, sourceY, crop, crop, 0, 0, 96, 96);
-        bitmap.close();
-      });
+  useEffect(() => {
+    FRAMES.forEach((src) => {
+      const image = new Image();
+      image.src = src;
     });
   }, []);
 
@@ -148,11 +133,12 @@ export const SpinShowcase: React.FC = () => {
                       : 'border-white/15 hover:border-white/40'
                   }`}
                 >
-                  <canvas
-                    ref={(node) => {
-                      lookCanvases.current[index] = node;
-                    }}
-                    className={`block aspect-square w-full bg-white/10 ${
+                  <img
+                    src={index === 0 ? FRAMES[0] : FRAMES[24]}
+                    alt=""
+                    loading="eager"
+                    draggable={false}
+                    className={`block aspect-square w-full object-cover bg-white/10 ${
                       activeLook === index ? 'opacity-100' : 'opacity-60 grayscale'
                     }`}
                   />
@@ -172,12 +158,10 @@ export const SpinShowcase: React.FC = () => {
             <div className="relative aspect-[9/16] overflow-hidden bg-[#E2E4E8]">
               <SpinTurntable
                 ref={turntable}
-                videoSrc={SPEC_CLIP}
+                frames={FRAMES}
                 fit="cover"
                 dragPixelsPerTurn={720}
                 onAngleChange={handleAngleChange}
-                onCacheReady={drawThumbs}
-                showProgress={false}
                 ariaLabel="Drag to rotate the Muse 360 study"
                 className="h-full w-full"
               />

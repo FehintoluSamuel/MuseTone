@@ -109,6 +109,7 @@ export const SpinTurntable = forwardRef<SpinTurntableHandle, SpinTurntableProps>
     const bitmapsRef = useRef<Map<number, ImageBitmap>>(new Map());
     const wantedRef = useRef(0);
     const lastNotifyRef = useRef(0);
+    const lastFrameIndexRef = useRef(-1);
     const cacheStartedRef = useRef(false);
     const [renderAngle, setRenderAngle] = useState(wrap(defaultAngle));
     const [videoReady, setVideoReady] = useState(false);
@@ -228,6 +229,13 @@ export const SpinTurntable = forwardRef<SpinTurntableHandle, SpinTurntableProps>
         const normalized = wrap(angleRef.current);
         if (cacheReady) {
           drawFrame();
+        } else if (frames && frames.length > 0) {
+          const frameIndex =
+            Math.floor(normalized * frames.length) % frames.length;
+          if (frameIndex !== lastFrameIndexRef.current) {
+            lastFrameIndexRef.current = frameIndex;
+            setRenderAngle(normalized);
+          }
         } else {
           setRenderAngle(normalized);
         }
@@ -242,7 +250,7 @@ export const SpinTurntable = forwardRef<SpinTurntableHandle, SpinTurntableProps>
       return () => {
         if (frameRef.current) cancelAnimationFrame(frameRef.current);
       };
-    }, [autoSpinDelay, autoSpinSpeed, cacheReady, drawFrame]);
+    }, [autoSpinDelay, autoSpinSpeed, cacheReady, drawFrame, frames]);
 
     useEffect(() => {
       const canvas = canvasRef.current;
@@ -468,7 +476,7 @@ export const SpinTurntable = forwardRef<SpinTurntableHandle, SpinTurntableProps>
         onLostPointerCapture={endDrag}
         onKeyDown={onKeyDown}
         style={style}
-        className={`relative touch-none select-none overflow-hidden cursor-grab active:cursor-grabbing ${className}`}
+        className={`relative touch-pan-y select-none overflow-hidden cursor-grab active:cursor-grabbing ${className}`}
       >
         {frame}
       </div>
