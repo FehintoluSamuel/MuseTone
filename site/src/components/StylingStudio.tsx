@@ -396,8 +396,8 @@ const TUNE_CONFIG: Record<TuneKey, TuneConfig> = {
     presets: ['Soft', 'Defined', 'Natural', 'Sculpted'],
     sliders: [
       { key: 'smile', label: 'Smile', min: 0, max: 100, value: 35 },
-      { key: 'jawline', label: 'Jawline', min: 0, max: 100, value: 50 },
-      { key: 'freckles', label: 'Freckles', min: 0, max: 100, value: 10 },
+      { key: 'jawline', label: 'Jawline', min: 0, max: 100, value: 0 },
+      { key: 'freckles', label: 'Freckles', min: 0, max: 100, value: 0 },
     ],
   },
   hair: {
@@ -406,8 +406,8 @@ const TUNE_CONFIG: Record<TuneKey, TuneConfig> = {
     swatches: ['#14110f', '#3b2a20', '#6b4a35', '#a07c5a', '#d9c3a1'],
     presets: ['High bun', 'Low bun', 'Long straight', 'Bob', 'Ponytail'],
     sliders: [
-      { key: 'volume', label: 'Volume', min: 0, max: 100, value: 60 },
-      { key: 'shine', label: 'Shine', min: 0, max: 100, value: 70 },
+      { key: 'volume', label: 'Volume', min: 0, max: 100, value: 0 },
+      { key: 'shine', label: 'Shine', min: 0, max: 100, value: 0 },
     ],
   },
   makeup: {
@@ -416,9 +416,9 @@ const TUNE_CONFIG: Record<TuneKey, TuneConfig> = {
     swatches: ['#e8b4a8', '#d98c8c', '#b5525e', '#8e3c4a'],
     presets: ['No-makeup', 'Glass skin', 'Soft glam', 'Editorial'],
     sliders: [
-      { key: 'blush', label: 'Blush', min: 0, max: 100, value: 30 },
+      { key: 'blush', label: 'Blush', min: 0, max: 100, value: 0 },
       { key: 'lip', label: 'Lip tint', min: 0, max: 100, value: 45 },
-      { key: 'glow', label: 'Glow', min: 0, max: 100, value: 55 },
+      { key: 'glow', label: 'Glow', min: 0, max: 100, value: 0 },
     ],
   },
   accessories: {
@@ -432,7 +432,7 @@ const TUNE_CONFIG: Record<TuneKey, TuneConfig> = {
     title: 'Tattoos',
     note: 'changes re-render the model',
     presets: ['None', 'Fine line', 'Floral', 'Script', 'Minimal dots'],
-    sliders: [{ key: 'opacity', label: 'Opacity', min: 0, max: 100, value: 40 }],
+    sliders: [{ key: 'opacity', label: 'Opacity', min: 0, max: 100, value: 0 }],
   },
   details: {
     title: 'Details',
@@ -440,8 +440,8 @@ const TUNE_CONFIG: Record<TuneKey, TuneConfig> = {
     presets: ['Studio', 'Natural', 'Cinematic'],
     sliders: [
       { key: 'skin', label: 'Skin texture', min: 0, max: 100, value: 70 },
-      { key: 'fabric', label: 'Fabric detail', min: 0, max: 100, value: 80 },
-      { key: 'lighting', label: 'Lighting softness', min: 0, max: 100, value: 60 },
+      { key: 'fabric', label: 'Fabric detail', min: 0, max: 100, value: 0 },
+      { key: 'lighting', label: 'Lighting softness', min: 0, max: 100, value: 0 },
     ],
   },
 };
@@ -460,10 +460,10 @@ const STYLE_MENU: { key: StyleKey; label: string; icon: React.ComponentType<{ cl
 const DEFAULT_STATE: Snapshot = {
   look: 0,
   filter: 'Daylight',
-  realism: 75,
+  realism: 80,
   height: 168,
   build: 50,
-  framing: 'Full',
+  framing: 'Portrait',
 };
 
 const INITIAL_TUNE: TuneState = Object.fromEntries(
@@ -1009,22 +1009,33 @@ export const StylingStudio: React.FC = () => {
     return typeof value === 'number' ? value : fallback;
   };
 
-  const tuneGlow = tuneValue('makeup', 'glow', 55);
-  const tuneBlush = tuneValue('makeup', 'blush', 30);
+  const tuneGlow = tuneValue('makeup', 'glow', 0);
+  const tuneBlush = tuneValue('makeup', 'blush', 0);
   const tuneLip = tuneValue('makeup', 'lip', 45);
-  const tuneShine = tuneValue('hair', 'shine', 70);
-  const tuneVolume = tuneValue('hair', 'volume', 60);
-  const tuneFreckles = tuneValue('face', 'freckles', 10);
-  const tuneJaw = tuneValue('face', 'jawline', 50);
-  const tuneFabric = tuneValue('details', 'fabric', 80);
-  const tuneLighting = tuneValue('details', 'lighting', 60);
-  const tuneTattoo = tuneValue('tattoos', 'opacity', 40);
+  const tuneShine = tuneValue('hair', 'shine', 0);
+  const tuneVolume = tuneValue('hair', 'volume', 0);
+  const tuneFreckles = tuneValue('face', 'freckles', 0);
+  const tuneJaw = tuneValue('face', 'jawline', 0);
+  const tuneFabric = tuneValue('details', 'fabric', 0);
+  const tuneLighting = tuneValue('details', 'lighting', 0);
+  const tuneTattoo = tuneValue('tattoos', 'opacity', 0);
   const tuneFilter = `saturate(${
     1 + tuneGlow / 500 + tuneBlush / 1600 + tuneVolume / 2400 - tuneTattoo / 3200
   }) contrast(${1 + tuneFabric / 800 + tuneJaw / 1800 + tuneFreckles / 2200}) brightness(${
     1 + tuneLighting / 1000 + tuneShine / 1400
   }) hue-rotate(${((tuneLip - 45) / 45) * 1.5}deg)`;
-  const modelFilter = `${realismFilter} ${tuneFilter}`;
+  const tuneActive =
+    tuneGlow !== 0 ||
+    tuneBlush !== 0 ||
+    tuneLip !== 45 ||
+    tuneShine !== 0 ||
+    tuneVolume !== 0 ||
+    tuneFreckles !== 0 ||
+    tuneJaw !== 0 ||
+    tuneFabric !== 0 ||
+    tuneLighting !== 0 ||
+    tuneTattoo !== 0;
+  const modelFilter = realismAmount === 0 && !tuneActive ? 'none' : `${realismFilter} ${tuneFilter}`;
 
   const scores = useMemo(
     () => radarValues(traits, radarOpenness, radarEnergy),
@@ -1243,7 +1254,7 @@ const StackedStudio: React.FC = () => {
       <LibraryDrawer />
       <MoreMenu />
       <p className="px-1 text-[11px] font-semibold uppercase tracking-[0.1em] text-white/65">
-        Full-body cut-out study / Pexels / 08 looks
+        Full-body cut-out study / 08 looks
       </p>
     </div>
   );
@@ -1294,7 +1305,6 @@ const Scene: React.FC<{ children?: ReactNode }> = ({ children }) => {
           }}
         />
       </div>
-      {children}
       <div
         aria-hidden="true"
         className="pointer-events-none absolute inset-0"
@@ -1303,6 +1313,7 @@ const Scene: React.FC<{ children?: ReactNode }> = ({ children }) => {
             'radial-gradient(120% 90% at 50% 45%, transparent 55%, rgba(20,18,22,.38) 100%), linear-gradient(180deg, rgba(20,20,24,.22), transparent 18%, transparent 70%, rgba(20,20,24,.35))',
         }}
       />
+      {children}
     </div>
   );
 };
@@ -1615,9 +1626,9 @@ const FaceCrop: React.FC<{
   filter?: string;
   className?: string;
 }> = ({ look, size, radius = 0, filter, className = '' }) => {
-  const crop = 220;
-  const sourceX = 185;
-  const sourceY = 40;
+  const crop = 240;
+  const sourceX = 212;
+  const sourceY = 82;
   const k = size / crop;
   const style: CSSProperties = {
     width: size,
@@ -1795,6 +1806,21 @@ const ModelStage: React.FC<{ mobile?: boolean }> = ({ mobile = false }) => {
           }}
         >
           <div className="studio-breath absolute inset-0">
+            <img
+              src={baseLook.src}
+              alt=""
+              aria-hidden="true"
+              draggable={false}
+              className="pointer-events-none absolute inset-0 h-full w-full select-none object-contain object-bottom"
+              style={{
+                filter: 'blur(12px)',
+                opacity: 0.55,
+                maskImage:
+                  'linear-gradient(to bottom, black 0%, black 20%, transparent 34%)',
+                WebkitMaskImage:
+                  'linear-gradient(to bottom, black 0%, black 20%, transparent 34%)',
+              }}
+            />
             <img
               src={baseLook.src}
               alt={`Full-body African American model in the ${baseLook.name} look`}

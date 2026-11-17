@@ -17,16 +17,71 @@ export const EditorialHero: React.FC<EditorialHeroProps> = ({ onStartClick }) =>
 
   useEffect(() => {
     const video = videoRef.current;
-    if (!video || reduceMotion) return;
+    if (!video) return;
+
+    video.muted = true;
+    video.loop = true;
+    video.playsInline = true;
+    video.setAttribute('playsinline', '');
+    video.setAttribute('webkit-playsinline', '');
+    video.setAttribute('disablepictureinpicture', '');
 
     const play = () => {
-      video.play().catch(() => undefined);
+      if (!video.paused) return;
+      const attempt = video.play();
+      if (attempt && typeof attempt.catch === 'function') {
+        attempt.catch(() => undefined);
+      }
+    };
+
+    let retry: number | undefined;
+    const queuePlay = () => {
+      if (retry !== undefined) window.clearTimeout(retry);
+      retry = window.setTimeout(() => {
+        retry = undefined;
+        play();
+      }, 80);
+    };
+    const clearRetry = () => {
+      if (retry !== undefined) window.clearTimeout(retry);
+      retry = undefined;
+    };
+    const resumeOnVisible = () => {
+      if (document.visibilityState === 'visible') queuePlay();
+    };
+    const playNow = () => {
+      clearRetry();
+      play();
+    };
+    const restart = () => {
+      video.currentTime = 0;
+      play();
     };
 
     play();
-    video.addEventListener('canplay', play);
-    return () => video.removeEventListener('canplay', play);
-  }, [reduceMotion]);
+    video.addEventListener('canplay', queuePlay);
+    video.addEventListener('loadeddata', queuePlay);
+    video.addEventListener('playing', clearRetry);
+    video.addEventListener('ended', restart);
+    document.addEventListener('visibilitychange', resumeOnVisible);
+    window.addEventListener('pageshow', resumeOnVisible);
+    window.addEventListener('pointerdown', playNow);
+    window.addEventListener('touchstart', playNow);
+    window.addEventListener('keydown', playNow);
+
+    return () => {
+      clearRetry();
+      video.removeEventListener('canplay', queuePlay);
+      video.removeEventListener('loadeddata', queuePlay);
+      video.removeEventListener('playing', clearRetry);
+      video.removeEventListener('ended', restart);
+      document.removeEventListener('visibilitychange', resumeOnVisible);
+      window.removeEventListener('pageshow', resumeOnVisible);
+      window.removeEventListener('pointerdown', playNow);
+      window.removeEventListener('touchstart', playNow);
+      window.removeEventListener('keydown', playNow);
+    };
+  }, []);
 
   return (
     <section
@@ -38,31 +93,22 @@ export const EditorialHero: React.FC<EditorialHeroProps> = ({ onStartClick }) =>
         style={reduceMotion ? { scale: 1 } : { scale: mediaScale }}
         className="absolute inset-0 -z-20"
       >
-        {reduceMotion ? (
-          <img
-            src="/editorial/atelier-wide.webp"
-            width="1600"
-            height="900"
-            alt=""
-            fetchPriority="high"
-            decoding="async"
-            className="h-full w-full object-cover object-[50%_45%] brightness-[0.58] saturate-[0.82]"
-          />
-        ) : (
-          <video
-            ref={videoRef}
-            src="/editorial/atelier-loop.mp4"
-            poster="/editorial/atelier-wide.webp"
-            autoPlay
-            muted
-            loop
-            playsInline
-            preload="auto"
-            className="h-full w-full object-cover object-[50%_45%] brightness-[0.58] saturate-[0.82]"
-          />
-        )}
+        <video
+          ref={videoRef}
+          src="/editorial/heroVideo_1.mp4"
+          poster="/editorial/heroVideo_1-poster.webp"
+          autoPlay
+          muted
+          loop
+          playsInline
+          preload="auto"
+          className="h-full w-full object-cover object-[50%_45%] brightness-[0.58] saturate-[0.82]"
+        />
       </motion.div>
-      <div aria-hidden="true" className="absolute inset-0 -z-10 bg-[#171414]/45" />
+      <div
+        aria-hidden="true"
+        className="absolute inset-0 -z-10 bg-[rgba(23,20,20,0.63)]"
+      />
 
       <div className="relative z-10 mx-auto flex w-full max-w-[1400px] flex-1 flex-col px-5 pb-8 pt-28 sm:px-8 sm:pb-10 sm:pt-32 lg:px-12 lg:pb-12">
         <div className="flex justify-center">

@@ -50,7 +50,7 @@ export const MannequinStudio: React.FC = () => {
         </div>
 
         <p className="mt-6 text-[11px] font-semibold uppercase tracking-[0.1em] text-white/65">
-          Full-body cut-out study / Pexels / 08 looks
+          Full-body cut-out study / 08 looks
         </p>
       </div>
     </section>

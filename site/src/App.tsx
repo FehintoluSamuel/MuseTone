@@ -38,9 +38,9 @@ export default function App() {
 
         <CampaignSection onExploreClick={() => setActiveModal('learn-more')} />
 
-        <MotionSection />
-
         <MannequinStudio />
+
+        <MotionSection />
 
         <SystemSection onStartClick={() => setActiveModal('start')} />
 
