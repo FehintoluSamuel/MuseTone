@@ -16,10 +16,10 @@ export const MannequinStudio: React.FC = () => {
       <div className="mx-auto w-full max-w-[1664px] px-4 sm:px-6 lg:px-8">
         <div className="grid gap-8 border-b border-white/15 pb-8 md:grid-cols-[1.1fr_0.9fr] md:items-end">
           <div>
-            <p className="text-[11px] font-semibold uppercase tracking-[0.14em] text-white/50">
+            <p className="text-xs font-semibold uppercase tracking-[0.1em] text-white/55">
               MUSE / Virtual styling studio
             </p>
-            <h2 className="mt-3 font-['Montserrat'] text-[clamp(40px,6vw,82px)] font-black leading-[0.92] tracking-[-0.035em] text-white">
+            <h2 className="mt-3 font-['Montserrat'] text-[clamp(46px,6.6vw,92px)] font-black leading-[0.9] tracking-[-0.04em] text-white">
               <span className="box-decoration-clone rounded-[2px] bg-[linear-gradient(90deg,#D9605C_0%,#C65D58_55%,#9E3F3B_100%)] bg-[length:100%_80%] bg-center bg-no-repeat px-3 text-white shadow-[0_8px_24px_rgba(0,0,0,0.28)]">
                 On the
                 <br />
@@ -29,7 +29,7 @@ export const MannequinStudio: React.FC = () => {
           </div>
 
           <div className="md:justify-self-end">
-            <p className="max-w-[430px] text-sm leading-relaxed text-white/65">
+            <p className="max-w-[460px] text-base leading-[1.7] text-white/70">
               A full-body cut-out study. Build the look, move through the tabs, and watch the same
               face and pose hold across eight outfits and six grades of light.
             </p>
@@ -37,10 +37,10 @@ export const MannequinStudio: React.FC = () => {
             <dl className="mt-6 grid max-w-[430px] grid-cols-3 gap-4 border-t border-white/15 pt-5">
               {READS.map((read) => (
                 <div key={read.label}>
-                  <dt className="text-[11px] font-semibold uppercase tracking-[0.1em] text-white/50">
+                  <dt className="text-xs font-semibold uppercase tracking-[0.08em] text-white/55">
                     {read.label}
                   </dt>
-                  <dd className="mt-1 text-lg font-semibold text-white">{read.value}</dd>
+                  <dd className="mt-1 text-xl font-semibold text-white">{read.value}</dd>
                 </div>
               ))}
             </dl>
@@ -51,7 +51,7 @@ export const MannequinStudio: React.FC = () => {
           <StylingStudio />
         </div>
 
-        <p className="mt-6 text-[11px] font-semibold uppercase tracking-[0.1em] text-white/65">
+        <p className="mt-6 text-xs font-semibold uppercase tracking-[0.08em] text-white/65">
           Full-body cut-out study / 08 looks
         </p>
       </div>

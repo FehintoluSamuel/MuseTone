@@ -15,7 +15,7 @@ interface CaptionProps {
 }
 
 const Caption: React.FC<CaptionProps> = ({ label, credit = 'Pexels' }) => (
-  <figcaption className="mt-3 flex items-center justify-between gap-3 border-t border-[#CBB8B0] pt-2 text-[11px] font-semibold uppercase tracking-[0.1em] text-[#5A5350]">
+  <figcaption className="mt-3 flex items-center justify-between gap-3 border-t border-[#CBB8B0] pt-2 text-xs font-semibold uppercase tracking-[0.08em] text-[#5A5350]">
     <span>{label}</span>
     <span>{credit}</span>
   </figcaption>
@@ -131,18 +131,18 @@ export const MotionSection: React.FC = () => {
       <div className="border-t border-[#CBB8B0] pt-8 sm:pt-10">
         <div className="grid gap-6 lg:grid-cols-12 lg:items-end lg:gap-10">
           <div className="lg:col-span-8">
-            <h2 className="font-['Montserrat'] text-[clamp(42px,6.6vw,88px)] font-black leading-[0.9] tracking-[-0.04em] text-[#171414]">
+            <h2 className="font-['Montserrat'] text-[clamp(48px,7vw,96px)] font-black leading-[0.88] tracking-[-0.04em] text-[#171414]">
               The edit,
               <br />
               in motion.
             </h2>
           </div>
           <div className="lg:col-span-4">
-            <p className="max-w-[330px] text-sm leading-relaxed text-[#5A5350]">
+            <p className="max-w-[380px] text-base leading-[1.7] text-[#5A5350]">
               A red dress and a black suit, seen under studio light. The palette moves before the
               first sample is cut.
             </p>
-            <p className="mt-4 text-[11px] font-semibold uppercase tracking-[0.1em] text-[#5A5350]">
+            <p className="mt-4 text-xs font-semibold uppercase tracking-[0.08em] text-[#5A5350]">
               Muted loops. Pause to hold the frame.
             </p>
           </div>

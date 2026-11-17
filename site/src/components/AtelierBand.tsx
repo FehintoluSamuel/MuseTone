@@ -10,47 +10,47 @@ export const AtelierBand: React.FC<AtelierBandProps> = ({ onExploreClick }) => {
       <div className="grid w-full md:grid-cols-[0.78fr_1.22fr]">
         <div className="flex flex-col justify-between px-5 py-12 sm:px-8 lg:px-12 lg:py-16">
           <div>
-            <h2 className="font-['Montserrat'] text-[clamp(40px,6vw,76px)] font-black leading-[0.92] tracking-[-0.035em] text-[#F7F2EF]">
+            <h2 className="font-['Montserrat'] text-[clamp(44px,5.8vw,82px)] font-black leading-[0.9] tracking-[-0.04em] text-[#F7F2EF]">
               <span className="box-decoration-clone rounded-[2px] bg-[linear-gradient(90deg,#D9605C_0%,#C65D58_55%,#9E3F3B_100%)] bg-[length:100%_80%] bg-center bg-no-repeat px-3 text-[#F7F2EF] shadow-[0_8px_24px_rgba(0,0,0,0.28)]">
                 The rail,
                 <br />
                 in colour.
               </span>
             </h2>
-            <p className="mt-6 max-w-[390px] text-sm leading-relaxed text-[#D8CCC5]">
+            <p className="mt-6 max-w-[420px] text-[17px] leading-[1.7] text-[#D8CCC5]">
               Personal palettes, garment checks, and mannequin previews, before the first stitch.
             </p>
 
             <dl className="mt-8 divide-y divide-white/10 border-y border-white/10">
               <div className="grid grid-cols-[38px_1fr] gap-3 py-3">
-                <dt className="text-[11px] font-semibold uppercase tracking-[0.1em] text-[#A99B94]">
+                <dt className="text-xs font-semibold uppercase tracking-[0.08em] text-[#A99B94]">
                   01
                 </dt>
                 <dd>
-                  <p className="text-sm font-semibold text-white">Colour index</p>
-                  <p className="mt-1 text-xs leading-relaxed text-[#A99B94]">
+                  <p className="text-base font-semibold text-white">Colour index</p>
+                  <p className="mt-1 text-sm leading-[1.6] text-[#B9ACA5]">
                     Five tones, mapped to tone, undertone and contrast.
                   </p>
                 </dd>
               </div>
               <div className="grid grid-cols-[38px_1fr] gap-3 py-3">
-                <dt className="text-[11px] font-semibold uppercase tracking-[0.1em] text-[#A99B94]">
+                <dt className="text-xs font-semibold uppercase tracking-[0.08em] text-[#A99B94]">
                   02
                 </dt>
                 <dd>
-                  <p className="text-sm font-semibold text-white">Garment check</p>
-                  <p className="mt-1 text-xs leading-relaxed text-[#A99B94]">
+                  <p className="text-base font-semibold text-white">Garment check</p>
+                  <p className="mt-1 text-sm leading-[1.6] text-[#B9ACA5]">
                     A fabric photo becomes a colour read you can explain.
                   </p>
                 </dd>
               </div>
               <div className="grid grid-cols-[38px_1fr] gap-3 py-3">
-                <dt className="text-[11px] font-semibold uppercase tracking-[0.1em] text-[#A99B94]">
+                <dt className="text-xs font-semibold uppercase tracking-[0.08em] text-[#A99B94]">
                   03
                 </dt>
                 <dd>
-                  <p className="text-sm font-semibold text-white">Mannequin preview</p>
-                  <p className="mt-1 text-xs leading-relaxed text-[#A99B94]">
+                  <p className="text-base font-semibold text-white">Mannequin preview</p>
+                  <p className="mt-1 text-sm leading-[1.6] text-[#B9ACA5]">
                     The palette on a body before the first sample is cut.
                   </p>
                 </dd>
@@ -64,7 +64,7 @@ export const AtelierBand: React.FC<AtelierBandProps> = ({ onExploreClick }) => {
               Explore the rail
             </button>
           </div>
-          <p className="mt-10 text-[11px] font-semibold uppercase tracking-[0.1em] text-[#A99B94]">
+          <p className="mt-10 text-xs font-semibold uppercase tracking-[0.08em] text-[#A99B94]">
             Atelier study / Pexels
           </p>
         </div>
@@ -80,7 +80,7 @@ export const AtelierBand: React.FC<AtelierBandProps> = ({ onExploreClick }) => {
             decoding="async"
             className="h-full w-full object-cover object-[50%_45%]"
           />
-          <figcaption className="absolute bottom-4 left-4 bg-[#171414] px-3 py-2 text-[11px] font-semibold uppercase tracking-[0.1em] text-white sm:bottom-6 sm:left-6">
+          <figcaption className="absolute bottom-4 left-4 bg-[#171414] px-3 py-2 text-xs font-semibold uppercase tracking-[0.08em] text-white sm:bottom-6 sm:left-6">
             Wardrobe / Rose light
           </figcaption>
         </figure>

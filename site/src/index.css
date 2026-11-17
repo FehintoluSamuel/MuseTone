@@ -1,5 +1,26 @@
 @import "tailwindcss";
 
+@theme {
+  --text-xs: 0.8125rem;
+  --text-xs--line-height: 1.5;
+  --text-sm: 0.9375rem;
+  --text-sm--line-height: 1.6;
+  --text-base: 1.0625rem;
+  --text-base--line-height: 1.65;
+  --text-lg: 1.25rem;
+  --text-lg--line-height: 1.55;
+  --text-xl: 1.5rem;
+  --text-xl--line-height: 1.4;
+  --text-2xl: 1.875rem;
+  --text-2xl--line-height: 1.25;
+  --text-3xl: 2.25rem;
+  --text-3xl--line-height: 1.15;
+  --text-4xl: 2.75rem;
+  --text-4xl--line-height: 1.05;
+  --text-5xl: 3.5rem;
+  --text-5xl--line-height: 0.95;
+}
+
 @layer base {
   html {
     scrollbar-color: #b9534f #e5cec9;
@@ -43,7 +64,7 @@
     background: #ffffff;
     color: #000000;
     font-family: 'Archivo', sans-serif;
-    font-size: 14px;
+    font-size: 15px;
     font-weight: 700;
     line-height: 1.5;
     text-align: center;
@@ -59,7 +80,7 @@
     border-radius: 999px;
     background: #ffffff;
     color: #000000;
-    font-size: 14px;
+    font-size: 15px;
     font-weight: 700;
     line-height: 1.5;
     text-align: center;
@@ -76,7 +97,7 @@
     border-radius: 999px;
     background: #111111;
     color: #ffffff;
-    font-size: 16px;
+    font-size: 17px;
     font-weight: 700;
     line-height: 1.5;
     text-align: center;
@@ -100,7 +121,7 @@
     background: transparent;
     color: #ffffff;
     font-size: 18px;
-    font-weight: 400;
+    font-weight: 500;
     line-height: 1.5;
     text-align: center;
     text-decoration: none;
@@ -124,7 +145,7 @@
     background: transparent;
     color: #171414;
     font-size: 18px;
-    font-weight: 400;
+    font-weight: 500;
     line-height: 1.5;
     text-align: center;
     text-decoration: none;

@@ -49,10 +49,10 @@ export const SpinShowcase: React.FC = () => {
       <div className="mx-auto w-full max-w-[1280px] px-4 sm:px-6 lg:px-8">
         <div className="grid gap-8 border-b border-white/15 pb-8 md:grid-cols-[1.1fr_0.9fr] md:items-end">
           <div>
-            <p className="text-[11px] font-semibold uppercase tracking-[0.14em] text-white/50">
+            <p className="text-xs font-semibold uppercase tracking-[0.1em] text-white/55">
               MUSE / Motion study
             </p>
-            <h2 className="mt-3 font-['Montserrat'] text-[clamp(40px,6vw,82px)] font-black leading-[0.92] tracking-[-0.035em] text-white">
+            <h2 className="mt-3 font-['Montserrat'] text-[clamp(46px,6.6vw,92px)] font-black leading-[0.9] tracking-[-0.04em] text-white">
               <span className="box-decoration-clone rounded-[2px] bg-[linear-gradient(90deg,#D9605C_0%,#C65D58_55%,#9E3F3B_100%)] bg-[length:100%_80%] bg-center bg-no-repeat px-3 text-white shadow-[0_8px_24px_rgba(0,0,0,0.28)]">
                 The form,
                 <br />
@@ -62,11 +62,11 @@ export const SpinShowcase: React.FC = () => {
           </div>
 
           <div className="md:justify-self-end">
-            <p className="max-w-[430px] text-sm leading-relaxed text-white/65">
+            <p className="max-w-[460px] text-base leading-[1.7] text-white/70">
               A single silhouette, turning under studio light. Drag to read the drape, the weight,
               and the way colour changes across a seam.
             </p>
-            <p className="mt-4 text-[11px] font-semibold uppercase tracking-[0.1em] text-white/50">
+            <p className="mt-4 text-xs font-semibold uppercase tracking-[0.08em] text-white/55">
               360° study / 01
             </p>
           </div>
@@ -74,10 +74,10 @@ export const SpinShowcase: React.FC = () => {
 
         <div className="mt-8 grid gap-8 sm:mt-10 lg:grid-cols-[0.72fr_1.28fr] lg:items-end lg:gap-12">
           <div className="lg:pb-10">
-            <p className="text-[11px] font-semibold uppercase tracking-[0.1em] text-white/50">
+            <p className="text-xs font-semibold uppercase tracking-[0.08em] text-white/55">
               Turn the look
             </p>
-            <p className="mt-3 max-w-[320px] text-sm leading-relaxed text-white/65">
+            <p className="mt-3 max-w-[360px] text-base leading-[1.7] text-white/70">
               The stage holds the frame while you rotate. Use the thumbnails to return to the
               front or back.
             </p>
@@ -85,10 +85,10 @@ export const SpinShowcase: React.FC = () => {
             <div className="mt-8 border-t border-white/15 pt-4">
               <div className="flex items-end justify-between gap-4">
                 <div>
-                  <p className="text-[11px] font-semibold uppercase tracking-[0.1em] text-white/50">
+                  <p className="text-xs font-semibold uppercase tracking-[0.08em] text-white/55">
                     Angle
                   </p>
-                  <p className="mt-1 text-sm font-semibold tabular-nums tracking-tight text-white">
+                  <p className="mt-1 text-base font-semibold tabular-nums tracking-tight text-white">
                     {degrees}°
                   </p>
                 </div>
@@ -99,7 +99,7 @@ export const SpinShowcase: React.FC = () => {
                       type="button"
                       onClick={() => spinToLook(index)}
                       aria-current={activeLook === index ? 'true' : undefined}
-                      className={`flex h-8 min-w-8 items-center justify-center px-1.5 text-sm font-semibold tabular-nums transition-colors ${
+                      className={`flex h-9 min-w-9 items-center justify-center px-1.5 text-base font-semibold tabular-nums transition-colors ${
                         activeLook === index
                           ? 'bg-[#171414] text-white'
                           : 'text-white/45 hover:text-white'
@@ -142,14 +142,14 @@ export const SpinShowcase: React.FC = () => {
                       activeLook === index ? 'opacity-100' : 'opacity-60 grayscale'
                     }`}
                   />
-                  <span className="mt-1.5 block text-left text-[10px] font-semibold uppercase tracking-[0.1em] text-white/50">
+                  <span className="mt-1.5 block text-left text-xs font-semibold uppercase tracking-[0.08em] text-white/55">
                     {index === 0 ? 'Front' : 'Back'}
                   </span>
                 </button>
               ))}
             </div>
 
-            <p className="mt-4 text-[11px] font-semibold uppercase tracking-[0.1em] text-white/50">
+            <p className="mt-4 text-xs font-semibold uppercase tracking-[0.08em] text-white/55">
               Drag or use arrow keys to rotate
             </p>
           </div>
@@ -167,19 +167,19 @@ export const SpinShowcase: React.FC = () => {
               />
 
               <div className="pointer-events-none absolute inset-x-4 top-4 flex items-center justify-between gap-3">
-                <span className="bg-[#171414] px-3 py-2 text-[10px] font-semibold uppercase tracking-[0.14em] text-white backdrop-blur">
+                <span className="bg-[#171414] px-3 py-2 text-xs font-semibold uppercase tracking-[0.14em] text-white backdrop-blur">
                   MUSE / 360
                 </span>
-                <span className="bg-[#171414] px-3 py-2 text-[10px] font-semibold tabular-nums uppercase tracking-[0.14em] text-white backdrop-blur">
+                <span className="bg-[#171414] px-3 py-2 text-xs font-semibold tabular-nums uppercase tracking-[0.14em] text-white backdrop-blur">
                   {degrees}°
                 </span>
               </div>
 
               <div className="pointer-events-none absolute inset-x-4 bottom-4 flex items-center justify-between gap-3">
-                <span className="bg-[#171414] px-3 py-2 text-[10px] font-semibold uppercase tracking-[0.14em] text-white backdrop-blur">
+                <span className="bg-[#171414] px-3 py-2 text-xs font-semibold uppercase tracking-[0.14em] text-white backdrop-blur">
                   Drag to rotate
                 </span>
-                <span className="bg-[#171414] px-3 py-2 text-[10px] font-semibold uppercase tracking-[0.14em] text-white backdrop-blur">
+                <span className="bg-[#171414] px-3 py-2 text-xs font-semibold uppercase tracking-[0.14em] text-white backdrop-blur">
                   {viewLabel}
                 </span>
               </div>
@@ -187,14 +187,14 @@ export const SpinShowcase: React.FC = () => {
 
             <figcaption className="flex items-end justify-between gap-4 bg-[#171414] px-4 py-4 text-white sm:px-5">
               <div>
-                <p className="text-[11px] font-semibold uppercase tracking-[0.1em] text-white/50">
+                <p className="text-xs font-semibold uppercase tracking-[0.08em] text-white/55">
                   360 study / 01
                 </p>
-                <p className="mt-1 text-xl font-semibold tracking-tight text-white">
+                <p className="mt-1 text-2xl font-semibold tracking-tight text-white">
                   The silhouette
                 </p>
               </div>
-              <span className="text-sm font-semibold tabular-nums text-[#F7DCD8]">
+              <span className="text-base font-semibold tabular-nums text-[#F7DCD8]">
                 {degrees}°
               </span>
             </figcaption>

@@ -79,22 +79,22 @@ export const PricingSection: React.FC<PricingSectionProps> = ({
       className="relative w-full scroll-mt-20 overflow-hidden bg-[#0A0A0A] py-20 text-white sm:py-24"
     >
       <div className="mx-auto w-full max-w-[1280px] px-4 sm:px-6 lg:px-8">
-        <div className="mx-auto max-w-[560px] text-center">
-          <h2 className="font-['Montserrat'] text-[30px] font-bold leading-[1.1] tracking-[-0.03em] text-white">
+        <div className="mx-auto max-w-[680px] text-center">
+          <h2 className="font-['Montserrat'] text-[clamp(40px,5vw,64px)] font-black leading-[0.96] tracking-[-0.04em] text-white">
             Pricing
           </h2>
-          <p className="mt-4 text-base font-medium leading-[1.7] text-white/50">
+          <p className="mx-auto mt-4 max-w-[620px] text-[clamp(17px,1.3vw,19px)] leading-[1.65] text-white/60">
             Choose the tier that matches how you work. Move up when the studio needs more colour,
             more looks, or more room for clients.
           </p>
 
-          <div className="mt-8 flex items-center justify-center gap-3 text-sm font-semibold">
+          <div className="mt-8 flex items-center justify-center gap-3 text-base font-semibold">
             <button
               type="button"
               onClick={() => setBilling('monthly')}
               aria-pressed={billing === 'monthly'}
               className={`transition-colors ${
-                billing === 'monthly' ? 'text-white' : 'text-white/35 hover:text-white/70'
+                billing === 'monthly' ? 'text-white' : 'text-white/50 hover:text-white/80'
               }`}
             >
               Monthly
@@ -105,12 +105,12 @@ export const PricingSection: React.FC<PricingSectionProps> = ({
               onClick={() => setBilling('annual')}
               aria-pressed={billing === 'annual'}
               className={`transition-colors ${
-                billing === 'annual' ? 'text-white' : 'text-white/35 hover:text-white/70'
+                billing === 'annual' ? 'text-white' : 'text-white/50 hover:text-white/80'
               }`}
             >
               Annual
             </button>
-            <span className="text-[10px] font-bold uppercase tracking-[0.14em] text-[#D9605C]">
+            <span className="text-xs font-bold uppercase tracking-[0.1em] text-[#D9605C]">
               Save 20%
             </span>
           </div>
@@ -131,7 +131,7 @@ export const PricingSection: React.FC<PricingSectionProps> = ({
             return (
               <article
                 key={tier.name}
-                className={`relative flex min-h-[540px] flex-col justify-between overflow-hidden rounded-[10px] border bg-[#0A0A0A] p-8 shadow-[0_24px_80px_rgba(0,0,0,0.35)] ${
+                className={`relative flex min-h-[580px] flex-col justify-between overflow-hidden rounded-[10px] border bg-[#0A0A0A] p-8 shadow-[0_24px_80px_rgba(0,0,0,0.35)] ${
                   tier.highlight
                     ? 'border-[#D9605C]/50'
                     : 'border-white/[0.06]'
@@ -152,31 +152,31 @@ export const PricingSection: React.FC<PricingSectionProps> = ({
 
                 <div className="relative">
                   <div className="flex items-center justify-between gap-3">
-                    <p className="text-[10px] font-semibold uppercase tracking-[0.14em] text-white/35">
+                    <p className="text-xs font-semibold uppercase tracking-[0.1em] text-white/45">
                       {tier.code}
                     </p>
                     {tier.highlight && (
-                      <p className="text-[10px] font-semibold uppercase tracking-[0.14em] text-[#D9605C]">
+                      <p className="text-xs font-semibold uppercase tracking-[0.1em] text-[#D9605C]">
                         Recommended
                       </p>
                     )}
                   </div>
 
-                  <h3 className="mt-6 text-[32px] font-bold leading-[1.1] tracking-[-0.03em] text-white">
+                  <h3 className="mt-6 text-[clamp(36px,3.2vw,42px)] font-bold leading-[1.05] tracking-[-0.035em] text-white">
                     {tier.name}
                   </h3>
 
                   <div className="mt-6 flex items-baseline gap-2">
-                    <span className="font-['Montserrat'] text-[56px] font-bold leading-none tracking-[-0.04em] text-white">
+                    <span className="font-['Montserrat'] text-[clamp(60px,5.5vw,72px)] font-black leading-none tracking-[-0.04em] text-white">
                       {price}
                     </span>
                     {isPaid && (
-                      <span className="text-sm font-medium text-white/30">/month</span>
+                      <span className="text-base font-medium text-white/40">/month</span>
                     )}
                   </div>
-                  <p className="mt-3 text-sm font-medium text-white/50">{billingNote}</p>
+                  <p className="mt-3 text-base font-medium text-white/55">{billingNote}</p>
 
-                  <ul className="mt-10 grid gap-3 text-sm font-medium leading-[1.7] text-white/50">
+                  <ul className="mt-10 grid gap-3.5 text-base font-medium leading-[1.7] text-white/60">
                     {tier.features.map((feature) => (
                       <li key={feature}>{feature}</li>
                     ))}
@@ -184,14 +184,14 @@ export const PricingSection: React.FC<PricingSectionProps> = ({
                 </div>
 
                 <div className="relative mt-12">
-                  <p className="min-h-[38px] max-w-[280px] text-[11px] leading-[1.7] text-white/35">
+                  <p className="min-h-[44px] max-w-[300px] text-xs leading-[1.65] text-white/45">
                     {tier.note}
                   </p>
                   <div className="mt-5 flex justify-center">
                     <button
                       type="button"
                       onClick={isPaid ? onChoosePlan : onStartClick}
-                      className="text-sm font-bold tracking-[0.04em] text-white transition-colors hover:text-white/70"
+                      className="text-base font-bold tracking-[0.02em] text-white transition-colors hover:text-white/70"
                     >
                       {tier.cta}
                     </button>
@@ -202,7 +202,7 @@ export const PricingSection: React.FC<PricingSectionProps> = ({
           })}
         </div>
 
-        <p className="mt-10 text-center text-[10px] font-semibold uppercase tracking-[0.08em] text-white/35">
+        <p className="mt-10 text-center text-xs font-semibold uppercase tracking-[0.08em] text-white/40">
           Monthly plans can be cancelled anytime. Annual billing saves 20%.
         </p>
       </div>

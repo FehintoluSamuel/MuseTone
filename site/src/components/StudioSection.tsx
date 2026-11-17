@@ -18,12 +18,12 @@ export const StudioSection: React.FC<StudioSectionProps> = ({
         <div className="grid lg:grid-cols-[1fr_420px]">
           <div className="px-6 py-12 sm:px-10 sm:py-16 lg:px-12">
             <div className="max-w-[620px]">
-              <h2 className="font-['Montserrat'] text-[clamp(38px,5vw,68px)] font-black leading-[0.96] tracking-[-0.04em]">
+              <h2 className="font-['Montserrat'] text-[clamp(46px,6vw,82px)] font-black leading-[0.94] tracking-[-0.04em]">
                 Build the look
                 <br />
                 before the garment.
               </h2>
-              <p className="mt-5 max-w-[430px] text-sm leading-relaxed text-[#D8CCC5]">
+              <p className="mt-5 max-w-[460px] text-base leading-[1.7] text-[#D8CCC5]">
                 Start with one palette. Keep every client, fitting, and colour decision in one
                 place.
               </p>
@@ -55,14 +55,14 @@ export const StudioSection: React.FC<StudioSectionProps> = ({
               decoding="async"
               className="absolute inset-0 h-full w-full object-cover object-[50%_35%]"
             />
-            <figcaption className="absolute bottom-4 left-4 bg-[#171414] px-3 py-2 text-[11px] font-semibold uppercase tracking-[0.1em] text-white">
+            <figcaption className="absolute bottom-4 left-4 bg-[#171414] px-3 py-2 text-xs font-semibold uppercase tracking-[0.08em] text-white">
               Studio study / Pexels
             </figcaption>
           </figure>
         </div>
       </div>
 
-      <footer className="mt-8 flex flex-col gap-4 border-t border-[#CBB8B0] pt-5 text-[11px] font-semibold uppercase tracking-[0.1em] text-[#5A5350] sm:flex-row sm:items-center sm:justify-between">
+      <footer className="mt-8 flex flex-col gap-4 border-t border-[#CBB8B0] pt-5 text-xs font-semibold uppercase tracking-[0.08em] text-[#5A5350] sm:flex-row sm:items-center sm:justify-between">
         <span>Muse / 2026</span>
         <div className="flex flex-wrap gap-5">
           <a href="#motion" className="transition-colors hover:text-[#171414]">

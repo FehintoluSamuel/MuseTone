@@ -115,12 +115,12 @@ export const EditorialHero: React.FC<EditorialHeroProps> = ({ onStartClick }) =>
             transition={{ duration: 0.8, delay: 0.18, ease: [0.16, 1, 0.3, 1] }}
             className="max-w-[860px]"
           >
-            <h1 className="font-['Montserrat'] text-[clamp(56px,8.6vw,96px)] font-black uppercase leading-[0.88] tracking-[-0.035em] text-white">
+            <h1 className="font-['Montserrat'] text-[clamp(64px,9.4vw,116px)] font-black uppercase leading-[0.86] tracking-[-0.04em] text-white">
               Colour
               <br />
               <span className="text-[#F7DCD8]">Vision.</span>
             </h1>
-            <p className="mx-auto mt-7 max-w-[540px] text-sm leading-relaxed text-white sm:text-base">
+            <p className="mx-auto mt-7 max-w-[600px] text-[clamp(17px,1.4vw,20px)] leading-[1.65] text-white/90">
               Personal palettes, garment checks, and mannequin previews, before the first stitch.
             </p>
             <button
@@ -133,7 +133,7 @@ export const EditorialHero: React.FC<EditorialHeroProps> = ({ onStartClick }) =>
           </motion.div>
         </div>
 
-        <div className="grid grid-cols-2 items-end gap-4 border-t border-white/25 pt-4 text-[11px] font-semibold uppercase tracking-[0.1em] text-white/85 sm:flex sm:justify-between">
+        <div className="grid grid-cols-2 items-end gap-4 border-t border-white/25 pt-4 text-xs font-semibold uppercase tracking-[0.12em] text-white/85 sm:flex sm:justify-between">
           <span>Personal / Studio</span>
           <span className="hidden sm:inline">Colour intelligence / 2026</span>
           <span>Atelier study / Pexels</span>

@@ -87,7 +87,7 @@ export const Navbar: React.FC<NavbarProps> = ({
             <span className="absolute inset-0 rounded-[3px] border-[1.5px] border-white" />
             <span className="absolute -bottom-0.5 -right-0.5 h-1.5 w-1.5 rounded-full bg-[#D9605C]" />
           </span>
-          <span className="text-sm font-semibold tracking-[0.01em]">Muse</span>
+          <span className="text-base font-semibold tracking-[-0.01em]">Muse</span>
         </a>
 
         <div className="ml-auto hidden items-center gap-5 min-[721px]:flex min-[961px]:gap-10">
@@ -103,8 +103,8 @@ export const Navbar: React.FC<NavbarProps> = ({
                   e.preventDefault();
                   handleNavClick(item.id);
                 }}
-                className={`cursor-pointer text-sm leading-[21px] transition-colors duration-200 ${
-                  isActive ? 'text-white' : 'text-white/[0.78] hover:text-white'
+                className={`cursor-pointer text-base font-medium leading-[22px] transition-colors duration-200 ${
+                  isActive ? 'font-semibold text-white' : 'text-white/[0.78] hover:text-white'
                 }`}
               >
                 {item.label}
@@ -139,14 +139,14 @@ export const Navbar: React.FC<NavbarProps> = ({
                       e.preventDefault();
                       handleNavClick(item.id);
                     }}
-                    className={`flex items-center justify-between rounded-xl px-4 py-3 text-sm transition-colors ${
+                    className={`flex items-center justify-between rounded-xl px-4 py-3.5 text-base font-medium transition-colors ${
                       isActive
-                        ? 'bg-white/[0.08] text-white'
+                        ? 'bg-white/[0.08] font-semibold text-white'
                         : 'text-white/[0.78] hover:bg-white/[0.05] hover:text-white'
                     }`}
                   >
                     <span>{item.label}</span>
-                    <span className="text-[10px] font-semibold uppercase tracking-[0.14em] text-white/30">
+                    <span className="text-xs font-semibold uppercase tracking-[0.12em] text-white/40">
                       0{index + 1}
                     </span>
                   </a>

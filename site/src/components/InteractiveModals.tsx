@@ -89,7 +89,7 @@ export const InteractiveModals: React.FC<InteractiveModalsProps> = ({
             }`}
           >
             <div className="sticky top-0 z-20 flex items-center justify-between gap-4 border-b border-white/10 bg-[#171414]/95 px-5 py-3 backdrop-blur sm:px-8">
-              <p className="text-[10px] font-semibold uppercase tracking-[0.16em] text-white/40">
+              <p className="text-xs font-semibold uppercase tracking-[0.12em] text-white/40">
                 {meta}
               </p>
               <button
@@ -106,35 +106,35 @@ export const InteractiveModals: React.FC<InteractiveModalsProps> = ({
               {activeModal === 'start' && (
                 <div className="space-y-8">
                   <div>
-                    <p className="text-[10px] font-semibold uppercase tracking-[0.16em] text-[#D9605C]">
+                    <p className="text-xs font-semibold uppercase tracking-[0.12em] text-[#D9605C]">
                       Free profile
                     </p>
-                    <h3 className="mt-3 font-['Montserrat'] text-3xl font-black leading-[0.96] tracking-[-0.03em] text-white sm:text-4xl">
+                    <h3 className="mt-3 font-['Montserrat'] text-4xl font-black leading-[0.94] tracking-[-0.04em] text-white sm:text-5xl">
                       Muse Personal
                     </h3>
-                    <p className="mt-3 max-w-[430px] text-sm leading-relaxed text-white/50">
+                    <p className="mt-3 max-w-[430px] text-base leading-[1.7] text-white/60">
                       One profile, a core palette, and a place to keep the reads that work.
                     </p>
                   </div>
 
                   <dl className="divide-y divide-white/10 border-y border-white/10">
-                    <div className="flex items-center justify-between gap-4 py-4 text-sm">
-                      <dt className="text-white/45">Palette depth</dt>
+                    <div className="flex items-center justify-between gap-4 py-4 text-base">
+                      <dt className="text-white/55">Palette depth</dt>
                       <dd className="text-right font-semibold text-white">
                         Undertone + core colours
                       </dd>
                     </div>
-                    <div className="flex items-center justify-between gap-4 py-4 text-sm">
-                      <dt className="text-white/45">Garment checks</dt>
+                    <div className="flex items-center justify-between gap-4 py-4 text-base">
+                      <dt className="text-white/55">Garment checks</dt>
                       <dd className="font-semibold text-white">Daily</dd>
                     </div>
-                    <div className="flex items-center justify-between gap-4 py-4 text-sm">
-                      <dt className="text-white/45">Saved boards</dt>
+                    <div className="flex items-center justify-between gap-4 py-4 text-base">
+                      <dt className="text-white/55">Saved boards</dt>
                       <dd className="font-semibold text-white">One profile</dd>
                     </div>
                     <div className="flex items-center justify-between gap-4 py-4">
-                      <dt className="text-sm text-white/45">Price</dt>
-                      <dd className="font-['Montserrat'] text-3xl font-black tracking-[-0.03em] text-white">
+                      <dt className="text-base text-white/55">Price</dt>
+                      <dd className="font-['Montserrat'] text-4xl font-black tracking-[-0.04em] text-white">
                         Free
                       </dd>
                     </div>
@@ -154,7 +154,7 @@ export const InteractiveModals: React.FC<InteractiveModalsProps> = ({
                       Not now
                     </button>
                   </div>
-                  <p className="text-[11px] font-semibold uppercase tracking-[0.08em] text-white/35">
+                  <p className="text-xs font-semibold uppercase tracking-[0.08em] text-white/40">
                     Upgrade any time. Your profile and boards stay with you.
                   </p>
                 </div>
@@ -163,15 +163,15 @@ export const InteractiveModals: React.FC<InteractiveModalsProps> = ({
               {activeModal === 'get-started' && (
                 <div className="space-y-8">
                   <div>
-                    <p className="text-[10px] font-semibold uppercase tracking-[0.16em] text-[#D9605C]">
+                    <p className="text-xs font-semibold uppercase tracking-[0.12em] text-[#D9605C]">
                       Studio access
                     </p>
-                    <h3 className="mt-3 font-['Montserrat'] text-3xl font-black leading-[0.96] tracking-[-0.03em] text-white sm:text-4xl">
+                    <h3 className="mt-3 font-['Montserrat'] text-4xl font-black leading-[0.94] tracking-[-0.04em] text-white sm:text-5xl">
                       Get started
                       <br />
                       with Muse.
                     </h3>
-                    <p className="mt-3 max-w-[430px] text-sm leading-relaxed text-white/50">
+                    <p className="mt-3 max-w-[430px] text-base leading-[1.7] text-white/60">
                       Colour intelligence for designers, stylists, and the clients they dress.
                     </p>
                   </div>
@@ -184,7 +184,7 @@ export const InteractiveModals: React.FC<InteractiveModalsProps> = ({
                     className="space-y-6"
                   >
                     <div>
-                      <label className="mb-2 block text-[10px] font-semibold uppercase tracking-[0.16em] text-white/40">
+                      <label className="mb-2 block text-xs font-semibold uppercase tracking-[0.12em] text-white/40">
                         Full name
                       </label>
                       <input
@@ -192,11 +192,11 @@ export const InteractiveModals: React.FC<InteractiveModalsProps> = ({
                         required
                         autoComplete="name"
                         placeholder="e.g. Amara Okafor"
-                        className="w-full border-0 border-b border-white/15 bg-transparent px-0 py-3 text-sm text-white placeholder:text-white/25 focus:border-[#D9605C] focus:outline-none focus:ring-0"
+                        className="w-full border-0 border-b border-white/15 bg-transparent px-0 py-3 text-base text-white placeholder:text-white/30 focus:border-[#D9605C] focus:outline-none focus:ring-0"
                       />
                     </div>
                     <div>
-                      <label className="mb-2 block text-[10px] font-semibold uppercase tracking-[0.16em] text-white/40">
+                      <label className="mb-2 block text-xs font-semibold uppercase tracking-[0.12em] text-white/40">
                         Business email
                       </label>
                       <input
@@ -204,14 +204,14 @@ export const InteractiveModals: React.FC<InteractiveModalsProps> = ({
                         required
                         autoComplete="email"
                         placeholder="amara@studio.com"
-                        className="w-full border-0 border-b border-white/15 bg-transparent px-0 py-3 text-sm text-white placeholder:text-white/25 focus:border-[#D9605C] focus:outline-none focus:ring-0"
+                        className="w-full border-0 border-b border-white/15 bg-transparent px-0 py-3 text-base text-white placeholder:text-white/30 focus:border-[#D9605C] focus:outline-none focus:ring-0"
                       />
                     </div>
                     <div>
-                      <label className="mb-2 block text-[10px] font-semibold uppercase tracking-[0.16em] text-white/40">
+                      <label className="mb-2 block text-xs font-semibold uppercase tracking-[0.12em] text-white/40">
                         I am a
                       </label>
-                      <select className="w-full border-0 border-b border-white/15 bg-[#171414] px-0 py-3 text-sm text-white focus:border-[#D9605C] focus:outline-none focus:ring-0">
+                      <select className="w-full border-0 border-b border-white/15 bg-[#171414] px-0 py-3 text-base text-white focus:border-[#D9605C] focus:outline-none focus:ring-0">
                         <option>Fashion designer</option>
                         <option>Stylist / image consultant</option>
                         <option>Client / individual</option>
@@ -226,7 +226,7 @@ export const InteractiveModals: React.FC<InteractiveModalsProps> = ({
                       >
                         Request early access
                       </button>
-                      <p className="text-[11px] font-semibold uppercase tracking-[0.08em] text-white/35">
+                      <p className="text-xs font-semibold uppercase tracking-[0.08em] text-white/40">
                         We reply within two working days.
                       </p>
                     </div>
@@ -237,15 +237,15 @@ export const InteractiveModals: React.FC<InteractiveModalsProps> = ({
               {activeModal === 'learn-more' && (
                 <div className="space-y-10">
                   <div>
-                    <p className="text-[10px] font-semibold uppercase tracking-[0.16em] text-[#D9605C]">
+                    <p className="text-xs font-semibold uppercase tracking-[0.12em] text-[#D9605C]">
                       Atelier notes
                     </p>
-                    <h3 className="mt-3 font-['Montserrat'] text-4xl font-black leading-[0.92] tracking-[-0.04em] text-white sm:text-5xl">
+                    <h3 className="mt-3 font-['Montserrat'] text-5xl font-black leading-[0.9] tracking-[-0.04em] text-white sm:text-6xl">
                       The rail,
                       <br />
                       in colour.
                     </h3>
-                    <p className="mt-4 max-w-[620px] text-sm leading-relaxed text-white/50">
+                    <p className="mt-4 max-w-[620px] text-base leading-[1.7] text-white/60">
                       Personal palettes, garment checks, and mannequin previews, before the first
                       stitch.
                     </p>
@@ -254,19 +254,19 @@ export const InteractiveModals: React.FC<InteractiveModalsProps> = ({
                   <section>
                     <div className="flex items-end justify-between gap-4 border-b border-white/10 pb-4">
                       <div>
-                        <p className="text-[10px] font-semibold uppercase tracking-[0.16em] text-white/40">
+                        <p className="text-xs font-semibold uppercase tracking-[0.12em] text-white/40">
                           01 / Colour index
                         </p>
-                        <h4 className="mt-2 text-xl font-semibold leading-tight text-white sm:text-2xl">
+                        <h4 className="mt-2 text-2xl font-semibold leading-tight text-white sm:text-3xl">
                           Not every red belongs on every skin.
                         </h4>
                       </div>
-                      <span className="shrink-0 text-[10px] font-semibold uppercase tracking-[0.16em] text-white/35">
+                      <span className="shrink-0 text-xs font-semibold uppercase tracking-[0.12em] text-white/45">
                         05 tones
                       </span>
                     </div>
 
-                    <p className="mt-4 max-w-[620px] text-sm leading-relaxed text-white/50">
+                    <p className="mt-4 max-w-[620px] text-base leading-[1.7] text-white/60">
                       The engine reads tone, undertone, and contrast, then builds a palette that
                       behaves in daylight, evening light, and on camera.
                     </p>
@@ -279,20 +279,20 @@ export const InteractiveModals: React.FC<InteractiveModalsProps> = ({
                             style={{ backgroundColor: swatch.hex }}
                           >
                             <span
-                              className="absolute bottom-2 left-2 text-[10px] font-semibold uppercase tracking-[0.1em]"
+                              className="absolute bottom-2 left-2 text-xs font-semibold uppercase tracking-[0.08em]"
                               style={{ color: swatch.ink }}
                             >
                               {swatch.code}
                             </span>
                           </div>
-                          <p className="mt-2 text-[10px] font-semibold uppercase tracking-[0.08em] text-white/55">
+                          <p className="mt-2 text-xs font-semibold uppercase tracking-[0.08em] text-white/60">
                             {swatch.name}
                           </p>
                         </div>
                       ))}
                     </div>
 
-                    <div className="mt-5 flex flex-wrap gap-x-4 gap-y-2 border-t border-white/10 pt-3 text-[10px] font-semibold uppercase tracking-[0.08em] text-white/35">
+                    <div className="mt-5 flex flex-wrap gap-x-4 gap-y-2 border-t border-white/10 pt-3 text-xs font-semibold uppercase tracking-[0.08em] text-white/40">
                       <span>Seasonal palettes</span>
                       <span>Tone and undertone mapped</span>
                       <span>Daylight tested</span>
@@ -302,19 +302,19 @@ export const InteractiveModals: React.FC<InteractiveModalsProps> = ({
                   <section>
                     <div className="flex items-end justify-between gap-4 border-b border-white/10 pb-4">
                       <div>
-                        <p className="text-[10px] font-semibold uppercase tracking-[0.16em] text-white/40">
+                        <p className="text-xs font-semibold uppercase tracking-[0.12em] text-white/40">
                           02 / Process
                         </p>
-                        <h4 className="mt-2 text-xl font-semibold leading-tight text-white sm:text-2xl">
+                        <h4 className="mt-2 text-2xl font-semibold leading-tight text-white sm:text-3xl">
                           From skin tone to a finished look.
                         </h4>
                       </div>
-                      <span className="shrink-0 text-[10px] font-semibold uppercase tracking-[0.16em] text-white/35">
+                      <span className="shrink-0 text-xs font-semibold uppercase tracking-[0.12em] text-white/45">
                         03 steps
                       </span>
                     </div>
 
-                    <p className="mt-4 max-w-[620px] text-sm leading-relaxed text-white/50">
+                    <p className="mt-4 max-w-[620px] text-base leading-[1.7] text-white/60">
                       A deterministic colour workflow for designers who need to explain the
                       decision, not just make it.
                     </p>
@@ -325,12 +325,12 @@ export const InteractiveModals: React.FC<InteractiveModalsProps> = ({
                           key={step.title}
                           className="grid grid-cols-[42px_1fr] gap-4 py-5 sm:grid-cols-[64px_1fr]"
                         >
-                          <span className="font-['Montserrat'] text-2xl font-black leading-none tracking-[-0.03em] text-[#D9605C]">
+                          <span className="font-['Montserrat'] text-3xl font-black leading-none tracking-[-0.04em] text-[#D9605C]">
                             0{index + 1}
                           </span>
                           <div>
-                            <p className="text-sm font-semibold text-white">{step.title}</p>
-                            <p className="mt-1 text-sm leading-relaxed text-white/50">
+                            <p className="text-base font-semibold text-white">{step.title}</p>
+                            <p className="mt-1 text-base leading-[1.7] text-white/60">
                               {step.copy}
                             </p>
                           </div>

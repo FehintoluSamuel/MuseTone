@@ -1273,7 +1273,7 @@ const DesktopTopBar: React.FC = () => {
         <span className="font-['Syne'] text-[46px] font-extrabold leading-none tracking-[-0.02em] text-white">
           MUSE
         </span>
-        <span className="text-[15px] font-normal tracking-[0.06em] text-white/70">
+        <span className="text-base font-medium tracking-[0.06em] text-white/75">
           STYLING STUDIO
         </span>
       </div>
@@ -1312,7 +1312,7 @@ const StudioTabs: React.FC<{ width?: number; compact?: boolean }> = ({
             role="tab"
             aria-selected={active}
             onClick={() => setTab(item)}
-            className={`relative h-11 flex-1 rounded-3xl px-2 text-[13px] tracking-[0.05em] transition-colors sm:text-[15px] ${
+            className={`relative h-11 flex-1 rounded-3xl px-2 text-[15px] font-medium tracking-[0.05em] transition-colors sm:text-[17px] ${
               active ? 'text-white' : 'text-white/65 hover:text-white'
             }`}
           >
@@ -1403,7 +1403,7 @@ const IconButton: React.FC<{
 
 const Badge: React.FC<{ count: number }> = ({ count }) => (
   <span
-    className={`absolute -right-1 -top-1 flex h-5 min-w-5 items-center justify-center rounded-full bg-white px-1 text-[11px] font-semibold text-[#171414] transition-transform duration-300 ${
+    className={`absolute -right-1 -top-1 flex h-5 min-w-5 items-center justify-center rounded-full bg-white px-1 text-xs font-semibold text-[#171414] transition-transform duration-300 ${
       count > 0 ? 'scale-100' : 'scale-0'
     }`}
   >
@@ -1451,7 +1451,7 @@ const MoreMenu: React.FC = () => {
                 setMoreOpen(false);
                 showToast(item.message);
               }}
-              className="flex w-full items-center gap-3 rounded-xl px-3 py-2.5 text-left text-sm text-white/80 transition-colors hover:bg-white/10 hover:text-white"
+              className="flex w-full items-center gap-3 rounded-xl px-3 py-2.5 text-left text-base font-medium text-white/80 transition-colors hover:bg-white/10 hover:text-white"
             >
               <item.icon className="h-4 w-4" />
               {item.label}
@@ -1510,7 +1510,7 @@ const ProfileCard: React.FC<{ desktop?: boolean }> = ({ desktop = false }) => {
                 setNameDraft(displayName);
                 setEditingName(true);
               }}
-              className="truncate text-left text-[22px] font-normal text-white sm:text-[26px]"
+              className="truncate text-left text-[26px] font-medium text-white sm:text-[30px]"
             >
               {displayName}
             </button>
@@ -1620,7 +1620,7 @@ const StyleMenu: React.FC<{ desktop?: boolean }> = ({ desktop = false }) => {
             key={item.key}
             type="button"
             onClick={() => selectStyle(item.key)}
-            className={`relative flex h-[54px] items-center gap-3.5 rounded-2xl px-3 text-left text-[15px] transition-colors ${
+            className={`relative flex h-[54px] items-center gap-3.5 rounded-2xl px-3 text-left text-base font-medium transition-colors ${
               active ? 'text-white' : 'text-white/65 hover:text-white'
             }`}
           >
@@ -1806,7 +1806,7 @@ const ModelStage: React.FC<{ mobile?: boolean }> = ({ mobile = false }) => {
               >
                 <span className="studio-ping absolute inset-0 rounded-full border border-white" />
                 <span className="relative h-1.5 w-1.5 rounded-full bg-white" />
-                <span className="pointer-events-none absolute left-[34px] z-30 w-max max-w-[220px] translate-x-[-6px] rounded-full bg-[rgba(30,30,34,.55)] px-3 py-1.5 text-left text-[11px] text-white opacity-0 backdrop-blur-[14px] transition-all duration-200 group-hover:translate-x-0 group-hover:opacity-100">
+                <span className="pointer-events-none absolute left-[34px] z-30 w-max max-w-[240px] translate-x-[-6px] rounded-full bg-[rgba(30,30,34,.55)] px-3 py-1.5 text-left text-xs font-medium text-white opacity-0 backdrop-blur-[14px] transition-all duration-200 group-hover:translate-x-0 group-hover:opacity-100">
                   <strong>{piece.name}</strong> · {piece.colour} · ${piece.price}
                 </span>
               </button>
@@ -1873,10 +1873,10 @@ const RightPanel: React.FC<{ desktop?: boolean }> = ({ desktop = false }) => {
 
 const ViewHeader: React.FC<{ title: string; note: string }> = ({ title, note }) => (
   <div className="flex items-baseline justify-between gap-3">
-    <h3 className="text-[17px] font-normal uppercase tracking-[0.06em] text-white">
+    <h3 className="text-[19px] font-semibold uppercase tracking-[0.05em] text-white">
       {title}
     </h3>
-    <span className="text-right text-xs font-normal normal-case text-white/65">{note}</span>
+    <span className="text-right text-xs font-medium normal-case text-white/70">{note}</span>
   </div>
 );
 
@@ -1918,7 +1918,7 @@ const OutfitsView: React.FC = () => {
               >
                 <item.icon className="h-5 w-5" />
               </span>
-              <span className="text-[11px] leading-tight text-white/65">{item.name}</span>
+              <span className="text-xs font-medium leading-tight text-white/70">{item.name}</span>
             </button>
           );
         })}
@@ -1954,7 +1954,7 @@ const OutfitsView: React.FC = () => {
                   loading="lazy"
                   className="absolute inset-x-0 bottom-0 top-1 mx-auto h-[104%] w-auto max-w-none object-contain transition-transform duration-300 group-hover:scale-[1.06]"
                 />
-                <span className="absolute inset-x-1.5 bottom-1.5 translate-y-2 rounded-full bg-[rgba(30,30,34,.55)] px-2 py-1 text-center text-[10px] text-white opacity-0 backdrop-blur-md transition-all duration-200 group-hover:translate-y-0 group-hover:opacity-100">
+                <span className="absolute inset-x-1.5 bottom-1.5 translate-y-2 rounded-full bg-[rgba(30,30,34,.55)] px-2 py-1 text-center text-xs font-medium text-white opacity-0 backdrop-blur-md transition-all duration-200 group-hover:translate-y-0 group-hover:opacity-100">
                   {item.name}
                 </span>
                 <span
@@ -1988,7 +1988,7 @@ const OutfitsView: React.FC = () => {
                 type="button"
                 aria-expanded={open}
                 onClick={() => setOpenRow(open ? null : group.key)}
-                className="flex h-[42px] w-full items-center justify-between gap-3 px-3 text-left text-[13px] uppercase tracking-[0.04em] text-white"
+                className="flex h-[42px] w-full items-center justify-between gap-3 px-3 text-left text-sm font-medium uppercase tracking-[0.04em] text-white"
               >
                 <span>
                   {group.label}
@@ -2019,10 +2019,10 @@ const OutfitsView: React.FC = () => {
                             className="flex items-center gap-2 border-t border-white/10 px-1 py-2 first:border-t-0"
                           >
                             <div className="min-w-0 flex-1">
-                              <p className="truncate text-xs text-white">{piece.name}</p>
-                              <p className="text-[11px] text-white/70">{piece.colour}</p>
+                              <p className="truncate text-sm text-white">{piece.name}</p>
+                              <p className="text-xs text-white/70">{piece.colour}</p>
                             </div>
-                            <span className="text-xs font-semibold text-white">${piece.price}</span>
+                            <span className="text-sm font-semibold text-white">${piece.price}</span>
                             <button
                               type="button"
                               aria-label={
@@ -2107,7 +2107,7 @@ const TuneView: React.FC<{ item: TuneKey }> = ({ item }) => {
                 type="button"
                 aria-pressed={active}
                 onClick={() => setTunePreset(item, preset)}
-                className={`rounded-xl px-3.5 py-2 text-[13px] transition-colors ${
+                className={`rounded-xl px-3.5 py-2 text-sm font-medium transition-colors ${
                   active
                     ? 'studio-pill-on bg-white/15 text-white'
                     : 'border border-white/25 bg-white/5 text-white/65 hover:bg-white/10 hover:text-white'
@@ -2130,7 +2130,7 @@ const TuneView: React.FC<{ item: TuneKey }> = ({ item }) => {
                 type="button"
                 aria-pressed={active}
                 onClick={() => toggleAccessory(piece)}
-                className={`rounded-xl px-3.5 py-2 text-[13px] transition-colors ${
+                className={`rounded-xl px-3.5 py-2 text-sm font-medium transition-colors ${
                   active
                     ? 'studio-pill-on bg-white/15 text-white'
                     : 'border border-white/25 bg-white/5 text-white/65 hover:bg-white/10 hover:text-white'
@@ -2159,7 +2159,7 @@ const TuneView: React.FC<{ item: TuneKey }> = ({ item }) => {
         })}
       </div>
 
-      <p className="mt-auto pt-6 text-[11px] leading-relaxed text-white/60">
+      <p className="mt-auto pt-6 text-xs leading-relaxed text-white/65">
         Tune controls are applied to the live render and replayed with the scan line.
       </p>
     </div>
@@ -2220,12 +2220,12 @@ const DnaView: React.FC = () => {
       <button
         type="button"
         onClick={shuffleIdentity}
-        className="mt-auto flex h-[46px] w-full items-center justify-center gap-2 rounded-[14px] border-[1.5px] border-white text-sm text-white transition-colors hover:bg-white hover:text-[#171414]"
+        className="mt-auto flex h-[46px] w-full items-center justify-center gap-2 rounded-[14px] border-[1.5px] border-white text-base font-medium text-white transition-colors hover:bg-white hover:text-[#171414]"
       >
         <RefreshCw className="h-4 w-4" />
         Re-seed identity
       </button>
-      <p className="mt-3 text-center text-[11px] text-white/60">Current name: {displayName}</p>
+      <p className="mt-3 text-center text-xs text-white/65">Current name: {displayName}</p>
     </div>
   );
 };
@@ -2264,7 +2264,7 @@ const BodyView: React.FC = () => {
         />
       </div>
 
-      <p className="mt-7 text-[11px] font-semibold uppercase tracking-[0.08em] text-white/45">
+      <p className="mt-7 text-xs font-semibold uppercase tracking-[0.08em] text-white/60">
         Posture
       </p>
       <div className="mt-2 flex flex-wrap gap-2">
@@ -2274,7 +2274,7 @@ const BodyView: React.FC = () => {
             type="button"
             aria-pressed={posture === item}
             onClick={() => setPosture(item)}
-            className={`rounded-xl px-3.5 py-2 text-[13px] transition-colors ${
+            className={`rounded-xl px-3.5 py-2 text-sm font-medium transition-colors ${
               posture === item
                 ? 'studio-pill-on bg-white/15 text-white'
                 : 'border border-white/25 bg-white/5 text-white/65 hover:bg-white/10 hover:text-white'
@@ -2285,7 +2285,7 @@ const BodyView: React.FC = () => {
         ))}
       </div>
 
-      <p className="mt-6 text-[11px] font-semibold uppercase tracking-[0.08em] text-white/45">
+      <p className="mt-6 text-xs font-semibold uppercase tracking-[0.08em] text-white/60">
         Framing
       </p>
       <div className="mt-2 flex flex-wrap gap-2">
@@ -2295,7 +2295,7 @@ const BodyView: React.FC = () => {
             type="button"
             aria-pressed={view.framing === item}
             onClick={() => setFraming(item)}
-            className={`rounded-xl px-3.5 py-2 text-[13px] transition-colors ${
+            className={`rounded-xl px-3.5 py-2 text-sm font-medium transition-colors ${
               view.framing === item
                 ? 'studio-pill-on bg-white/15 text-white'
                 : 'border border-white/25 bg-white/5 text-white/65 hover:bg-white/10 hover:text-white'
@@ -2306,7 +2306,7 @@ const BodyView: React.FC = () => {
         ))}
       </div>
 
-      <p className="mt-auto pt-6 text-[11px] leading-relaxed text-white/60">
+      <p className="mt-auto pt-6 text-xs leading-relaxed text-white/65">
         Height and build commit to history on release. Framing stays in sync with the Pose button.
       </p>
     </div>
@@ -2337,7 +2337,7 @@ const PersonalityView: React.FC = () => {
               type="button"
               aria-pressed={active}
               onClick={() => toggleTrait(trait)}
-              className={`rounded-xl px-3 py-1.5 text-[13px] transition-colors ${
+              className={`rounded-xl px-3 py-1.5 text-sm font-medium transition-colors ${
                 active
                   ? 'studio-pill-on bg-white/15 text-white'
                   : 'border border-white/25 bg-white/5 text-white/65 hover:bg-white/10 hover:text-white'
@@ -2481,14 +2481,14 @@ const StoryView: React.FC = () => {
   return (
     <div className="flex min-h-full flex-col">
       <ViewHeader title="Story" note="auto-written from your choices" />
-      <div className="mt-4 min-h-[260px] rounded-2xl border border-white/25 bg-white/5 p-4 text-[15px] leading-relaxed text-white/80">
+      <div className="mt-4 min-h-[260px] rounded-2xl border border-white/25 bg-white/5 p-4 text-base leading-[1.7] text-white/85">
         {typed}
         <span className="studio-caret ml-0.5 inline-block h-[1em] w-[2px] translate-y-[2px] bg-white align-baseline" />
       </div>
       <button
         type="button"
         onClick={rewriteStory}
-        className="mt-auto flex h-[46px] w-full items-center justify-center gap-2 rounded-[14px] border-[1.5px] border-white text-sm text-white transition-colors hover:bg-white hover:text-[#171414]"
+        className="mt-auto flex h-[46px] w-full items-center justify-center gap-2 rounded-[14px] border-[1.5px] border-white text-base font-medium text-white transition-colors hover:bg-white hover:text-[#171414]"
       >
         <RefreshCw className="h-4 w-4" />
         Rewrite story
@@ -2521,7 +2521,7 @@ const ControlBar: React.FC<{ desktop?: boolean }> = ({ desktop = false }) => {
           onClick={item.onClick}
           disabled={item.disabled}
           aria-label={item.label}
-          className={`flex h-11 flex-1 items-center justify-center gap-2 text-[14px] text-white transition-colors hover:bg-white/10 disabled:cursor-not-allowed disabled:opacity-40 sm:text-[16px] ${
+          className={`flex h-11 flex-1 items-center justify-center gap-2 text-base font-medium text-white transition-colors hover:bg-white/10 disabled:cursor-not-allowed disabled:opacity-40 sm:text-lg ${
             item.label.startsWith('Pose') ? 'studio-pill-on rounded-[14px]' : ''
           }`}
         >
@@ -2589,13 +2589,13 @@ const FilterPanel: React.FC<{ desktop?: boolean }> = ({ desktop = false }) => {
       }`}
     >
       <div className="relative shrink-0">
-        <p className="text-sm text-white">Filter</p>
+        <p className="text-base font-medium text-white">Filter</p>
         <button
           type="button"
           onClick={() => setFilterOpen(!filterOpen)}
           aria-expanded={filterOpen}
           aria-haspopup="listbox"
-          className="mt-1 flex h-[38px] w-[156px] items-center justify-between gap-2 rounded-xl border border-white/30 bg-white/10 px-3 text-xs text-white"
+          className="mt-1 flex h-[40px] w-[170px] items-center justify-between gap-2 rounded-xl border border-white/30 bg-white/10 px-3 text-sm text-white"
         >
           {activeFilter.name}
           <ChevronDown
@@ -2610,7 +2610,7 @@ const FilterPanel: React.FC<{ desktop?: boolean }> = ({ desktop = false }) => {
               exit={{ opacity: 0, y: 8, scale: 0.96 }}
               role="listbox"
               aria-label="Filter"
-              className="studio-glass absolute bottom-[46px] left-0 z-40 w-[156px] rounded-xl p-1"
+              className="studio-glass absolute bottom-[48px] left-0 z-40 w-[170px] rounded-xl p-1"
             >
               {FILTERS.map((filter) => (
                 <li key={filter.name}>
@@ -2619,7 +2619,7 @@ const FilterPanel: React.FC<{ desktop?: boolean }> = ({ desktop = false }) => {
                     role="option"
                     aria-selected={view.filter === filter.name}
                     onClick={() => setFilter(filter.name)}
-                    className={`w-full rounded-lg px-2.5 py-2 text-left text-xs transition-colors ${
+                    className={`w-full rounded-lg px-2.5 py-2 text-left text-sm font-medium transition-colors ${
                       view.filter === filter.name
                         ? 'bg-white/15 text-white'
                         : 'text-white/70 hover:bg-white/10 hover:text-white'
@@ -2660,7 +2660,7 @@ const FilterPanel: React.FC<{ desktop?: boolean }> = ({ desktop = false }) => {
                   className="absolute inset-0 mix-blend-soft-light"
                   style={{ background: filter.tint }}
                 />
-                <span className="absolute inset-x-0 bottom-0 truncate bg-black/60 px-1 py-0.5 text-center text-[11px] text-white">
+                <span className="absolute inset-x-0 bottom-0 truncate bg-black/60 px-1 py-0.5 text-center text-xs font-medium text-white">
                   {filter.name}
                 </span>
               </button>
@@ -2692,7 +2692,7 @@ const SavePanel: React.FC<{ desktop?: boolean }> = ({ desktop = false }) => {
         type="button"
         onClick={saveLook}
         aria-haspopup={libraryOpen ? 'dialog' : undefined}
-        className="studio-save group relative flex h-full min-h-[58px] w-full items-center justify-center overflow-hidden rounded-2xl border-[1.5px] border-white text-[15px] tracking-[0.06em] text-white transition-colors hover:bg-white hover:text-[#171414] sm:text-[17px]"
+        className="studio-save group relative flex h-full min-h-[58px] w-full items-center justify-center overflow-hidden rounded-2xl border-[1.5px] border-white text-[17px] font-semibold tracking-[0.06em] text-white transition-colors hover:bg-white hover:text-[#171414] sm:text-lg"
       >
         <span className="pointer-events-none absolute inset-y-0 -left-1/3 w-1/3 -skew-x-12 bg-white/30 opacity-0 transition-all duration-700 group-active:left-[120%] group-active:opacity-100" />
         SAVE TO LIBRARY
@@ -2738,7 +2738,7 @@ const LibraryDrawer: React.FC<{ desktop?: boolean }> = ({ desktop = false }) => 
           aria-label="Saved look library"
         >
           <div className="flex items-center justify-between gap-3">
-            <h3 className="text-sm uppercase tracking-[0.06em] text-white">Library</h3>
+            <h3 className="text-base font-semibold uppercase tracking-[0.06em] text-white">Library</h3>
             <div className="flex items-center gap-2">
               <span className="text-xs text-white/50">{saved.length} saved</span>
               <button
@@ -2753,7 +2753,7 @@ const LibraryDrawer: React.FC<{ desktop?: boolean }> = ({ desktop = false }) => 
           </div>
 
           {saved.length === 0 ? (
-            <p className="mt-6 text-sm text-white/65">Save a look to start your library.</p>
+            <p className="mt-6 text-base text-white/70">Save a look to start your library.</p>
           ) : (
             <div className="studio-no-scrollbar mt-3 flex gap-2.5 overflow-x-auto pb-1">
               {saved.map((item) => {
@@ -2772,7 +2772,7 @@ const LibraryDrawer: React.FC<{ desktop?: boolean }> = ({ desktop = false }) => 
                       aria-hidden="true"
                       className="h-full w-full object-contain object-bottom p-1"
                     />
-                    <span className="absolute inset-x-0 bottom-0 truncate bg-black/55 px-1 py-0.5 text-center text-[9px] text-white">
+                    <span className="absolute inset-x-0 bottom-0 truncate bg-black/55 px-1 py-0.5 text-center text-xs text-white">
                       {savedLook.name}
                     </span>
                   </button>
@@ -2800,8 +2800,8 @@ const RangeRow: React.FC<{
   const inputId = useId();
   return (
     <div>
-      <div className="flex items-center justify-between gap-3 text-sm">
-        <label className="text-white/75" htmlFor={inputId}>
+      <div className="flex items-center justify-between gap-3 text-base">
+        <label className="font-medium text-white/75" htmlFor={inputId}>
           {label}
         </label>
         <span className="font-semibold text-white">
@@ -2822,7 +2822,7 @@ const RangeRow: React.FC<{
         style={{ '--p': `${percentage}%` } as CSSProperties}
       />
       {endLabels && (
-        <div className="mt-1 flex items-center justify-between text-[11px] text-white/65">
+        <div className="mt-1 flex items-center justify-between text-xs text-white/70">
           <span>{endLabels[0]}</span>
           <span>{endLabels[1]}</span>
         </div>
@@ -2843,7 +2843,7 @@ const Toast: React.FC = () => {
           exit={{ opacity: 0, y: -12 }}
           transition={{ duration: 0.3, type: 'spring', stiffness: 240, damping: 20 }}
           role="status"
-          className="studio-glass fixed left-1/2 top-24 z-[80] flex -translate-x-1/2 items-center gap-2 whitespace-nowrap rounded-full px-4 py-2.5 text-sm text-white"
+          className="studio-glass fixed left-1/2 top-24 z-[80] flex -translate-x-1/2 items-center gap-2 whitespace-nowrap rounded-full px-4 py-2.5 text-base font-medium text-white"
         >
           <Check className="h-4 w-4" />
           {toast.message}

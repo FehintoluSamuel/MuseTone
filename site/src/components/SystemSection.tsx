@@ -36,15 +36,15 @@ export const SystemSection: React.FC<SystemSectionProps> = ({ onStartClick }) =>
       <div className="mx-auto w-full max-w-[1280px] px-4 sm:px-6 lg:px-8">
         <div className="grid gap-10 lg:grid-cols-[minmax(0,0.78fr)_minmax(0,1.35fr)] lg:gap-20 xl:gap-28">
           <div className="lg:sticky lg:top-28 lg:self-start">
-            <h2 className="max-w-[420px] font-['Montserrat'] text-[clamp(28px,3vw,44px)] font-semibold leading-[1.05] tracking-[-0.04em] text-white">
+            <h2 className="max-w-[440px] font-['Montserrat'] text-[clamp(36px,3.8vw,54px)] font-bold leading-[1.02] tracking-[-0.04em] text-white">
               How Muse works.
             </h2>
-            <p className="mt-5 max-w-[340px] text-[15px] leading-[1.7] text-white/45">
+            <p className="mt-5 max-w-[380px] text-base leading-[1.7] text-white/55">
               Five moves from skin read to saved match, before the first stitch.
             </p>
             <button
               onClick={onStartClick}
-              className="mt-8 text-sm font-semibold text-white underline decoration-[#D9605C] decoration-2 underline-offset-4 transition-colors hover:text-[#F7DCD8]"
+              className="mt-8 text-base font-semibold text-white underline decoration-[#D9605C] decoration-2 underline-offset-4 transition-colors hover:text-[#F7DCD8]"
             >
               Start with a skin read
             </button>
@@ -56,10 +56,10 @@ export const SystemSection: React.FC<SystemSectionProps> = ({ onStartClick }) =>
                 key={step.title}
                 className="grid gap-4 border-b border-white/10 py-8 sm:grid-cols-[96px_minmax(0,1fr)] sm:gap-8 sm:py-10 lg:grid-cols-[120px_minmax(0,1fr)] lg:py-11"
               >
-                <div className="font-['Montserrat'] text-[clamp(40px,5vw,64px)] font-bold leading-none tracking-[-0.04em] text-white">
+                <div className="font-['Montserrat'] text-[clamp(52px,6vw,80px)] font-bold leading-none tracking-[-0.04em] text-white">
                   {String(index + 1).padStart(2, '0')}
                 </div>
-                <p className="max-w-[62ch] text-[clamp(16px,1.1vw,18px)] leading-[1.7] text-white/55">
+                <p className="max-w-[62ch] text-[clamp(17px,1.2vw,20px)] leading-[1.65] text-white/65">
                   <span className="font-semibold text-white">{step.title}.</span> {step.copy}
                 </p>
               </article>

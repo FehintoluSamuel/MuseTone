@@ -450,7 +450,7 @@ export const SpinTurntable = forwardRef<SpinTurntableHandle, SpinTurntableProps>
             className={`absolute inset-0 h-full w-full ${cacheReady ? 'opacity-100' : 'opacity-0'}`}
           />
           {!cacheReady && showProgress && (
-            <div className="absolute inset-0 flex items-center justify-center bg-[#171414]/95 text-[11px] font-semibold uppercase tracking-[0.14em] text-white/80">
+            <div className="absolute inset-0 flex items-center justify-center bg-[#171414]/95 text-xs font-semibold uppercase tracking-[0.1em] text-white/80">
               Building frames {cacheProgress}%
             </div>
           )}
