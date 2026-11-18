@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { Camera, LayoutGrid, SlidersHorizontal, Sparkles, Tag } from 'lucide-react';
 import { NavItem } from '../types';
 
 interface NavbarProps {
@@ -8,11 +9,11 @@ interface NavbarProps {
 }
 
 const NAV_ITEMS: NavItem[] = [
-  { id: 'explore', label: 'Explore', href: '#explore' },
-  { id: 'atelier', label: 'Colour', href: '#atelier' },
-  { id: 'mannequin', label: 'Studio', href: '#mannequin' },
-  { id: 'features', label: 'Features', href: '#features' },
-  { id: 'pricing', label: 'Pricing', href: '#pricing' },
+  { id: 'explore', label: 'Explore', href: '#explore', icon: Sparkles },
+  { id: 'atelier', label: 'Colour', href: '#atelier', icon: SlidersHorizontal },
+  { id: 'mannequin', label: 'Studio', href: '#mannequin', icon: Camera },
+  { id: 'features', label: 'Features', href: '#features', icon: LayoutGrid },
+  { id: 'pricing', label: 'Pricing', href: '#pricing', icon: Tag },
 ];
 
 export const Navbar: React.FC<NavbarProps> = ({
@@ -39,7 +40,7 @@ export const Navbar: React.FC<NavbarProps> = ({
     <header className="reveal reveal-nav is-visible fixed inset-x-0 top-4 z-50 flex justify-center px-4 sm:top-6 sm:px-6">
       <nav
         aria-label="Primary"
-        className="relative flex w-full max-w-[860px] items-center gap-3 rounded-full border border-white/[0.08] bg-[#3F3F44] py-2.5 pl-3 pr-3 shadow-[0_10px_30px_rgba(0,0,0,0.28)] backdrop-blur-[14px] sm:gap-6 sm:py-3 sm:pl-[22px] sm:pr-[18px]"
+        className="relative flex w-full max-w-[860px] items-center gap-3 rounded-full border border-white/[0.08] bg-[#3F3F44] py-2.5 pl-3 pr-3 shadow-[0_10px_30px_rgba(0,0,0,0.28)] backdrop-blur-[14px] sm:py-3 sm:pl-[22px] sm:pr-[18px] min-[961px]:gap-6"
       >
         <button
           type="button"
@@ -89,9 +90,10 @@ export const Navbar: React.FC<NavbarProps> = ({
           <span className="text-base font-semibold tracking-[-0.01em]">MUSE</span>
         </a>
 
-        <div className="ml-auto hidden items-center gap-5 min-[721px]:flex min-[961px]:gap-10">
+        <div className="ml-auto hidden items-center gap-2.5 min-[721px]:flex min-[961px]:gap-7">
           {NAV_ITEMS.slice(1).map((item) => {
             const isActive = activeNav === item.id;
+            const Icon = item.icon;
             return (
               <a
                 key={item.id}
@@ -102,11 +104,12 @@ export const Navbar: React.FC<NavbarProps> = ({
                   e.preventDefault();
                   handleNavClick(item.id);
                 }}
-                className={`cursor-pointer text-base font-medium leading-[22px] transition-colors duration-200 ${
+                className={`inline-flex cursor-pointer items-center gap-2 text-base font-medium leading-[22px] transition-colors duration-200 ${
                   isActive ? 'font-semibold text-white' : 'text-white/[0.78] hover:text-white'
                 }`}
               >
-                {item.label}
+                <Icon aria-hidden="true" className="h-4 w-4 shrink-0" strokeWidth={1.8} />
+                <span>{item.label}</span>
               </a>
             );
           })}
@@ -128,29 +131,33 @@ export const Navbar: React.FC<NavbarProps> = ({
             className="absolute inset-x-0 top-[calc(100%+8px)] z-50 min-[721px]:hidden"
           >
             <div className="overflow-hidden rounded-[20px] border border-white/[0.08] bg-[#3F3F44] p-2 shadow-[0_18px_40px_rgba(0,0,0,0.35)] backdrop-blur-[14px]">
-              {NAV_ITEMS.slice(1).map((item, index) => {
-                const isActive = activeNav === item.id;
-                return (
-                  <a
-                    key={item.id}
-                    href={item.href}
-                    onClick={(e) => {
-                      e.preventDefault();
-                      handleNavClick(item.id);
-                    }}
-                    className={`flex items-center justify-between rounded-xl px-4 py-3.5 text-base font-medium transition-colors ${
-                      isActive
-                        ? 'bg-white/[0.08] font-semibold text-white'
-                        : 'text-white/[0.78] hover:bg-white/[0.05] hover:text-white'
-                    }`}
-                  >
-                    <span>{item.label}</span>
-                    <span className="text-xs font-semibold uppercase tracking-[0.12em] text-white/40">
-                      0{index + 1}
-                    </span>
-                  </a>
-                );
-              })}
+                {NAV_ITEMS.slice(1).map((item, index) => {
+                  const isActive = activeNav === item.id;
+                  const Icon = item.icon;
+                  return (
+                    <a
+                      key={item.id}
+                      href={item.href}
+                      onClick={(e) => {
+                        e.preventDefault();
+                        handleNavClick(item.id);
+                      }}
+                      className={`flex items-center justify-between rounded-xl px-4 py-3.5 text-base font-medium transition-colors ${
+                        isActive
+                          ? 'bg-white/[0.08] font-semibold text-white'
+                          : 'text-white/[0.78] hover:bg-white/[0.05] hover:text-white'
+                      }`}
+                    >
+                      <span className="flex items-center gap-3">
+                        <Icon aria-hidden="true" className="h-[18px] w-[18px] shrink-0" strokeWidth={1.8} />
+                        <span>{item.label}</span>
+                      </span>
+                      <span className="text-xs font-semibold uppercase tracking-[0.12em] text-white/40">
+                        0{index + 1}
+                      </span>
+                    </a>
+                  );
+                })}
             </div>
           </div>
         )}

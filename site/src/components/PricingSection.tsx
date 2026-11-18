@@ -132,7 +132,7 @@ export const PricingSection: React.FC<PricingSectionProps> = ({
             return (
               <article
                 key={tier.name}
-                className={`reveal reveal-up reveal-delay-${index + 1} relative flex min-h-[520px] flex-col overflow-hidden rounded-[10px] border bg-[#0D0D0D] p-6 transition-transform duration-300 sm:p-8 ${
+                className={`reveal reveal-up reveal-delay-${index + 1} relative flex min-h-[520px] flex-col overflow-hidden rounded-[10px] border bg-[#0D0D0D] p-6 sm:p-8 ${
                   isLast
                     ? 'md:col-span-2 md:w-[calc(50%-0.75rem)] md:justify-self-center lg:col-span-1 lg:w-auto lg:justify-self-stretch'
                     : ''

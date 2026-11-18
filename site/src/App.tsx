@@ -23,27 +23,59 @@ export default function App() {
   };
 
   useEffect(() => {
-    const items = Array.from(document.querySelectorAll<HTMLElement>('.reveal'));
-    if (!items.length) return;
+    let frame = 0;
+    let observer: IntersectionObserver | null = null;
 
-    if (!('IntersectionObserver' in window)) {
-      items.forEach((item) => item.classList.add('is-visible'));
-      return;
+    const reveal = (element: HTMLElement) => {
+      if (element.classList.contains('is-visible')) return;
+      element.classList.add('is-visible');
+      window.setTimeout(() => element.classList.add('is-settled'), 1200);
+    };
+
+    const revealOnScroll = () => {
+      window.cancelAnimationFrame(frame);
+      frame = window.requestAnimationFrame(() => {
+        const limit = window.innerHeight * 0.95;
+        document.querySelectorAll<HTMLElement>('.reveal:not(.is-visible)').forEach((element) => {
+          const { top, bottom } = element.getBoundingClientRect();
+          if (top < limit || bottom <= 0) reveal(element);
+        });
+      });
+    };
+
+    if ('IntersectionObserver' in window) {
+      try {
+        const io = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (!entry.isIntersecting) return;
+              reveal(entry.target as HTMLElement);
+              io.unobserve(entry.target);
+            });
+          },
+          { threshold: 0, rootMargin: '0px 0px -5% 0px' }
+        );
+        observer = io;
+        document
+          .querySelectorAll<HTMLElement>('.reveal:not(.is-visible)')
+          .forEach((element) => io.observe(element));
+      } catch {
+        observer = null;
+      }
     }
 
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (!entry.isIntersecting) return;
-          entry.target.classList.add('is-visible');
-          observer.unobserve(entry.target);
-        });
-      },
-      { threshold: 0.15, rootMargin: '0px 0px -8% 0px' }
-    );
+    revealOnScroll();
+    window.addEventListener('scroll', revealOnScroll, { passive: true });
+    window.addEventListener('resize', revealOnScroll);
+    window.addEventListener('pageshow', revealOnScroll);
 
-    items.forEach((item) => observer.observe(item));
-    return () => observer.disconnect();
+    return () => {
+      window.cancelAnimationFrame(frame);
+      observer?.disconnect();
+      window.removeEventListener('scroll', revealOnScroll);
+      window.removeEventListener('resize', revealOnScroll);
+      window.removeEventListener('pageshow', revealOnScroll);
+    };
   }, []);
 
   if (new URLSearchParams(window.location.search).has('tryon-demo')) {

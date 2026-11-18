@@ -46,7 +46,7 @@ export const SystemSection: React.FC<SystemSectionProps> = ({ onStartClick }) =>
             </p>
             <button
               onClick={onStartClick}
-              className="reveal reveal-up reveal-delay-2 mt-8 text-base font-semibold text-white underline decoration-[#D9605C] decoration-2 underline-offset-4 transition-colors hover:text-[#F7DCD8]"
+              className="reveal reveal-up reveal-delay-2 mt-8 text-base font-semibold text-white underline decoration-[#D9605C] decoration-2 underline-offset-4 hover:text-[#F7DCD8]"
             >
               Start free with a colour profile
             </button>
