@@ -74,7 +74,7 @@ export const HeroBackdrop: React.FC = () => {
   return (
     <div
       aria-hidden="true"
-      className="pointer-events-none fixed inset-0 z-0 overflow-hidden bg-[#171414]"
+      className="pointer-events-none fixed inset-0 z-0 overflow-hidden bg-canvas"
     >
       <video
         ref={videoRef}
@@ -98,21 +98,21 @@ interface EditorialHeroProps {
 export const EditorialHero: React.FC<EditorialHeroProps> = ({ onStartClick }) => {
   return (
     <section
-      className="relative isolate flex min-h-[100svh] w-full flex-col overflow-hidden bg-transparent text-white lg:max-h-[1000px]"
+      className="relative isolate flex min-h-[100svh] w-full flex-col overflow-hidden bg-transparent text-ink lg:max-h-[1000px]"
     >
       <div
         aria-hidden="true"
-        className="absolute inset-0 -z-10 bg-[rgba(23,20,20,0.93)]"
+        className="absolute inset-0 -z-10 bg-canvas/95"
       />
       <div className="relative z-10 mx-auto flex w-full max-w-[1400px] flex-1 flex-col px-5 pb-8 pt-28 sm:px-8 sm:pb-10 sm:pt-32 lg:px-12 lg:pb-12">
         <div className="flex flex-1 flex-col items-center justify-center py-12 text-center sm:py-16">
           <div className="max-w-[860px]">
-            <h1 className="reveal reveal-up is-visible font-['Montserrat'] text-hero font-semibold tracking-[-0.02em] text-white">
+            <h1 className="reveal reveal-up is-visible font-['Montserrat'] text-hero font-semibold tracking-[-0.02em] text-ink">
               Colour that
               <br />
-              <span className="text-[#F7DCD8]">fits the dress.</span>
+              <span className="text-soft">fits the dress.</span>
             </h1>
-            <p className="reveal reveal-up is-visible reveal-delay-1 mx-auto mt-5 max-w-[650px] text-lg leading-[1.5] text-white/85">
+            <p className="reveal reveal-up is-visible reveal-delay-1 mx-auto mt-5 max-w-[650px] text-lg leading-[1.5] text-ink/85">
               Build a palette, read the fabric, then try dress colour combinations on a model. See
               which colours work together before you cut, buy or wear it.
             </p>
@@ -126,7 +126,7 @@ export const EditorialHero: React.FC<EditorialHeroProps> = ({ onStartClick }) =>
           </div>
         </div>
 
-        <div className="reveal reveal-up is-visible reveal-delay-3 grid grid-cols-2 items-end gap-4 border-t border-white/25 pt-4 text-[0.56875rem] font-semibold uppercase tracking-[0.12em] text-white/85 sm:flex sm:justify-between">
+        <div className="reveal reveal-up is-visible reveal-delay-3 grid grid-cols-2 items-end gap-4 border-t border-line/25 pt-4 text-[0.56875rem] font-semibold uppercase tracking-[0.12em] text-ink/85 sm:flex sm:justify-between">
           <span>Dress colour fitting</span>
           <span className="hidden sm:inline">No selfie uploads</span>
           <span className="translate-x-[25%] sm:translate-x-0">Atelier study / Pexels</span>

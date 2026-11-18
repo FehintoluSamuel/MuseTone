@@ -27,17 +27,61 @@
   --text-section--line-height: 1.2;
   --text-price: clamp(2rem, 4vw, 2.75rem);
   --text-price--line-height: 1.1;
+  --color-canvas: #171414;
+  --color-panel: #0d0d0d;
+  --color-nav: #3f3f44;
+  --color-ink: #ffffff;
+  --color-line: #ffffff;
+  --color-line-strong: rgba(255, 255, 255, 0.88);
+  --color-contrast: #ffffff;
+  --color-contrast-ink: #171414;
+  --color-soft: #d8ccc5;
+  --color-faint: #a99b94;
+  --color-accent: #d9605c;
+  --color-accent-strong: #c34f4b;
+  --color-highlight-from: #d9605c;
+  --color-highlight-mid: #c65d58;
+  --color-highlight-to: #9e3f3b;
+  --color-blush: #e5cec9;
+  --color-blush-line: #cbb8b0;
+  --color-blush-ink: #5a5350;
+  --color-blush-strong: #171414;
+}
+
+html[data-theme='light'] {
+  color-scheme: light;
+  --color-canvas: #fbf8f5;
+  --color-panel: #ffffff;
+  --color-nav: #ffffff;
+  --color-ink: #2b2421;
+  --color-line: #2b2421;
+  --color-line-strong: rgba(43, 36, 33, 0.68);
+  --color-contrast: #2b2421;
+  --color-contrast-ink: #ffffff;
+  --color-soft: #6a5c56;
+  --color-faint: #857871;
+  --color-accent: #b9443f;
+  --color-accent-strong: #a23732;
+  --color-highlight-from: #f7d6d1;
+  --color-highlight-mid: #edbdb6;
+  --color-highlight-to: #e3a29a;
+  --color-blush: #f7e9e5;
+  --color-blush-line: #dcc9c3;
+  --color-blush-ink: #7a6d67;
+  --color-blush-strong: #2b2421;
 }
 
 @layer base {
   html {
-    scrollbar-color: #D9605C #e5cec9;
+    scrollbar-color: var(--color-accent) var(--color-blush);
     scrollbar-width: thin;
   }
 
   body {
     font-family: 'Archivo', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-    caret-color: #D9605C;
+    caret-color: var(--color-accent);
+    background: var(--color-canvas);
+    color: var(--color-ink);
   }
 
   h1, h2, h3, h4, h5, h6 {
@@ -45,12 +89,12 @@
   }
 
   ::selection {
-    background: #D9605C;
+    background: var(--color-accent);
     color: #ffffff;
   }
 
   :focus-visible {
-    outline: 2px solid #D9605C;
+    outline: 2px solid var(--color-accent);
     outline-offset: 3px;
   }
 
@@ -68,8 +112,8 @@
     min-width: 160px;
     padding: 14px 28px;
     border-radius: 999px;
-    background: #ffffff;
-    color: #000000;
+    background: var(--color-contrast);
+    color: var(--color-contrast-ink);
     font-family: 'Archivo', sans-serif;
     font-size: 15px;
     font-weight: 700;
@@ -85,8 +129,8 @@
     min-width: 160px;
     padding: 14px 28px;
     border-radius: 999px;
-    background: #ffffff;
-    color: #000000;
+    background: var(--color-contrast);
+    color: var(--color-contrast-ink);
     font-size: 15px;
     font-weight: 700;
     line-height: 1.5;
@@ -101,7 +145,7 @@
     min-width: 160px;
     padding: 14px 28px;
     border-radius: 999px;
-    background: #d9605c;
+    background: var(--color-accent);
     color: #ffffff;
     font-family: 'Archivo', sans-serif;
     font-size: 15px;
@@ -113,7 +157,7 @@
   }
 
   .btn-pill-accent:hover {
-    background: #c34f4b;
+    background: var(--color-accent-strong);
     transform: translateY(-1px);
   }
 
@@ -146,10 +190,10 @@
     justify-content: center;
     min-width: 250px;
     padding: 14px 24px;
-    border: 2px solid rgba(255, 255, 255, 0.88);
+    border: 2px solid var(--color-line-strong);
     border-radius: 10px;
     background: transparent;
-    color: #ffffff;
+    color: var(--color-ink);
     font-size: 18px;
     font-weight: 500;
     line-height: 1.5;
@@ -160,8 +204,25 @@
   }
 
   .btn-ghost:hover {
-    background: rgba(255, 255, 255, 0.12);
-    border-color: rgba(255, 255, 255, 0.18);
+    background: color-mix(in srgb, var(--color-ink) 12%, transparent);
+    border-color: color-mix(in srgb, var(--color-ink) 22%, transparent);
+  }
+
+  .headline-highlight {
+    border-radius: 2px;
+    background-image: linear-gradient(
+      90deg,
+      var(--color-highlight-from) 0%,
+      var(--color-highlight-mid) 55%,
+      var(--color-highlight-to) 100%
+    );
+    background-size: 100% 80%;
+    background-position: center;
+    background-repeat: no-repeat;
+    padding-inline: 0.75rem;
+    box-decoration-break: clone;
+    -webkit-box-decoration-break: clone;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.14);
   }
 
   .btn-ghost-dark {

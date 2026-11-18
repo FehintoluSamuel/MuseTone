@@ -83,7 +83,7 @@ export default function App() {
   }
 
   return (
-    <div className="relative flex min-h-screen flex-col items-center justify-start bg-transparent pb-16 selection:bg-[#D9605C] selection:text-white">
+    <div className="relative flex min-h-screen flex-col items-center justify-start bg-transparent pb-16 selection:bg-accent selection:text-white">
       <HeroBackdrop />
       <div className="relative z-10 flex w-full flex-col items-center">
         <Navbar

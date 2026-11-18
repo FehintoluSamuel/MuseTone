@@ -44,13 +44,13 @@ export const SpinShowcase: React.FC = () => {
   return (
     <section
       id="spin-showcase"
-      className="mt-20 w-full scroll-mt-20 bg-[#171414] py-16 text-white sm:mt-28 sm:py-24"
+      className="mt-20 w-full scroll-mt-20 bg-canvas py-16 text-ink sm:mt-28 sm:py-24"
     >
       <div className="mx-auto w-full max-w-[1280px] px-4 sm:px-6 lg:px-8">
-        <div className="reveal reveal-up grid gap-8 border-b border-white/15 pb-8 md:grid-cols-[1.1fr_0.9fr] md:items-end">
+        <div className="reveal reveal-up grid gap-8 border-b border-line/15 pb-8 md:grid-cols-[1.1fr_0.9fr] md:items-end">
           <div>
-            <h2 className="font-['Montserrat'] text-display font-semibold tracking-[-0.02em] text-white">
-              <span className="box-decoration-clone rounded-[2px] bg-[linear-gradient(90deg,#D9605C_0%,#C65D58_55%,#9E3F3B_100%)] bg-[length:100%_80%] bg-center bg-no-repeat px-3 text-white shadow-[0_8px_24px_rgba(0,0,0,0.28)]">
+            <h2 className="font-['Montserrat'] text-display font-semibold tracking-[-0.02em] text-ink">
+              <span className="headline-highlight text-ink">
                 Check the
                 <br />
                 drape.
@@ -59,12 +59,12 @@ export const SpinShowcase: React.FC = () => {
           </div>
 
           <div className="md:justify-self-end">
-            <p className="max-w-[460px] text-base leading-[1.7] text-white/70">
+            <p className="max-w-[460px] text-base leading-[1.7] text-ink/70">
               Use the turntable to see how a garment falls, how the colour shifts across a seam, and
               whether the back works as hard as the front. Spin it before you cut, buy or style the
               piece.
             </p>
-            <p className="mt-4 text-xs font-semibold uppercase tracking-[0.08em] text-white/55">
+            <p className="mt-4 text-xs font-semibold uppercase tracking-[0.08em] text-ink/55">
               Turntable preview
             </p>
           </div>
@@ -72,21 +72,21 @@ export const SpinShowcase: React.FC = () => {
 
         <div className="reveal reveal-up reveal-delay-1 mt-8 grid gap-8 sm:mt-10 lg:grid-cols-[0.72fr_1.28fr] lg:items-end lg:gap-12">
           <div className="lg:pb-10">
-            <p className="text-xs font-semibold uppercase tracking-[0.08em] text-white/55">
+            <p className="text-xs font-semibold uppercase tracking-[0.08em] text-ink/55">
               What to check
             </p>
-            <p className="mt-3 max-w-[360px] text-base leading-[1.7] text-white/70">
+            <p className="mt-3 max-w-[360px] text-base leading-[1.7] text-ink/70">
               Spin the model, then compare the front, side and back. Look for drape, weight and
               colour across the seams.
             </p>
 
-            <div className="mt-8 border-t border-white/15 pt-4">
+            <div className="mt-8 border-t border-line/15 pt-4">
               <div className="flex items-end justify-between gap-4">
                 <div>
-                  <p className="text-xs font-semibold uppercase tracking-[0.08em] text-white/55">
+                  <p className="text-xs font-semibold uppercase tracking-[0.08em] text-ink/55">
                     Angle
                   </p>
-                  <p className="mt-1 text-base font-semibold tabular-nums tracking-tight text-white">
+                  <p className="mt-1 text-base font-semibold tabular-nums tracking-tight text-ink">
                     {degrees}°
                   </p>
                 </div>
@@ -99,8 +99,8 @@ export const SpinShowcase: React.FC = () => {
                       aria-current={activeLook === index ? 'true' : undefined}
                       className={`flex h-9 min-w-9 items-center justify-center px-1.5 text-base font-semibold tabular-nums transition-colors ${
                         activeLook === index
-                          ? 'bg-[#171414] text-white'
-                          : 'text-white/45 hover:text-white'
+                          ? 'bg-canvas text-ink'
+                          : 'text-ink/45 hover:text-ink'
                       }`}
                     >
                       {String(index + 1).padStart(2, '0')}
@@ -109,9 +109,9 @@ export const SpinShowcase: React.FC = () => {
                 </div>
               </div>
 
-              <div className="mt-4 h-px w-full bg-white/15">
+              <div className="mt-4 h-px w-full bg-contrast/15">
                 <div
-                  className="h-px bg-[#D9605C]"
+                  className="h-px bg-accent"
                   style={{ width: `${dotPercent}%` }}
                 />
               </div>
@@ -127,8 +127,8 @@ export const SpinShowcase: React.FC = () => {
                   aria-current={activeLook === index ? 'true' : undefined}
                   className={`group relative w-[88px] border p-1 transition-colors ${
                     activeLook === index
-                      ? 'border-[#D9605C]'
-                      : 'border-white/15 hover:border-white/40'
+                      ? 'border-accent'
+                      : 'border-line/15 hover:border-line/40'
                   }`}
                 >
                   <img
@@ -136,18 +136,18 @@ export const SpinShowcase: React.FC = () => {
                     alt=""
                     loading="eager"
                     draggable={false}
-                    className={`block aspect-square w-full object-cover bg-white/10 ${
+                    className={`block aspect-square w-full object-cover bg-contrast/10 ${
                       activeLook === index ? 'opacity-100' : 'opacity-60 grayscale'
                     }`}
                   />
-                  <span className="mt-1.5 block text-left text-xs font-semibold uppercase tracking-[0.08em] text-white/55">
+                  <span className="mt-1.5 block text-left text-xs font-semibold uppercase tracking-[0.08em] text-ink/55">
                     {index === 0 ? 'Front' : 'Back'}
                   </span>
                 </button>
               ))}
             </div>
 
-            <p className="mt-4 text-xs font-semibold uppercase tracking-[0.08em] text-white/55">
+            <p className="mt-4 text-xs font-semibold uppercase tracking-[0.08em] text-ink/55">
               Drag or use arrow keys to rotate
             </p>
           </div>
@@ -165,34 +165,34 @@ export const SpinShowcase: React.FC = () => {
               />
 
               <div className="pointer-events-none absolute inset-x-4 top-4 flex items-center justify-between gap-3">
-                <span className="bg-[#171414] px-3 py-2 text-xs font-semibold uppercase tracking-[0.14em] text-white backdrop-blur">
+                <span className="bg-canvas px-3 py-2 text-xs font-semibold uppercase tracking-[0.14em] text-ink backdrop-blur">
                   MUSE / TURNTABLE
                 </span>
-                <span className="bg-[#171414] px-3 py-2 text-xs font-semibold tabular-nums uppercase tracking-[0.14em] text-white backdrop-blur">
+                <span className="bg-canvas px-3 py-2 text-xs font-semibold tabular-nums uppercase tracking-[0.14em] text-ink backdrop-blur">
                   {degrees}°
                 </span>
               </div>
 
               <div className="pointer-events-none absolute inset-x-4 bottom-4 flex items-center justify-between gap-3">
-                <span className="bg-[#171414] px-3 py-2 text-xs font-semibold uppercase tracking-[0.14em] text-white backdrop-blur">
+                <span className="bg-canvas px-3 py-2 text-xs font-semibold uppercase tracking-[0.14em] text-ink backdrop-blur">
                   Drag to rotate
                 </span>
-                <span className="bg-[#171414] px-3 py-2 text-xs font-semibold uppercase tracking-[0.14em] text-white backdrop-blur">
+                <span className="bg-canvas px-3 py-2 text-xs font-semibold uppercase tracking-[0.14em] text-ink backdrop-blur">
                   {viewLabel}
                 </span>
               </div>
             </div>
 
-            <figcaption className="flex items-end justify-between gap-4 bg-[#171414] px-4 py-4 text-white sm:px-5">
+            <figcaption className="flex items-end justify-between gap-4 bg-canvas px-4 py-4 text-ink sm:px-5">
               <div>
-                <p className="text-xs font-semibold uppercase tracking-[0.08em] text-white/55">
+                <p className="text-xs font-semibold uppercase tracking-[0.08em] text-ink/55">
                   Turntable preview
                 </p>
-                <p className="mt-1 text-2xl font-semibold tracking-tight text-white">
+                <p className="mt-1 text-2xl font-semibold tracking-tight text-ink">
                   Check the turn
                 </p>
               </div>
-              <span className="text-base font-semibold tabular-nums text-[#F7DCD8]">
+              <span className="text-base font-semibold tabular-nums text-soft">
                 {degrees}°
               </span>
             </figcaption>
