@@ -12,18 +12,18 @@ export const MannequinStudio: React.FC = () => {
           <div>
             <h2 className="font-['Montserrat'] text-display font-semibold tracking-[-0.02em] text-white">
               <span className="box-decoration-clone rounded-[2px] bg-[linear-gradient(90deg,#D9605C_0%,#C65D58_55%,#9E3F3B_100%)] bg-[length:100%_80%] bg-center bg-no-repeat px-3 text-white shadow-[0_8px_24px_rgba(0,0,0,0.28)]">
-                Style the
+                Try the colour
                 <br />
-                whole look.
+                on the dress.
               </span>
             </h2>
           </div>
 
           <div className="md:justify-self-end">
             <p className="max-w-[460px] text-base leading-[1.7] text-white/70">
-              Use the studio to try a palette on a full-body model, change the garment, light and
-              detail, and compare complete looks. Test a collection, or put together your own outfit
-              before you commit.
+              Choose a dress and recolour it on a full-body model. Compare colour combinations,
+              change the light and detail, and save the match that works — for a collection or your
+              own wardrobe.
             </p>
 
           </div>
@@ -34,7 +34,7 @@ export const MannequinStudio: React.FC = () => {
         </div>
 
         <p className="reveal reveal-up reveal-delay-2 mt-6 text-xs font-semibold uppercase tracking-[0.08em] text-white/65">
-          Build a palette, style the look, save the match.
+          Build a palette, fit the dress colour, save the match.
         </p>
       </div>
     </section>

@@ -27,8 +27,8 @@ const PROCESS_STEPS = [
     copy: 'Photograph the cloth you are considering and compare its colour with the palette before you buy or cut.',
   },
   {
-    title: 'See the full look',
-    copy: 'Put the palette on a full-body model and check the whole outfit before the first sample.',
+    title: 'Fit the dress colour',
+    copy: 'Put the palette on a full-body model and check the colour combination on the dress before the first sample.',
   },
 ];
 
@@ -107,7 +107,7 @@ export const InteractiveModals: React.FC<InteractiveModalsProps> = ({
                 <div className="space-y-8">
                   <div>
                     <p className="text-xs font-semibold uppercase tracking-[0.12em] text-[#D9605C]">
-                      Free colour profile
+                      Free colour match
                     </p>
                     <h3 className="mt-3 font-['Montserrat'] text-2xl font-semibold leading-[1.2] tracking-[-0.02em] text-white sm:text-3xl">
                       Create your
@@ -116,7 +116,8 @@ export const InteractiveModals: React.FC<InteractiveModalsProps> = ({
                     </h3>
                     <p className="mt-3 max-w-[430px] text-base leading-[1.7] text-white/60">
                       A working colour profile, a palette you can explain, and a place to keep the
-                      reads that work. Use it for client work or your own outfits.
+                      dress colour combinations that work. Use it for client work or your own
+                      wardrobe.
                     </p>
                   </div>
 
@@ -148,7 +149,7 @@ export const InteractiveModals: React.FC<InteractiveModalsProps> = ({
                       onClick={onClose}
                       className="btn-pill-light w-full sm:w-auto"
                     >
-                      Build my palette
+                      Start matching
                     </button>
                     <button
                       onClick={onClose}
@@ -247,11 +248,11 @@ export const InteractiveModals: React.FC<InteractiveModalsProps> = ({
                     <h3 className="mt-3 font-['Montserrat'] text-2xl font-semibold leading-[1.2] tracking-[-0.02em] text-white sm:text-3xl">
                       From palette
                       <br />
-                      to full look.
+                      to the dress.
                     </h3>
                     <p className="mt-4 max-w-[620px] text-base leading-[1.7] text-white/60">
-                      Use the colour profile to set the palette, read the fabric, and see the full
-                      look on a model before the first sample.
+                      Use the colour profile to set the palette, read the fabric, then try colour
+                      combinations on a dress on a model before the first sample.
                     </p>
                   </div>
 
@@ -311,7 +312,7 @@ export const InteractiveModals: React.FC<InteractiveModalsProps> = ({
                           How it works
                         </p>
                         <h4 className="mt-2 text-2xl font-semibold leading-tight text-white sm:text-3xl">
-                          From colour call to full look.
+                          From colour call to the right dress.
                         </h4>
                       </div>
                       <span className="shrink-0 text-xs font-semibold uppercase tracking-[0.12em] text-white/45">
@@ -320,8 +321,8 @@ export const InteractiveModals: React.FC<InteractiveModalsProps> = ({
                     </div>
 
                     <p className="mt-4 max-w-[620px] text-base leading-[1.7] text-white/60">
-                      A colour workflow for designers and personal styling: make the decision, then
-                      explain it.
+                      A colour workflow for designers and personal styling: find the combination that
+                      works, then explain it.
                     </p>
 
                     <div className="mt-5 divide-y divide-white/10 border-y border-white/10">
@@ -341,7 +342,7 @@ export const InteractiveModals: React.FC<InteractiveModalsProps> = ({
                       onClick={onStartClick}
                       className="btn-pill-light w-full sm:w-auto"
                     >
-                      Build my palette
+                      Match a dress colour
                     </button>
                     <button
                       onClick={onStudioClick}

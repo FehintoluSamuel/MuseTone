@@ -19,20 +19,20 @@ export const StudioSection: React.FC<StudioSectionProps> = ({
           <div className="px-6 py-12 sm:px-10 sm:py-16 lg:px-12">
             <div className="reveal reveal-up max-w-[620px]">
               <h2 className="font-['Montserrat'] text-display font-semibold tracking-[-0.02em]">
-                Build the look
+                The right dress.
                 <br />
-                before the garment.
+                The right colours.
               </h2>
               <p className="mt-5 max-w-[460px] text-base leading-[1.7] text-[#D8CCC5]">
-                Create a colour profile, read the fabric, style the full look and save the
-                combinations you want to return to. Use it for client work or for your own wardrobe.
+                Build a palette, read the fabric, then try dress colour combinations on a model.
+                Save the matches you want to return to, for client work or your own wardrobe.
               </p>
               <div className="mt-7 flex flex-wrap items-center gap-4">
                 <button
                   onClick={onStartClick}
                   className="btn-pill-light"
                 >
-                  Start a free palette
+                  Match a dress colour
                 </button>
                 <button
                   onClick={onStudioClick}
@@ -49,7 +49,7 @@ export const StudioSection: React.FC<StudioSectionProps> = ({
               src="/editorial/studio-outfit.webp"
               width="1200"
               height="800"
-              alt="Model in a colourful outfit in a studio"
+              alt="Model in a dress with coordinated colours in a studio"
               loading="eager"
               fetchPriority="low"
               decoding="async"
@@ -78,7 +78,7 @@ export const StudioSection: React.FC<StudioSectionProps> = ({
             Pricing
           </a>
         </div>
-        <span>For designers and colour-led wardrobes</span>
+        <span>Colour fitting for dresses and wardrobes</span>
       </footer>
     </section>
   );

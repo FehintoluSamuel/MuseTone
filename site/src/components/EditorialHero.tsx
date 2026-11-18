@@ -108,27 +108,26 @@ export const EditorialHero: React.FC<EditorialHeroProps> = ({ onStartClick }) =>
         <div className="flex flex-1 flex-col items-center justify-center py-12 text-center sm:py-16">
           <div className="max-w-[860px]">
             <h1 className="reveal reveal-up is-visible font-['Montserrat'] text-hero font-semibold tracking-[-0.02em] text-white">
-              Colour
+              Colour that
               <br />
-              <span className="text-[#F7DCD8]">Vision.</span>
+              <span className="text-[#F7DCD8]">fits the dress.</span>
             </h1>
             <p className="reveal reveal-up is-visible reveal-delay-1 mx-auto mt-5 max-w-[650px] text-lg leading-[1.5] text-white/85">
-              Create a colour profile, read fabric colour, and see the whole look on a model before
-              you cut, buy or wear it. Built for designers and for anyone who wants their outfit
-              colours to work together.
+              Build a palette, read the fabric, then try dress colour combinations on a model. See
+              which colours work together before you cut, buy or wear it.
             </p>
             <button
               id="btn-start-free-pill"
               onClick={onStartClick}
               className="btn-ghost reveal reveal-up is-visible reveal-delay-2 mt-6"
             >
-              Build a free palette
+              Match a dress colour
             </button>
           </div>
         </div>
 
         <div className="reveal reveal-up is-visible reveal-delay-3 grid grid-cols-2 items-end gap-4 border-t border-white/25 pt-4 text-[0.56875rem] font-semibold uppercase tracking-[0.12em] text-white/85 sm:flex sm:justify-between">
-          <span>Designers + outfit matching</span>
+          <span>Dress colour fitting</span>
           <span className="hidden sm:inline">No selfie uploads</span>
           <span className="translate-x-[25%] sm:translate-x-0">Atelier study / Pexels</span>
         </div>

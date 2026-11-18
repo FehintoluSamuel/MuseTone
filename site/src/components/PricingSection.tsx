@@ -29,7 +29,7 @@ const TIERS: Tier[] = [
       'Fabric colour reads',
       'Styling studio access',
       'Turntable outfit previews',
-      'Saved looks to revisit',
+      'Saved colour matches to revisit',
     ],
     note: 'For personal wardrobes and first client work. No card required.',
   },
@@ -43,7 +43,7 @@ const TIERS: Tier[] = [
     features: [
       'Everything in Read',
       'Unlimited client profiles',
-      'Unlimited saved looks',
+      'Unlimited saved colour matches',
       'Full colour index',
       'More light conditions',
       'Priority email support',
@@ -84,8 +84,8 @@ export const PricingSection: React.FC<PricingSectionProps> = ({
             Pricing
           </h2>
           <p className="mx-auto mt-4 max-w-[620px] text-base leading-[1.6] text-white/60">
-            Start free for your own wardrobe or first client. Move to Studio for unlimited profiles
-            and saved looks. Choose Atelier when the work is shared.
+            Start free to match dress colours for your own wardrobe or first client. Move to Studio
+            for unlimited profiles and saved looks. Choose Atelier when the work is shared.
           </p>
 
           <div className="mt-8 flex flex-col items-center gap-3">

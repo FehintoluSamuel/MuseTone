@@ -14,35 +14,34 @@ export const AtelierBand: React.FC<AtelierBandProps> = ({ onExploreClick }) => {
               <span className="box-decoration-clone rounded-[2px] bg-[linear-gradient(90deg,#D9605C_0%,#C65D58_55%,#9E3F3B_100%)] bg-[length:100%_80%] bg-center bg-no-repeat px-3 text-[#F7F2EF] shadow-[0_8px_24px_rgba(0,0,0,0.28)]">
                 From skin
                 <br />
-                to sample.
+                to the dress.
               </span>
             </h2>
             <p className="mt-5 max-w-[420px] text-base leading-[1.6] text-[#D8CCC5]">
-              Use MUSE to build a colour profile for a client or for yourself, read the fabric
-              you're considering, and see how the palette looks on a full-body model before you cut,
-              buy or wear it.
+              Build a colour profile for a client or yourself, read the fabric you're considering,
+              then try dress colour combinations on a full-body model before you cut, buy or wear it.
             </p>
 
             <dl className="mt-8 divide-y divide-white/10 border-y border-white/10">
               <div className="py-3">
                 <dt className="text-base font-semibold text-white">Colour profile</dt>
                 <dd className="mt-1 text-sm leading-[1.6] text-[#B9ACA5]">
-                  Capture tone, undertone and contrast, then turn it into a palette you can use and
-                  explain.
+                  Capture tone, undertone and contrast, then turn it into a palette for matching
+                  dress colours.
                 </dd>
               </div>
               <div className="py-3">
                 <dt className="text-base font-semibold text-white">Fabric colour read</dt>
                 <dd className="mt-1 text-sm leading-[1.6] text-[#B9ACA5]">
-                  Photograph a fabric and compare its colour with the palette before you buy the
+                  Photograph the fabric and compare its colour with the palette before you buy the
                   cloth.
                 </dd>
               </div>
               <div className="py-3">
-                <dt className="text-base font-semibold text-white">Full-body preview</dt>
+                <dt className="text-base font-semibold text-white">Dress colour fitting</dt>
                 <dd className="mt-1 text-sm leading-[1.6] text-[#B9ACA5]">
-                  See the palette on a model, so you know how the colours read together before the
-                  first sample.
+                  Try colour combinations on the dress and see how they read together on a model
+                  before the first sample.
                 </dd>
               </div>
             </dl>
@@ -51,7 +50,7 @@ export const AtelierBand: React.FC<AtelierBandProps> = ({ onExploreClick }) => {
               onClick={onExploreClick}
               className="btn-ghost mt-7"
             >
-              See the colour workflow
+              See how colours match
             </button>
           </div>
           <p className="mt-10 text-xs font-semibold uppercase tracking-[0.08em] text-[#A99B94]">

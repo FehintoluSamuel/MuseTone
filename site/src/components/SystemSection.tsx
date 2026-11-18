@@ -15,15 +15,15 @@ const STEPS = [
   },
   {
     title: 'Style the full look',
-    copy: 'Dress a full-body model, change garment, light and detail, and compare complete outfits side by side.',
+    copy: 'Dress a full-body model, change garment, light and detail, and compare complete looks side by side.',
   },
   {
-    title: 'Test colour on the body',
-    copy: 'Recolour a garment on the model, compare it with the original, and save the match that works.',
+    title: 'Fit the dress colour',
+    copy: 'Recolour the dress on the model, compare it with the original, and save the combination that works.',
   },
   {
     title: 'Keep the matches',
-    copy: 'Return to saved looks, compare alternatives and reuse the colour decisions that worked.',
+    copy: 'Return to saved matches, compare alternatives and reuse the dress colour decisions that worked.',
   },
 ];
 
@@ -37,18 +37,19 @@ export const SystemSection: React.FC<SystemSectionProps> = ({ onStartClick }) =>
         <div className="grid gap-10 lg:grid-cols-[minmax(0,0.78fr)_minmax(0,1.35fr)] lg:gap-20 xl:gap-28">
           <div className="lg:sticky lg:top-28 lg:self-start">
             <h2 className="reveal reveal-up max-w-[440px] font-['Montserrat'] text-section font-semibold tracking-[-0.02em] text-white">
-              What you can
+              How the colour
               <br />
-              do in MUSE.
+              fit works.
             </h2>
             <p className="reveal reveal-up reveal-delay-1 mt-5 max-w-[380px] text-base leading-[1.7] text-white/55">
-              Everything you need to make the colour call, from a client profile to a saved look.
+              Everything you need to choose dress colours that work together, from a client profile
+              to a saved match.
             </p>
             <button
               onClick={onStartClick}
               className="reveal reveal-up reveal-delay-2 mt-8 text-base font-semibold text-white underline decoration-[#D9605C] decoration-2 underline-offset-4 hover:text-[#F7DCD8]"
             >
-              Start free with a colour profile
+              Start matching dress colours
             </button>
           </div>
 
