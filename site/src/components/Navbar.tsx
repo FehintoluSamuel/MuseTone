@@ -11,7 +11,6 @@ const NAV_ITEMS: NavItem[] = [
   { id: 'explore', label: 'Explore', href: '#explore' },
   { id: 'atelier', label: 'Colour', href: '#atelier' },
   { id: 'mannequin', label: 'Studio', href: '#mannequin' },
-  { id: 'motion', label: 'Motion', href: '#motion' },
   { id: 'features', label: 'Features', href: '#features' },
   { id: 'pricing', label: 'Pricing', href: '#pricing' },
 ];
@@ -37,7 +36,7 @@ export const Navbar: React.FC<NavbarProps> = ({
   };
 
   return (
-    <header className="fixed inset-x-0 top-4 z-50 flex justify-center px-4 sm:top-6 sm:px-6">
+    <header className="reveal reveal-nav is-visible fixed inset-x-0 top-4 z-50 flex justify-center px-4 sm:top-6 sm:px-6">
       <nav
         aria-label="Primary"
         className="relative flex w-full max-w-[860px] items-center gap-3 rounded-full border border-white/[0.08] bg-[#3F3F44] py-2.5 pl-3 pr-3 shadow-[0_10px_30px_rgba(0,0,0,0.28)] backdrop-blur-[14px] sm:gap-6 sm:py-3 sm:pl-[22px] sm:pr-[18px]"

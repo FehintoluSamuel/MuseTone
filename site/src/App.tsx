@@ -1,9 +1,8 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Navbar } from './components/Navbar';
 import { EditorialHero, HeroBackdrop } from './components/EditorialHero';
 import { AtelierBand } from './components/AtelierBand';
 import { PricingSection } from './components/PricingSection';
-import { MotionSection } from './components/MotionSection';
 import { MannequinStudio } from './components/MannequinStudio';
 import { SpinShowcase } from './components/SpinShowcase';
 import { SystemSection } from './components/SystemSection';
@@ -23,12 +22,36 @@ export default function App() {
     document.getElementById(id)?.scrollIntoView({ block: 'start' });
   };
 
+  useEffect(() => {
+    const items = Array.from(document.querySelectorAll<HTMLElement>('.reveal'));
+    if (!items.length) return;
+
+    if (!('IntersectionObserver' in window)) {
+      items.forEach((item) => item.classList.add('is-visible'));
+      return;
+    }
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+          entry.target.classList.add('is-visible');
+          observer.unobserve(entry.target);
+        });
+      },
+      { threshold: 0.15, rootMargin: '0px 0px -8% 0px' }
+    );
+
+    items.forEach((item) => observer.observe(item));
+    return () => observer.disconnect();
+  }, []);
+
   if (new URLSearchParams(window.location.search).has('tryon-demo')) {
     return <TryOnDemo />;
   }
 
   return (
-    <div className="relative flex min-h-screen flex-col items-center justify-start bg-transparent pb-16 selection:bg-[#B9534F] selection:text-white">
+    <div className="relative flex min-h-screen flex-col items-center justify-start bg-transparent pb-16 selection:bg-[#D9605C] selection:text-white">
       <HeroBackdrop />
       <div className="relative z-10 flex w-full flex-col items-center">
         <Navbar
@@ -47,8 +70,6 @@ export default function App() {
           <MannequinStudio />
 
           <SpinShowcase />
-
-          <MotionSection />
 
           <SystemSection onStartClick={() => setActiveModal('start')} />
 

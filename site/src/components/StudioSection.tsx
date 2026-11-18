@@ -17,8 +17,8 @@ export const StudioSection: React.FC<StudioSectionProps> = ({
       <div className="overflow-hidden bg-[#171414] text-white">
         <div className="grid lg:grid-cols-[1fr_420px]">
           <div className="px-6 py-12 sm:px-10 sm:py-16 lg:px-12">
-            <div className="max-w-[620px]">
-              <h2 className="font-['Montserrat'] text-[clamp(46px,6vw,82px)] font-black leading-[0.94] tracking-[-0.04em]">
+            <div className="reveal reveal-up max-w-[620px]">
+              <h2 className="font-['Montserrat'] text-display font-semibold tracking-[-0.02em]">
                 Build the look
                 <br />
                 before the garment.
@@ -44,7 +44,7 @@ export const StudioSection: React.FC<StudioSectionProps> = ({
             </div>
           </div>
 
-          <figure className="relative min-h-[320px] overflow-hidden border-t border-[#3A3230] lg:min-h-0 lg:border-l lg:border-t-0">
+          <figure className="reveal reveal-up reveal-delay-1 relative min-h-[320px] overflow-hidden border-t border-[#3A3230] lg:min-h-0 lg:border-l lg:border-t-0">
             <img
               src="/editorial/studio-outfit.webp"
               width="1200"
@@ -62,7 +62,7 @@ export const StudioSection: React.FC<StudioSectionProps> = ({
         </div>
       </div>
 
-      <footer className="mt-8 flex flex-col gap-4 border-t border-[#CBB8B0] pt-5 text-xs font-semibold uppercase tracking-[0.08em] text-[#5A5350] sm:flex-row sm:items-center sm:justify-between">
+      <footer className="reveal reveal-up reveal-delay-2 mt-8 flex flex-col gap-4 border-t border-[#CBB8B0] pt-5 text-xs font-semibold uppercase tracking-[0.08em] text-[#5A5350] sm:flex-row sm:items-center sm:justify-between">
         <span>MUSE / Colour intelligence</span>
         <div className="flex flex-wrap gap-5">
           <a href="#atelier" className="transition-colors hover:text-[#171414]">
@@ -70,9 +70,6 @@ export const StudioSection: React.FC<StudioSectionProps> = ({
           </a>
           <a href="#mannequin" className="transition-colors hover:text-[#171414]">
             Studio
-          </a>
-          <a href="#motion" className="transition-colors hover:text-[#171414]">
-            Motion
           </a>
           <a href="#features" className="transition-colors hover:text-[#171414]">
             Features

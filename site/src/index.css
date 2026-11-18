@@ -1,35 +1,43 @@
 @import "tailwindcss";
 
 @theme {
-  --text-xs: 0.8125rem;
+  --text-xs: 0.875rem;
   --text-xs--line-height: 1.5;
-  --text-sm: 0.9375rem;
+  --text-sm: 1rem;
   --text-sm--line-height: 1.6;
-  --text-base: 1.0625rem;
-  --text-base--line-height: 1.65;
-  --text-lg: 1.25rem;
+  --text-base: 1rem;
+  --text-base--line-height: 1.6;
+  --text-lg: 1.125rem;
   --text-lg--line-height: 1.55;
-  --text-xl: 1.5rem;
+  --text-xl: 1.25rem;
   --text-xl--line-height: 1.4;
-  --text-2xl: 1.875rem;
+  --text-2xl: 1.5rem;
   --text-2xl--line-height: 1.25;
-  --text-3xl: 2.25rem;
-  --text-3xl--line-height: 1.15;
-  --text-4xl: 2.75rem;
-  --text-4xl--line-height: 1.05;
-  --text-5xl: 3.5rem;
-  --text-5xl--line-height: 0.95;
+  --text-3xl: 1.75rem;
+  --text-3xl--line-height: 1.2;
+  --text-4xl: 2rem;
+  --text-4xl--line-height: 1.15;
+  --text-5xl: 2.5rem;
+  --text-5xl--line-height: 1.1;
+  --text-hero: clamp(2.125rem, 6vw, 3.25rem);
+  --text-hero--line-height: 1.03;
+  --text-display: clamp(1.75rem, 4vw, 2.5rem);
+  --text-display--line-height: 1.1;
+  --text-section: clamp(1.5rem, 3vw, 2rem);
+  --text-section--line-height: 1.2;
+  --text-price: clamp(2rem, 4vw, 2.75rem);
+  --text-price--line-height: 1.1;
 }
 
 @layer base {
   html {
-    scrollbar-color: #b9534f #e5cec9;
+    scrollbar-color: #D9605C #e5cec9;
     scrollbar-width: thin;
   }
 
   body {
     font-family: 'Archivo', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-    caret-color: #b9534f;
+    caret-color: #D9605C;
   }
 
   h1, h2, h3, h4, h5, h6 {
@@ -37,12 +45,12 @@
   }
 
   ::selection {
-    background: #b9534f;
+    background: #D9605C;
     color: #ffffff;
   }
 
   :focus-visible {
-    outline: 2px solid #b9534f;
+    outline: 2px solid #D9605C;
     outline-offset: 3px;
   }
 
@@ -51,7 +59,6 @@
     scroll-margin-top: 112px;
   }
 }
-
 
 @layer components {
   .nav-cta {
@@ -85,6 +92,29 @@
     line-height: 1.5;
     text-align: center;
     cursor: pointer;
+  }
+
+  .btn-pill-accent {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 160px;
+    padding: 14px 28px;
+    border-radius: 999px;
+    background: #d9605c;
+    color: #ffffff;
+    font-family: 'Archivo', sans-serif;
+    font-size: 15px;
+    font-weight: 700;
+    line-height: 1.5;
+    text-align: center;
+    transition: background 0.2s, transform 0.2s;
+    cursor: pointer;
+  }
+
+  .btn-pill-accent:hover {
+    background: #c34f4b;
+    transform: translateY(-1px);
   }
 
   .btn-pill-dark {
@@ -156,6 +186,44 @@
   .btn-ghost-dark:hover {
     background: rgba(23, 20, 20, 0.08);
     border-color: rgba(23, 20, 20, 0.18);
+  }
+
+  .reveal {
+    opacity: 0;
+    transform: translate3d(0, 0, 0);
+    transition: none;
+  }
+
+  .reveal-up {
+    transform: translate3d(0, 32px, 0);
+  }
+
+  .reveal-nav {
+    transform: translate3d(0, -12px, 0);
+  }
+
+  .reveal.is-visible {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+    transition:
+      opacity 0.8s cubic-bezier(0.22, 1, 0.36, 1),
+      transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .reveal-delay-1.is-visible {
+    transition-delay: 0.08s;
+  }
+
+  .reveal-delay-2.is-visible {
+    transition-delay: 0.16s;
+  }
+
+  .reveal-delay-3.is-visible {
+    transition-delay: 0.24s;
+  }
+
+  .reveal-delay-4.is-visible {
+    transition-delay: 0.32s;
   }
 
   @media (max-width: 720px) {
@@ -246,11 +314,11 @@
 }
 
 .studio-shuffle {
-  animation: studio-shuffle 0.7s cubic-bezier(0.3, 1.4, 0.5, 1);
+  animation: studio-shuffle 0.7s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .studio-spin-once {
-  animation: studio-spin-once 0.8s cubic-bezier(0.3, 1.4, 0.5, 1);
+  animation: studio-spin-once 0.8s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .studio-no-scrollbar {
@@ -411,6 +479,14 @@
     animation: none;
     clip-path: inset(0 0 0 0);
   }
+
+  .reveal,
+  .reveal-up,
+  .reveal-nav {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
 }
 
 .spin-shell {
@@ -445,7 +521,7 @@
   position: absolute;
   left: 28px;
   top: 18px;
-  font-family: 'Inter Tight', sans-serif;
+  font-family: 'Archivo', sans-serif;
   font-size: 27px;
   font-weight: 500;
   letter-spacing: -0.01em;
@@ -504,7 +580,7 @@
 
 .spin-bag.is-bumping b {
   display: inline-block;
-  animation: spin-bag-bump 0.5s cubic-bezier(0.3, 1.8, 0.5, 1);
+  animation: spin-bag-bump 0.5s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 @keyframes spin-bag-bump {
@@ -782,7 +858,7 @@
   opacity: 0;
   pointer-events: none;
   transition:
-    transform 0.35s cubic-bezier(0.3, 1.6, 0.5, 1),
+    transform 0.35s cubic-bezier(0.16, 1, 0.3, 1),
     opacity 0.35s;
 }
 

@@ -109,7 +109,7 @@ export const InteractiveModals: React.FC<InteractiveModalsProps> = ({
                     <p className="text-xs font-semibold uppercase tracking-[0.12em] text-[#D9605C]">
                       Free colour profile
                     </p>
-                    <h3 className="mt-3 font-['Montserrat'] text-4xl font-black leading-[0.94] tracking-[-0.04em] text-white sm:text-5xl">
+                    <h3 className="mt-3 font-['Montserrat'] text-2xl font-semibold leading-[1.2] tracking-[-0.02em] text-white sm:text-3xl">
                       Create your
                       <br />
                       colour profile.
@@ -137,7 +137,7 @@ export const InteractiveModals: React.FC<InteractiveModalsProps> = ({
                     </div>
                     <div className="flex items-center justify-between gap-4 py-4">
                       <dt className="text-base text-white/55">Price</dt>
-                      <dd className="font-['Montserrat'] text-4xl font-black tracking-[-0.04em] text-white">
+                      <dd className="font-['Montserrat'] text-2xl font-semibold tracking-[-0.02em] text-white">
                         Free
                       </dd>
                     </div>
@@ -169,7 +169,7 @@ export const InteractiveModals: React.FC<InteractiveModalsProps> = ({
                     <p className="text-xs font-semibold uppercase tracking-[0.12em] text-[#D9605C]">
                       Studio access
                     </p>
-                    <h3 className="mt-3 font-['Montserrat'] text-4xl font-black leading-[0.94] tracking-[-0.04em] text-white sm:text-5xl">
+                    <h3 className="mt-3 font-['Montserrat'] text-2xl font-semibold leading-[1.2] tracking-[-0.02em] text-white sm:text-3xl">
                       Talk to the
                       <br />
                       studio.
@@ -244,7 +244,7 @@ export const InteractiveModals: React.FC<InteractiveModalsProps> = ({
                     <p className="text-xs font-semibold uppercase tracking-[0.12em] text-[#D9605C]">
                       Atelier notes
                     </p>
-                    <h3 className="mt-3 font-['Montserrat'] text-5xl font-black leading-[0.9] tracking-[-0.04em] text-white sm:text-6xl">
+                    <h3 className="mt-3 font-['Montserrat'] text-2xl font-semibold leading-[1.2] tracking-[-0.02em] text-white sm:text-3xl">
                       From palette
                       <br />
                       to full look.
@@ -326,19 +326,11 @@ export const InteractiveModals: React.FC<InteractiveModalsProps> = ({
 
                     <div className="mt-5 divide-y divide-white/10 border-y border-white/10">
                       {PROCESS_STEPS.map((step) => (
-                        <div
-                          key={step.title}
-                          className="grid grid-cols-[42px_1fr] gap-4 py-5 sm:grid-cols-[64px_1fr]"
-                        >
-                          <span className="font-['Montserrat'] text-3xl font-black leading-none tracking-[-0.04em] text-[#D9605C]">
-                            →
-                          </span>
-                          <div>
-                            <p className="text-base font-semibold text-white">{step.title}</p>
-                            <p className="mt-1 text-base leading-[1.7] text-white/60">
-                              {step.copy}
-                            </p>
-                          </div>
+                        <div key={step.title} className="py-5">
+                          <p className="text-base font-semibold text-white">{step.title}</p>
+                          <p className="mt-1 text-base leading-[1.7] text-white/60">
+                            {step.copy}
+                          </p>
                         </div>
                       ))}
                     </div>

@@ -47,12 +47,9 @@ export const SpinShowcase: React.FC = () => {
       className="mt-20 w-full scroll-mt-20 bg-[#171414] py-16 text-white sm:mt-28 sm:py-24"
     >
       <div className="mx-auto w-full max-w-[1280px] px-4 sm:px-6 lg:px-8">
-        <div className="grid gap-8 border-b border-white/15 pb-8 md:grid-cols-[1.1fr_0.9fr] md:items-end">
+        <div className="reveal reveal-up grid gap-8 border-b border-white/15 pb-8 md:grid-cols-[1.1fr_0.9fr] md:items-end">
           <div>
-            <p className="text-xs font-semibold uppercase tracking-[0.1em] text-white/55">
-              MUSE / Turntable
-            </p>
-            <h2 className="mt-3 font-['Montserrat'] text-[clamp(46px,6.6vw,92px)] font-black leading-[0.9] tracking-[-0.04em] text-white">
+            <h2 className="font-['Montserrat'] text-display font-semibold tracking-[-0.02em] text-white">
               <span className="box-decoration-clone rounded-[2px] bg-[linear-gradient(90deg,#D9605C_0%,#C65D58_55%,#9E3F3B_100%)] bg-[length:100%_80%] bg-center bg-no-repeat px-3 text-white shadow-[0_8px_24px_rgba(0,0,0,0.28)]">
                 Check the
                 <br />
@@ -73,7 +70,7 @@ export const SpinShowcase: React.FC = () => {
           </div>
         </div>
 
-        <div className="mt-8 grid gap-8 sm:mt-10 lg:grid-cols-[0.72fr_1.28fr] lg:items-end lg:gap-12">
+        <div className="reveal reveal-up reveal-delay-1 mt-8 grid gap-8 sm:mt-10 lg:grid-cols-[0.72fr_1.28fr] lg:items-end lg:gap-12">
           <div className="lg:pb-10">
             <p className="text-xs font-semibold uppercase tracking-[0.08em] text-white/55">
               What to check
@@ -114,7 +111,7 @@ export const SpinShowcase: React.FC = () => {
 
               <div className="mt-4 h-px w-full bg-white/15">
                 <div
-                  className="h-px bg-[#B9534F]"
+                  className="h-px bg-[#D9605C]"
                   style={{ width: `${dotPercent}%` }}
                 />
               </div>
@@ -130,7 +127,7 @@ export const SpinShowcase: React.FC = () => {
                   aria-current={activeLook === index ? 'true' : undefined}
                   className={`group relative w-[88px] border p-1 transition-colors ${
                     activeLook === index
-                      ? 'border-[#B9534F]'
+                      ? 'border-[#D9605C]'
                       : 'border-white/15 hover:border-white/40'
                   }`}
                 >
